@@ -7,10 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
 use App\Image as AppImage;
+use App\Mail\PublishServiceMail;
 use Image;
 use App\Service;
 use App\Subcategory;
 use App\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class ServiceController extends Controller
@@ -132,6 +134,8 @@ class ServiceController extends Controller
                 $service->save();
             }
         }
+
+        Mail::to('mikanthost@gmail.com')->send(new PublishServiceMail($service));
 
         toastr()->success('Servicio agregado correctamente');
         return redirect()->action('adminUser\DashboardController@index');

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Service;
 use App\User;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 
 class DashboardController extends Controller
@@ -37,7 +38,8 @@ class DashboardController extends Controller
 
     public function sitemap()
     {
-        
+        /* $files = storage_path('public');
+        dd($files); */
         // eliminamos el archivo
         /* $siteMap = 'https://guiaceliaca.com.ar/sitemap.xml';
         // dd($siteMap);

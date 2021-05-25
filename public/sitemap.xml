@@ -4,27 +4,27 @@
 	<url>
 	<loc>http://avisosmendoza.test</loc>
 		<priority>1.0</priority>
-		<lastmod>2021-05-24T18:47:42+00:00</lastmod>
+		<lastmod>2021-05-24T22:53:28+00:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
 	<loc>https://avisosmendoza.com.ar/listado</loc>
 		<priority>0.50</priority>
-		<lastmod>2021-05-24T18:47:42+00:00</lastmod>
+		<lastmod>2021-05-24T22:53:28+00:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>https://avisosmendoza.test/servicio/servicios-profecionales/referencia/jqzXerqPeSQoLYdhH4XT</loc>
+	<loc>https://avisosmendoza.com.ar/servicio/servicios-profecionales/referencia/jqzXerqPeSQoLYdhH4XT</loc>
 		<priority>0.80</priority>
 		<lastmod>2021-05-23T22:53:55+00:00</lastmod>
 	</url>
 	<url>
-	<loc>https://avisosmendoza.test/servicio/sit-dolor-rerum-tene/referencia/wglGvKCFCOCUbkq8yOEd</loc>
+	<loc>https://avisosmendoza.com.ar/servicio/sit-dolor-rerum-tene/referencia/wglGvKCFCOCUbkq8yOEd</loc>
 		<priority>0.80</priority>
 		<lastmod>2021-05-15T22:27:26+00:00</lastmod>
 	</url>
 	<url>
-	<loc>https://avisosmendoza.test/servicio/sit-dolor222-rerum-tene/referencia/wglGvKCFCO2CUbkq8yOEd</loc>
+	<loc>https://avisosmendoza.com.ar/servicio/sit-dolor222-rerum-tene/referencia/wglGvKCFCO2CUbkq8yOEd</loc>
 		<priority>0.80</priority>
 		<lastmod>2021-05-15T22:27:26+00:00</lastmod>
 	</url>
