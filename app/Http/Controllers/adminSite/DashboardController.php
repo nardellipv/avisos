@@ -5,8 +5,8 @@ namespace App\Http\Controllers\adminSite;
 use App\Http\Controllers\Controller;
 use App\Service;
 use App\User;
+use File;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 
 class DashboardController extends Controller
@@ -58,7 +58,7 @@ class DashboardController extends Controller
             $sitemap->add("https://avisosmendoza.com.ar/servicio/" . $service->slug .'/referencia/'. $service->ref, $service->created_at, $priorityService);
         }
 
-        $sitemap->store('xml', 'sitemap');
+        $sitemap->store('xml', 'sitemap', base_path('../public_html'));
         return back();
     }
 }

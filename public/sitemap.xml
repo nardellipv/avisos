@@ -4,14 +4,34 @@
 	<url>
 	<loc>http://avisosmendoza.test</loc>
 		<priority>1.0</priority>
-		<lastmod>2021-05-24T22:53:28+00:00</lastmod>
+		<lastmod>2021-05-27T23:09:21+00:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
 	<loc>https://avisosmendoza.com.ar/listado</loc>
 		<priority>0.50</priority>
-		<lastmod>2021-05-24T22:53:28+00:00</lastmod>
+		<lastmod>2021-05-27T23:09:21+00:00</lastmod>
 		<changefreq>daily</changefreq>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/servicio/animi-eligendi-nost/referencia/qH1r3Lgy7KV86CQBcjna</loc>
+		<priority>0.80</priority>
+		<lastmod>2021-05-25T14:42:57+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/servicio/preguntas-y-respuestas-con-el-chef-sin-gluten-calvin-eaton/referencia/wcNurl792qCrdjarKarF</loc>
+		<priority>0.80</priority>
+		<lastmod>2021-05-25T14:41:16+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/servicio/animi-eligendi-nost/referencia/HKzDavy0gsaIky7iKwJe</loc>
+		<priority>0.80</priority>
+		<lastmod>2021-05-25T14:39:53+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/servicio/animi-eligendi-nost/referencia/SvzNL85bAWocML1L69zU</loc>
+		<priority>0.80</priority>
+		<lastmod>2021-05-25T14:39:21+00:00</lastmod>
 	</url>
 	<url>
 	<loc>https://avisosmendoza.com.ar/servicio/servicios-profecionales/referencia/jqzXerqPeSQoLYdhH4XT</loc>
