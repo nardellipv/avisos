@@ -92,14 +92,27 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-md-3 control-label" for="textarea"> Imágen </label>
+                                            <label class="col-md-3 control-label" for="textarea"> Imágen Principal </label>
 
                                             <div class="col-md-8">
                                                 <div class="mb10">
                                                     <input id="input-upload-img1" name="photo" type="file" class="file"
                                                         data-preview-file-type="text">
-                                                    <small> JPG, GIF o PNG.</small>
+                                                    <p class="help-block">JPG, GIF o PNG</p>
                                                 </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="textarea"> Imágenes </label>
+
+                                            <div class="col-md-8">
+                                                <div class="mb10">
+                                                    <input id="input-upload-img2" name="photo2[]" type="file" class="file"
+                                                        data-preview-file-type="text" multiple>
+                                                </div>
+                                                <p class="help-block">JPG, GIF o PNG</p>
                                             </div>
                                         </div>
 
@@ -205,14 +218,13 @@
 
                 <div class="col-md-3 reg-sidebar">
                     <div class="reg-sidebar-inner text-center">
-                        {{--  <div class="promo-text-box"><i class=" icon-picture fa fa-4x icon-color-1"></i>
+                        {{-- <div class="promo-text-box"><i class=" icon-picture fa fa-4x icon-color-1"></i>
 
                             <h3><strong>Post a Free Classified</strong></h3>
 
                             <p> Post your free online classified ads with us. Lorem ipsum dolor sit amet, consectetur
                                 adipiscing elit. </p>
-                        </div>
-  --}}
+                        </div> --}}
                         <div class="panel sidebar-panel">
                             <div class="panel-heading uppercase">
                                 <small><strong>Seguridad Personal</strong></small>

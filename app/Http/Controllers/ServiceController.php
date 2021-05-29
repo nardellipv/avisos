@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Image;
 use App\Service;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
@@ -26,13 +27,16 @@ class ServiceController extends Controller
         SEOMeta::addMeta('Servicio Creado', $service->created_at->toW3CString(), 'property');
         SEOMeta::addMeta('Categoría', $service->category->name, 'property');
 
-        OpenGraph::setUrl('htts://avisosmendoza.com.ar/servicio/'. $service->slug .'/referencia/'. $service->ref);
+        OpenGraph::setUrl('htts://avisosmendoza.com.ar/servicio/' . $service->slug . '/referencia/' . $service->ref);
         OpenGraph::addProperty('type', 'website');
         OpenGraph::setTitle($service->title);
         OpenGraph::setSiteName('Avisos Mendoza');
         OpenGraph::setDescription(Str::limit($service->description, 150));
-        OpenGraph::addImage('http://avisosmendoza.test/users/'. $service->user_id .'/service/'.$service->photo, ['height' => 300, 'width' => 300]);
+        OpenGraph::addImage('http://avisosmendoza.test/users/' . $service->user_id . '/service/' . $service->photo, ['height' => 300, 'width' => 300]);
 
+
+        $images = Image::where('service_id', $service->id)
+            ->get();
 
         //cookie si ya lo visito
         $visit = Cookie::queue('service' . $service->id, '1');
@@ -48,7 +52,7 @@ class ServiceController extends Controller
             ->where('comments.service_id', $service->id)
             ->get();
 
-        return view('web.services.service', compact('service', 'feedbackCount', 'comments'));
+        return view('web.services.service', compact('service', 'feedbackCount', 'comments', 'images'));
     }
 
     public function vote($id)

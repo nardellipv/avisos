@@ -50,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/crear-servicio/categoria-seleccionada', 'adminUser\ServiceController@createServiceCategoySelect')->name('service.createCategoySelect');
     Route::post('/agregar-servicio', 'adminUser\ServiceController@storeService')->name('service.store');
     Route::get('/pendiente-servicio', 'adminUser\ServiceController@pendingService')->name('service.pending');
+    Route::get('/eliminar-foto/{id}', 'adminUser\ServiceController@deletePhoto')->name('service.deletePhoto');
 
     Route::post('/agregar-comentario/{service}', 'CommentController@storeComment')->name('comment.store');
 

@@ -8,6 +8,7 @@ use App\Http\Requests\CreateServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
 use App\Image as AppImage;
 use App\Mail\PublishServiceMail;
+use File;
 use Image;
 use App\Service;
 use App\Subcategory;
@@ -98,7 +99,6 @@ class ServiceController extends Controller
             'slug' => Str::slug($request['title']),
         ]);
 
-
         $path = 'users/' . $user->id;
         $pathSub = 'users/' . $user->id . '/service';
 
@@ -135,6 +135,45 @@ class ServiceController extends Controller
             }
         }
 
+        if ($request['photo2']) {
+            $countPhoto2 = count($request->photo2);
+
+            if ($countPhoto2 > 2) {
+                $maxPhoto2 = array_slice($request['photo2'], 0, 3);
+            } else {
+                $maxPhoto2 = $request['photo2'];
+            }
+
+
+            if ($maxPhoto2) {
+                foreach ($maxPhoto2 as $photos) {
+
+                    $image = $photos;
+
+                    $img = Image::make($image->getRealPath());
+
+
+                    if ($img->width() > 700) {
+                        $img->resize(700, null);
+                    }
+
+                    if ($img->height() > 400) {
+                        $img->resize(null, 400);
+                    }
+
+
+                    $img->save($pathSub . '/' . $image->getClientOriginalName());
+
+                    $photoName = $image->getClientOriginalName();
+
+                    $image = AppImage::create([
+                        'name' => $photoName,
+                        'service_id' => $service->id,
+                    ]);
+                }
+            }
+        }
+
         Mail::to('mikanthost@gmail.com')->send(new PublishServiceMail($service));
 
         toastr()->success('Servicio agregado correctamente');
@@ -147,10 +186,13 @@ class ServiceController extends Controller
 
         $this->authorize('ownerService', $service);
 
+        $images = AppImage::where('service_id', $service->id)
+            ->get();
+
         $subCategory = Subcategory::where('id', $service->subcategory_id)
             ->first();
 
-        return view('web.adminUser.serviceAnun.editService', compact('service', 'subCategory'));
+        return view('web.adminUser.serviceAnun.editService', compact('service', 'subCategory', 'images'));
     }
 
     public function updateService(UpdateServiceRequest $request, $id)
@@ -201,9 +243,60 @@ class ServiceController extends Controller
             $service->photo = $image->getClientOriginalName();
         }
 
+        if ($request['photo2']) {
+            $countPhoto2 = count($request->photo2);
+
+            if ($countPhoto2 > 2) {
+                $maxPhoto2 = array_slice($request['photo2'], 0, 3);
+            } else {
+                $maxPhoto2 = $request['photo2'];
+            }
+
+
+            if ($maxPhoto2) {
+                foreach ($maxPhoto2 as $photos) {
+
+                    $image = $photos;
+
+                    $img = Image::make($image->getRealPath());
+
+
+                    if ($img->width() > 700) {
+                        $img->resize(700, null);
+                    }
+
+                    if ($img->height() > 400) {
+                        $img->resize(null, 400);
+                    }
+
+
+                    $img->save($pathSub . '/' . $image->getClientOriginalName());
+
+                    $photoName = $image->getClientOriginalName();
+
+                    $image = AppImage::create([
+                        'name' => $photoName,
+                        'service_id' => $service->id,
+                    ]);
+                }
+            }
+        }
+
+
+
         $service->save();
 
         toastr()->success('Servicio actualizado correctamente');
+        return back();
+    }
+
+    public function deletePhoto($id)
+    {
+        $image = AppImage::find($id);
+        File::delete('users/' . userConnect()->id . '/service/' . $image->name);
+        $image->delete();
+
+        toastr()->success('Imágen eliminada correctamente');
         return back();
     }
 

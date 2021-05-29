@@ -80,30 +80,57 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-md-3 control-label" for="textarea"> Imágen </label>
+                                            <label class="col-md-3 control-label" for="textarea"> Imágen Principal </label>
 
                                             <div class="col-md-8">
                                                 <div class="mb10">
                                                     <input id="input-upload-img1" name="photo" type="file" class="file"
                                                         data-preview-file-type="text">
-                                                    <small> JPG, GIF o PNG.</small>
+                                                    <p class="help-block">JPG, GIF o PNG</p>
                                                 </div>
                                                 @if ($service->photo)
-                                                    <a href="{{ route('service', [$service->slug, $service->ref]) }}">
-                                                        <img class="thumbnail  img-responsive"
-                                                            src="{{ asset('users/' . $service->user->id . '/service/' . $service->photo) }}"
-                                                            alt="{{ $service->name }}">
-                                                    </a>
+                                                    <img class="thumbnail  img-responsive"
+                                                        src="{{ asset('users/' . $service->user->id . '/service/' . $service->photo) }}"
+                                                        alt="{{ $service->name }}">
                                                 @else
-                                                    <a href="{{ route('service', [$service->slug, $service->ref]) }}">
-                                                        <img class="img-responsive"
-                                                            src="{{ asset('styleWeb/assets/sin_imagen_grande.png') }}"
-                                                            alt="{{ $service->name }}">
-                                                    </a>
+                                                    <img class="img-responsive"
+                                                        src="{{ asset('styleWeb/assets/sin_imagen_grande.png') }}"
+                                                        alt="{{ $service->name }}">
                                                 @endif
                                             </div>
                                         </div>
 
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="textarea"> Imágenes </label>
+
+                                            <div class="col-md-8">
+                                                <div class="mb10">
+                                                    @if (count($images) < 3)
+                                                        <input id="input-upload-img2" name="photo2[]" type="file"
+                                                            class="file" data-preview-file-type="text" multiple>
+                                                    @else
+                                                        <small>Solo podes subir 3 imágenes por servicio</small>
+                                                        <input id="input-upload-img2" name="photo2[]" type="file"
+                                                            class="file" data-preview-file-type="text" multiple disabled>
+                                                    @endif
+                                                </div>
+                                                <p class="help-block">JPG, GIF o PNG</p>
+                                            </div>
+                                            @forelse($images as $image)
+                                                <div class="col-md-4">
+                                                    <img class="thumbnail  img-responsive"
+                                                        src="{{ asset('users/' . $service->user->id . '/service/' . $image->name) }}"
+                                                        alt="{{ $service->name }}">
+                                                    <a href="{{ route('service.deletePhoto', $image) }}" class="btn btn-danger btn-xs" style="margin-top: -20%;"> <i
+                                                            class=" fa fa-trash"></i> Eliminar
+                                                    </a>
+                                                </div>
+                                            @empty
+                                                <img class="img-responsive"
+                                                    src="{{ asset('styleWeb/assets/sin_imagen_grande.png') }}"
+                                                    alt="{{ $service->name }}">
+                                            @endforelse
+                                        </div>
 
                                         {{-- <div class="well">
                                             <h3><i class=" icon-certificate icon-color-1"></i> Make your Ad Premium
@@ -205,34 +232,22 @@
                 </div>
 
                 <div class="col-md-3 reg-sidebar">
-                    <div class="reg-sidebar-inner text-center">
-                        <div class="promo-text-box"><i class=" icon-picture fa fa-4x icon-color-1"></i>
-
-                            <h3><strong>Post a Free Classified</strong></h3>
-
-                            <p> Post your free online classified ads with us. Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. </p>
+                    <div class="panel sidebar-panel">
+                        <div class="panel-heading uppercase">
+                            <small><strong>Seguridad Personal</strong></small>
                         </div>
-
-                        <div class="panel sidebar-panel">
-                            <div class="panel-heading uppercase">
-                                <small><strong>How to sell quickly?</strong></small>
-                            </div>
-                            <div class="panel-content">
-                                <div class="panel-body text-left">
-                                    <ul class="list-check">
-                                        <li> ief title and description of the item</li>
-                                        <li> Make sure you post in the correct category</li>
-                                        <li> Add nice photos to your ad</li>
-                                        <li> Put a reasonable price</li>
-                                        <li> Check the item before publish</li>
-
-                                    </ul>
-                                </div>
+                        <div class="panel-content">
+                            <div class="panel-body text-left">
+                                <ul class="list-check">
+                                    <li> Insista en un lugar de reunión público como una cafetería, un banco o un centro
+                                        comercial. </li>
+                                    <li> Dígale a un amigo o familiar adónde va. </li>
+                                    <li> Lleve su teléfono celular si tiene uno. </li>
+                                    <li> Considere la posibilidad de que un amigo lo acompañe. </li>
+                                    <li> Confía en tus instintos. </li>
+                                </ul>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -241,5 +256,5 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('styleWeb/assets/js/fileinput.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('styleWeb/assets/js/fileinput.min.js') }}" type="text/javascript"></script>
 @endsection
