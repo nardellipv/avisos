@@ -41,7 +41,7 @@
 
     {!! htmlScriptTagJsApi() !!}
     @include('external.analytics')
-    @include('external.onesignal')
+     @include('external.onesignal') 
     @include('external.shareit')
 </head>
 

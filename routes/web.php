@@ -77,4 +77,7 @@ Route::middleware(['auth','AdminSite'])->group(function () {
     Route::get('/admin/borrar-servicio/{id}', 'adminSite\ServiceController@serviceDelete')->name('adminService.delete');
 
     Route::get('/admin/generar-sitemap', 'adminSite\DashboardController@sitemap')->name('adminDashboard.sitemap');
+
+    Route::get('/admin/write', 'adminSite\PushController@writeNotify')->name('adminPush.writeNotify');
+    Route::post('/admin/send-push', 'adminSite\PushController@send')->name('adminPush.send');
 });

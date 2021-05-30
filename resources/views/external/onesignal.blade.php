@@ -3,7 +3,10 @@
   window.OneSignal = window.OneSignal || [];
   OneSignal.push(function() {
     OneSignal.init({
-      appId: "6028d368-6246-4653-9672-91c449670cf6",
+      appId: "2d075e43-8bf0-4e9a-b4c9-a5d2e16ba1e1",
+      notifyButton: {
+        enable: true,
+      },
     });
   });
 </script>

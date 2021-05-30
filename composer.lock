@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef76b3c99b64f7446ae9d9b47a9f52df",
+    "content-hash": "91278422bcf335d2416445ab282dae18",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -1249,6 +1249,59 @@
                 "source": "https://github.com/juanparati/Sendinblue/tree/4.0"
             },
             "time": "2020-05-11T16:13:55+00:00"
+        },
+        {
+            "name": "kce/onesignal-laravel",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kadircanerergun/laravel-onesignal.git",
+                "reference": "26dd64ef9e779dbd0eadb9f0993962cbac1b656c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kadircanerergun/laravel-onesignal/zipball/26dd64ef9e779dbd0eadb9f0993962cbac1b656c",
+                "reference": "26dd64ef9e779dbd0eadb9f0993962cbac1b656c",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3@dev",
+                "illuminate/support": "4.*|5.*|6.*|7.*|8.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "itsgoingd/clockwork": "~1.10",
+                "mockery/mockery": "^1.0",
+                "phpmd/phpmd": "@stable",
+                "phpunit/phpunit": "^5.7|6.2|^7.0",
+                "squizlabs/php_codesniffer": "3.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "KCE\\OneSignal\\OneSignalServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "KCE\\OneSignal\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Kadir Caner Ergün",
+                    "email": "kadir@canerergun.net"
+                }
+            ],
+            "description": "Onesignal wrapper for Laravel Framework.",
+            "support": {
+                "issues": "https://github.com/kadircanerergun/laravel-onesignal/issues",
+                "source": "https://github.com/kadircanerergun/laravel-onesignal/tree/1.0.2"
+            },
+            "time": "2020-11-10T00:08:36+00:00"
         },
         {
             "name": "laravel/framework",

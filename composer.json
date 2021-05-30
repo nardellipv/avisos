@@ -16,6 +16,7 @@
         "guzzlehttp/guzzle": "^6.2",
         "intervention/image": "^2.5",
         "juanparati/sendinblue": "^4.0",
+        "kce/onesignal-laravel": "^1.0",
         "laravel/framework": "^7.29",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^2.5",
