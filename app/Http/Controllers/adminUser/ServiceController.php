@@ -28,7 +28,7 @@ class ServiceController extends Controller
 
         if ($services->isEmpty()) {
             $categories = Category::all();
-            toastr()->info('Crea tu primer servicio');
+            toast()->info('Crea tu primer servicio');
             return redirect()->action('adminUser\ServiceController@createService');
         }
 
@@ -44,7 +44,7 @@ class ServiceController extends Controller
 
         if ($services->isEmpty()) {
             $categories = Category::all();
-            toastr()->info('Crea tu primer servicio');
+            toast()->info('Crea tu primer servicio');
             return redirect()->action('adminUser\ServiceController@createService');
         }
 
@@ -176,7 +176,7 @@ class ServiceController extends Controller
 
         Mail::to('mikanthost@gmail.com')->send(new PublishServiceMail($service));
 
-        toastr()->success('Servicio agregado correctamente');
+        toast()->success('Servicio agregado correctamente');
         return redirect()->action('adminUser\DashboardController@index');
     }
 
@@ -286,7 +286,7 @@ class ServiceController extends Controller
 
         $service->save();
 
-        toastr()->success('Servicio actualizado correctamente');
+        toast()->success('Servicio actualizado correctamente');
         return back();
     }
 
@@ -296,7 +296,7 @@ class ServiceController extends Controller
         File::delete('users/' . userConnect()->id . '/service/' . $image->name);
         $image->delete();
 
-        toastr()->success('Imágen eliminada correctamente');
+        toast()->success('Imágen eliminada correctamente');
         return back();
     }
 
@@ -308,7 +308,7 @@ class ServiceController extends Controller
 
         $service->delete();
 
-        toastr()->success('Servicio eliminado correctamente');
+        toast()->success('Servicio eliminado correctamente');
         return back();
     }
 }

@@ -16,6 +16,10 @@ class HomeController extends Controller
         OpenGraph::setDescription('Llegá a más mendocinos publicando tu servicio totalmente gratis');
         OpenGraph::setTitle('Avisos Mendoza');
         OpenGraph::setUrl('https://avisosmendoza.com.ar');
+        SEOMeta::addKeyword([
+            'Clasificados', 'Avisos Clasificados', 'Mendoza', 'Mendoza Trabajo', 'Mendoza Clasificados',
+            'Avisos en Mendoza', 'Clasificados Los Andes', 'Clasificados diario uno', 'alquileres en mendoza'
+        ]);
         OpenGraph::addProperty('type', 'articles');
 
         $services = Service::with(['region', 'category', 'user'])
@@ -29,6 +33,4 @@ class HomeController extends Controller
 
         return view('web.index', compact('services', 'locations'));
     }
-
-
 }

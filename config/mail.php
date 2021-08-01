@@ -46,6 +46,11 @@ return [
             'auth_mode' => null,
         ],
 
+        /* 'mailers' => [
+            'sendinblue' => [
+                'transport' => 'sendinblue.v3',
+            ],
+ */
         'ses' => [
             'transport' => 'ses',
         ],

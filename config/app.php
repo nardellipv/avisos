@@ -168,7 +168,6 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         'App\Providers\ComposerServiceProvider',
-        Yoeunes\Toastr\ToastrServiceProvider::class,
         Sentry\Laravel\ServiceProvider::class,
         /*
          * Application Service Providers...

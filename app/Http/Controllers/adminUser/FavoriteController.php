@@ -25,7 +25,7 @@ class FavoriteController extends Controller
             'service_id' => $id
         ]);
 
-        toastr()->success('Servicio agregado como favorito correctamente');
+        toast()->success('Servicio agregado como favorito correctamente');
         return back();
     }
 
@@ -37,7 +37,7 @@ class FavoriteController extends Controller
 
         $favorite->delete();
 
-        toastr()->success('Servicio favorito eliminado correctamente');
+        toast()->success('Servicio favorito eliminado correctamente');
         return back();
     }
 }

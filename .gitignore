@@ -12,3 +12,4 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .vscode/sftp.json
+bootstrap/cache/services.php

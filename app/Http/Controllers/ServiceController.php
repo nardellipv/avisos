@@ -63,13 +63,13 @@ class ServiceController extends Controller
         Cookie::queue('vote' . $id, '1');
 
         if (Cookie::get('vote' . $id) == 1) {
-            toastr()->warning('Ya votaste este servicio');
+            toast()->warning('Ya votaste este servicio');
             return back();
         }
 
         Service::find($id)->increment('like');
 
-        toastr()->success('Gracias por Votar');
+        toast()->success('Gracias por Votar');
         return back();
     }
 }

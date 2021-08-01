@@ -21,7 +21,7 @@ class EmailController extends Controller
 
         Mail::to('info@avisosmendoza.com.ar')->send(new ContactMail($data));
 
-        toastr()->info('El mensaje se envió correctamente');
+        toast()->info('El mensaje se envió correctamente');
         return back();
     }
 
@@ -49,7 +49,7 @@ class EmailController extends Controller
 
         Mail::to($data['email'])->send(new ResponseServiceMail($data));
 
-        toastr()->info('El mensaje se envió correctamente');
+        toast()->info('El mensaje se envió correctamente');
         return back();
     }
 }
