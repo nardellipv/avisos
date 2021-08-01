@@ -21,9 +21,9 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^2.5",
         "laravelium/sitemap": "^7.0",
+        "realrashid/sweet-alert": "^4.0",
         "sendinblue/api-v3-sdk": "~6.1.4",
-        "sentry/sentry-laravel": "^2.5",
-        "yoeunes/toastr": "^1.2"
+        "sentry/sentry-laravel": "^2.5"
     },
     "require-dev": {
         "beyondcode/laravel-query-detector": "^1.4",

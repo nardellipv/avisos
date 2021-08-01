@@ -14,7 +14,7 @@ class ServiceController extends Controller
         $service->status = 'Activo';
         $service->save();
 
-        toastr()->success('Servicio Activado');
+        toast()->success('Servicio Activado');
         return back();
     }
 
@@ -25,7 +25,7 @@ class ServiceController extends Controller
         $service->status = 'Desactivo';
         $service->save();
 
-        toastr()->success('Servicio Desactivado');
+        toast()->success('Servicio Desactivado');
         return back();
     }
 
@@ -34,7 +34,7 @@ class ServiceController extends Controller
         $service = Service::find($id);
         $service->delete();
 
-        toastr()->success('Servicio eliminado');
+        toast()->success('Servicio eliminado');
         return back();
     }
 }

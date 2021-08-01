@@ -12,7 +12,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('styleWeb/assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-
+    
     <!-- Custom styles for this template -->
     <link href="{{ asset('styleWeb/assets/css/style.css') }}" rel="stylesheet">
 
@@ -27,8 +27,6 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
-    @toastr_css
-
     <!-- include pace script for automatic web page progress bar  -->
 
     <script>
@@ -41,8 +39,9 @@
 
     {!! htmlScriptTagJsApi() !!}
     @include('external.analytics')
-     @include('external.onesignal') 
+    @include('external.onesignal')
     @include('external.shareit')
+    @include('external.pixel')
 </head>
 
 <body>
@@ -50,12 +49,13 @@
     <div id="wrapper">
         @include('web.parts._menu')
         <!-- /.header -->
+        @include('sweetalert::alert')
 
         @if (Route::current()->getName() == 'home')
-            <div class="intro jobs-intro hasOverly"
-                style="background-image: url({{ asset('styleWeb/assets/ciudad.jpg') }}); background-position: center center;">
-                @include('web.parts._header')
-            </div>
+        <div class="intro jobs-intro hasOverly"
+            style="background-image: url({{ asset('styleWeb/assets/ciudad.jpg') }}); background-position: center center;">
+            @include('web.parts._header')
+        </div>
         @endif
         <!-- /.intro -->
 
@@ -80,6 +80,4 @@
     @yield('js')
 
 </body>
-    @toastr_js
-    @toastr_render
 </html>

@@ -48,7 +48,7 @@ class ProfileController extends Controller
 
         $user->save();
 
-        toastr()->success('Perfil modificado correctamente');
+        toast()->success('Perfil modificado correctamente');
         return back();
     }
 
@@ -62,7 +62,7 @@ class ProfileController extends Controller
 
         User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
 
-        toastr()->success('Perfil modificado correctamente');
+        toast()->success('Perfil modificado correctamente');
         return back();
     }
 
@@ -78,7 +78,7 @@ class ProfileController extends Controller
         }
         $user->save();
 
-        toastr()->success('Perfil modificado correctamente');
+        toast()->success('Perfil modificado correctamente');
         return back();
     }
 }

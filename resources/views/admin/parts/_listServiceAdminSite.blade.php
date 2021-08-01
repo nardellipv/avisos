@@ -29,7 +29,7 @@
                                                             class="fas fa-times"></i></a>
                                                 </div>
                                             @endif
-                                            @if ($service->status == 'Desactivo')
+                                            @if ($service->status == 'Pendiente')
                                                 <div class="buttons">
                                                     <a href="{{ route('adminService.active', $service) }}" class="btn btn-icon btn-sm btn-success"><i
                                                             class="fas fa-check"></i></a>

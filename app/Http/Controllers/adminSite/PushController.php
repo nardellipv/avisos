@@ -19,7 +19,7 @@ class PushController extends Controller
             ->setUrl($request->url)
             ->sendToAll($request->text);
 
-        toastr()->success('Notificacion enviada');
+        toast()->success('Notificacion enviada');
         return back();
     }
 }

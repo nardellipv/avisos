@@ -60,7 +60,7 @@ class DashboardController extends Controller
         $user->type = 'Anunciante';
         $user->save();
 
-        toastr()->success('Cambiaste el tipo de usuario a Anunciante');
+        toast()->success('Cambiaste el tipo de usuario a Anunciante');
         return back();
     }
 }

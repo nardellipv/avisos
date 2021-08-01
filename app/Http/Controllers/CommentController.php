@@ -17,7 +17,7 @@ class CommentController extends Controller
             'comment' => $request['comment'],
         ]);
         
-        toastr()->info('El comentario se agrego correctamente');
+        toast()->info('El comentario se agrego correctamente');
         return back();
     }
 }

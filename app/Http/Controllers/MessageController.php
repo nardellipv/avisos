@@ -22,7 +22,7 @@ class MessageController extends Controller
 
         Mail::to($message['email'])->send(new ContactServiceMail($message));
 
-        toastr()->info('El mensaje se envió correctamente');
+        toast()->info('El mensaje se envió correctamente');
         return back();
     }
 }

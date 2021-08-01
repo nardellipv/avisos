@@ -44,7 +44,7 @@ class MessageController extends Controller
 
         $messages->delete();
 
-        toastr()->success('Mensaje eliminado correctamente');
+        toast()->success('Mensaje eliminado correctamente');
         return back();
     }
 }
