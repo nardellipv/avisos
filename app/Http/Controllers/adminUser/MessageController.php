@@ -5,21 +5,16 @@ namespace App\Http\Controllers\adminUser;
 use App\Http\Controllers\Controller;
 use App\Message;
 use App\Service;
+use App\User;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
     public function listMessage()
     {
-        $service = Service::where('user_id', userConnect()->id)
-            ->first();
 
-        if ($service) {
-            $messages = Message::where('service_id', $service->id)
-                ->get();
-        }else{
-            $messages = 0;
-        }
+        $messages = Message::where('user_id', userConnect()->id)
+            ->get();
 
         return view('web.adminUser.message.listMessage', compact('messages'));
     }

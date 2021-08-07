@@ -81,15 +81,15 @@ class ComposerServiceProvider extends ServiceProvider
                 $countPendingService = Service::where('user_id', userConnect()->id)
                     ->where('status', 'Pendiente')
                     ->count();
-
+                    
                 if (!empty($service->id)) {
-                    $countPendingMessages = Message::where('service_id', $service->id)
+                    $countPendingMessages = Message::where('user_id', userConnect()->id)
                         ->where('read', 'N')
                         ->count();
                 } else {
                     $countPendingMessages = 0;
                 }
-
+                
                 $view->with([
                     'user' => userConnect()->id,
                     'countFavorite' => $countFavorite,

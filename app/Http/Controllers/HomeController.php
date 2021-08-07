@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio totalmente gratis');
+        SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio clasificados totalmente gratis');
 
         OpenGraph::setDescription('Llegá a más mendocinos publicando tu servicio totalmente gratis');
         OpenGraph::setTitle('Avisos Mendoza');

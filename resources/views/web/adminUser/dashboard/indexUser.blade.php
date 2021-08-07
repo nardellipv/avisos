@@ -125,18 +125,10 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            @if (userConnect()->type == 'Anunciante')
-                                                <div class="form-group">
-                                                    <label for="Phone" class="col-sm-3 control-label">Teléfono</label>
-
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="phone" value="{{ $user->phone }}"
-                                                            class="form-control">
-                                                    </div>
-                                                </div>
-                                            @endif
+                                            
+                                            
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="textarea"> Picture </label>
+                                                <label class="col-md-3 control-label" for="textarea"> Imágen Perfil </label>
 
                                                 <div class="col-md-8">
                                                     <div class="mb10">

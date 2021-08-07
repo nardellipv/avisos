@@ -39,7 +39,6 @@
 
     {!! htmlScriptTagJsApi() !!}
     @include('external.analytics')
-    @include('external.onesignal')
     @include('external.shareit')
     @include('external.pixel')
 </head>

@@ -21,7 +21,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if ($messages != 0)
+                                    {{--  @if ($messages == 'NULL')  --}}
                                         @foreach ($messages as $message)
                                             <tr>
                                                 <td>{{ $message->name }}</td>
@@ -39,7 +39,7 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                    @endif
+                                    {{--  @endif  --}}
                                 </tbody>
                             </table>
                         </div>
