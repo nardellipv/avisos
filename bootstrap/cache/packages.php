@@ -75,13 +75,6 @@
       0 => 'Juanparati\\Sendinblue\\ServiceProvider',
     ),
   ),
-  'kce/onesignal-laravel' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'KCE\\OneSignal\\OneSignalServiceProvider',
-    ),
-  ),
   'laravel/tinker' => 
   array (
     'providers' => 
