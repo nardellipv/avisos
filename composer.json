@@ -11,6 +11,7 @@
         "php": "^7.2.5|^8.0",
         "artesaos/seotools": "^0.20.0",
         "biscolab/laravel-recaptcha": "^4.4",
+        "dnsimmons/openweather": "^1.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.2",

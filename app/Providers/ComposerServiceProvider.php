@@ -12,6 +12,7 @@ use App\Subcategory;
 use Illuminate\Support\Facades\View;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use OpenWeather;
 
 class ComposerServiceProvider extends ServiceProvider
 {
@@ -67,7 +68,7 @@ class ComposerServiceProvider extends ServiceProvider
             'web.parts._menu',
         ], function ($view) {
 
-            if (Auth::check()){
+            if (Auth::check()) {
                 $service = Service::where('user_id', userConnect()->id)
                     ->first();
 
@@ -81,7 +82,7 @@ class ComposerServiceProvider extends ServiceProvider
                 $countPendingService = Service::where('user_id', userConnect()->id)
                     ->where('status', 'Pendiente')
                     ->count();
-                    
+
                 if (!empty($service->id)) {
                     $countPendingMessages = Message::where('user_id', userConnect()->id)
                         ->where('read', 'N')
@@ -89,7 +90,7 @@ class ComposerServiceProvider extends ServiceProvider
                 } else {
                     $countPendingMessages = 0;
                 }
-                
+
                 $view->with([
                     'user' => userConnect()->id,
                     'countFavorite' => $countFavorite,
@@ -98,6 +99,19 @@ class ComposerServiceProvider extends ServiceProvider
                     'countPendingMessages' => $countPendingMessages,
                 ]);
             }
+        });
+
+
+        View::composer([
+            'web.parts._menu',
+        ], function ($view) {
+
+            $weather = new OpenWeather();
+            $temp = $weather->getCurrentWeatherByCityName('Mendoza', 'metric');
+
+            $view->with([
+                'temp' => $temp,
+            ]);
         });
     }
 }

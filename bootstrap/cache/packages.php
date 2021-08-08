@@ -32,6 +32,17 @@
       'ReCaptcha' => 'Biscolab\\ReCaptcha\\Facades\\ReCaptcha',
     ),
   ),
+  'dnsimmons/openweather' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Dnsimmons\\OpenWeather\\OpenWeatherServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'OpenWeather' => 'Dnsimmons\\OpenWeather\\OpenWeather',
+    ),
+  ),
   'facade/ignition' => 
   array (
     'providers' => 

@@ -137,12 +137,12 @@
       'pusher' => 
       array (
         'driver' => 'pusher',
-        'key' => '',
-        'secret' => '',
-        'app_id' => '',
+        'key' => NULL,
+        'secret' => NULL,
+        'app_id' => NULL,
         'options' => 
         array (
-          'cluster' => 'mt1',
+          'cluster' => NULL,
           'useTLS' => true,
         ),
       ),
@@ -216,8 +216,8 @@
       'dynamodb' => 
       array (
         'driver' => 'dynamodb',
-        'key' => '',
-        'secret' => '',
+        'key' => NULL,
+        'secret' => NULL,
         'region' => 'us-east-1',
         'table' => 'cache',
         'endpoint' => NULL,
@@ -362,10 +362,10 @@
       's3' => 
       array (
         'driver' => 's3',
-        'key' => '',
-        'secret' => '',
-        'region' => 'us-east-1',
-        'bucket' => '',
+        'key' => NULL,
+        'secret' => NULL,
+        'region' => NULL,
+        'bucket' => NULL,
         'url' => NULL,
         'endpoint' => NULL,
       ),
@@ -523,11 +523,18 @@
       ),
     ),
   ),
-  'onesignal' => 
+  'openweather' => 
   array (
-    'app_id' => '2d075e43-8bf0-4e9a-b4c9-a5d2e16ba1e1',
-    'rest_api_key' => 'YzAwMDk2MDYtNTM2Ny00NjU3LThlM2MtYTVjYzJiOGM1MzJi',
-    'user_auth_key' => 'OGYwYTk5MDItOGEwMy00ODk5LWE0MWYtNWZjYjViYzI2NmQw',
+    'api_key' => '5687d17368ba85557dcda7370d662c97',
+    'api_endpoint_current' => 'https://api.openweathermap.org/data/2.5/weather?',
+    'api_endpoint_forecast' => 'https://api.openweathermap.org/data/2.5/forecast?',
+    'api_endpoint_onecall' => 'https://api.openweathermap.org/data/2.5/onecall?',
+    'api_endpoint_history' => 'https://api.openweathermap.org/data/2.5/onecall/timemachine?',
+    'api_endpoint_icons' => 'https://openweathermap.org/img/w/',
+    'api_lang' => 'en',
+    'format_date' => 'm/d/Y',
+    'format_time' => 'h:i A',
+    'format_day' => 'l',
   ),
   'queue' => 
   array (
@@ -556,8 +563,8 @@
       'sqs' => 
       array (
         'driver' => 'sqs',
-        'key' => '',
-        'secret' => '',
+        'key' => NULL,
+        'secret' => NULL,
         'prefix' => 'https://sqs.us-east-1.amazonaws.com/your-account-id',
         'queue' => 'your-queue-name',
         'suffix' => NULL,
@@ -703,8 +710,8 @@
     ),
     'ses' => 
     array (
-      'key' => '',
-      'secret' => '',
+      'key' => NULL,
+      'secret' => NULL,
       'region' => 'us-east-1',
     ),
     'sendinblue' => 
