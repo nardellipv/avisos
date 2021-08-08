@@ -5,7 +5,7 @@
     <title>Avisos Mendoza</title>
     <!--meta tags -->
     <meta charset="UTF-8">    
-    <script type="application/x-javascript">
+    <script async type="application/x-javascript">
         addEventListener("load", function() {
             setTimeout(hideURLbar, 0);
         }, false);
@@ -16,7 +16,7 @@
 
     </script>
     <!-- //for-mobile-apps -->
-    <link href="{{ asset('styleWeb/assets/errors/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset('styleWeb/assets/errors/css/style-min.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
         rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Dancing+Script:400,700&amp;subset=latin-ext,vietnamese"

@@ -8,7 +8,7 @@
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/app.min.css') }}">
     <!-- Template CSS -->
-    <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/style-min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/css/components.css') }}">
     <!-- Custom style CSS -->
     @toastr_css
@@ -40,16 +40,16 @@
         </div>
     </div>
     <!-- General JS Scripts -->
-    <script src="{{ asset('admin/assets/js/app.min.js') }}"></script>
+    <script async src="{{ asset('admin/assets/js/app.min.js') }}"></script>
     <!-- JS Libraies -->
-    <script src="{{ asset('admin/assets/bundles/apexcharts/apexcharts.min.js') }}"></script>
+    <script async src="{{ asset('admin/assets/bundles/apexcharts/apexcharts.min.js') }}"></script>
     <!-- Page Specific JS File -->
-    <script src="{{ asset('admin/assets/js/page/index.js') }}"></script>
+    <script async src="{{ asset('admin/assets/js/page/index.js') }}"></script>
     <!-- Template JS File -->
-    <script src="{{ asset('admin/assets/js/scripts.js') }}"></script>
+    <script async src="{{ asset('admin/assets/js/scripts.js') }}"></script>
     @yield('js')
     <!-- Custom JS File -->
-    <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
+    <script async src="{{ asset('admin/assets/js/custom.js') }}"></script>
 </body>
 @toastr_js
 @toastr_render

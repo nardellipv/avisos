@@ -256,5 +256,5 @@
 @endsection
 
 @section('js')
-<script src="{{ asset('styleWeb/assets/js/fileinput.min.js') }}" type="text/javascript"></script>
+<script async src="{{ asset('styleWeb/assets/js/fileinput.min.js') }}" type="text/javascript"></script>
 @endsection
