@@ -1,5 +1,5 @@
 @section('css')
-    <link href="{{ asset('styleWeb/assets/css/star.css') }}" rel="stylesheet">
+    <link href="{{ asset('styleWeb/assets/css/star-min.css') }}" rel="stylesheet">
 @endsection
 
 <div class="container">

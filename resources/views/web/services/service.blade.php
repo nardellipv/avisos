@@ -4,7 +4,7 @@
     <meta property="fb:app_id" content="507631946630340" />
     <meta property="fb:admins" content="109559280472432" />
 
-    <link href="{{ asset('styleWeb/assets/css/star.css') }}" rel="stylesheet">
+    <link href="{{ asset('styleWeb/assets/css/star-min.css') }}" rel="stylesheet">
     <link href="{{ asset('styleWeb/assets/plugins/bxslider/jquery.bxslider.css') }}" rel="stylesheet" />
 @endsection
 
@@ -194,8 +194,8 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('styleWeb/assets/plugins/bxslider/jquery.bxslider.min.js') }}"></script>
-    <script>
+    <script async src="{{ asset('styleWeb/assets/plugins/bxslider/jquery.bxslider.min.js') }}"></script>
+    <script async>
         $(document).ready(function() {
 
             // Slider

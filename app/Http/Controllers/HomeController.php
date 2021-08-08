@@ -20,6 +20,8 @@ class HomeController extends Controller
             'Clasificados', 'Avisos Clasificados', 'Mendoza', 'Mendoza Trabajo', 'Mendoza Clasificados',
             'Avisos en Mendoza', 'Clasificados Los Andes', 'Clasificados diario uno', 'alquileres en mendoza'
         ]);
+        OpenGraph::addImage(['url' => 'https://avisosmendoza.com.ar/styleWeb/assets/logo.png']);
+        OpenGraph::addImage(['url' => 'https://avisosmendoza.com.ar/styleWeb/assets/logo.png', 'size' => 300]);
         OpenGraph::addProperty('type', 'articles');
 
         $services = Service::with(['region', 'category', 'user'])

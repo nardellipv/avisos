@@ -7,4 +7,5 @@
     {{--  @include('web.parts._banner')  --}}
     @include('web.parts._howWork')
     @include('web.parts._suscribe')
+    @include('web.parts._legend')
 @endsection
