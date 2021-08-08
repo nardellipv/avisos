@@ -13,7 +13,7 @@
                         <i class="icon-location-2 icon-append"></i>
                         <select id="selectbasic" name="location"
                             class="form-control locinput input-rel searchtag-input has-icon">
-                            <option value="all"> Totas las Regiones</option>
+                            <option value="all"> Todas las Regiones</option>
                             <option disabled> ------------------------------------</option>
                             @foreach ($locations as $region)
                                 <option value="{{ $region->id }}">{{ $region->name }}</option>
