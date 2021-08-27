@@ -25,7 +25,13 @@ Route::get('/servicio/{slug}/referencia/{ref}', 'ServiceController@service')->na
 
 Route::post('/busqueda/{location?}/{service?}', 'SearchController@search')->name('search');
 
+Route::get('/blog', 'BlogController@list')->name('blog.list');
+Route::get('/blog/{slug}', 'BlogController@post')->name('blog.post');
+Route::get('/blog/categoria/{slug}', 'BlogController@listCategory')->name('blog.listCategory');
+
 Route::post('/servicio/enviar-mensaje', 'MessageController@sendMessage')->name('message.send');
+
+Route::post('/alta/news-letter', 'NewsLetterController@addEmail')->name('newsLetter.addEmail');
 
 Route::view('/terminos', 'web.parts.termAndCondition')->name('terms');
 Route::view('/politicas', 'web.parts.policy')->name('policy');
@@ -75,6 +81,9 @@ Route::middleware(['auth','AdminSite'])->group(function () {
     Route::get('/admin/activar-servicio/{id}', 'adminSite\ServiceController@serviceActive')->name('adminService.active');
     Route::get('/admin/desactivar-servicio/{id}', 'adminSite\ServiceController@serviceDesactive')->name('adminService.desactive');
     Route::get('/admin/borrar-servicio/{id}', 'adminSite\ServiceController@serviceDelete')->name('adminService.delete');
+    
+    Route::get('/admin/agregar-post', 'adminSite\BlogController@addPost')->name('blog.addPost');
+    Route::post('/admin/subir-post', 'adminSite\BlogController@storePost')->name('blog.storePost');
 
     Route::get('/admin/generar-sitemap', 'adminSite\DashboardController@sitemap')->name('adminDashboard.sitemap');
 });

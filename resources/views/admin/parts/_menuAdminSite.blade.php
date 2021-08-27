@@ -7,9 +7,13 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
-            <li class="dropdown {{ Route::current()->getName() == 'dashboard' ? 'active' : '' }}">
+            <li>
                 <a href="{{ route('adminDashboard.index') }}" class="nav-link"><i
                         data-feather="monitor"></i><span>Dashboard</span></a>
+            </li>
+            <li>
+                <a href="{{ route('blog.addPost') }}" class="nav-link"><i
+                        data-feather="paperclip"></i><span>Agregar Post</span></a>
             </li>
         </ul>
     </aside>

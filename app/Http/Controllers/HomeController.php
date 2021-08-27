@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Blog;
 use App\Region;
 use App\Service;
 use Artesaos\SEOTools\Facades\SEOMeta;
