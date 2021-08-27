@@ -12,12 +12,12 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('styleWeb/assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    
+
     <!-- Custom styles for this template -->
     <link href="{{ asset('styleWeb/assets/css/style-min.css') }}" rel="stylesheet">
 
     @yield('css')
-
+    
     <!-- styles needed for carousel slider -->
 
     <!-- Just for debugging purposes. -->
@@ -73,10 +73,11 @@
 
     <!-- Placed at the end of the document so the pages load faster -->
 
-    <script async src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <script async src="{{ asset('styleWeb/assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="{{ asset('styleWeb/assets/bootstrap/js/bootstrap.min.js') }}"></script>
 
     @yield('js')
 
 </body>
+
 </html>

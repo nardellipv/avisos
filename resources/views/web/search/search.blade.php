@@ -165,13 +165,13 @@
 @endsection
 
 @section('js')
-    <script async src="{{ asset('styleWeb/assets/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('styleWeb/assets/js/owl.carousel.min.js') }}"></script>
 
-    <script async src="{{ asset('styleWeb/assets/js/jquery.matchHeight-min.js') }}"></script>
+    <script src="{{ asset('styleWeb/assets/js/jquery.matchHeight-min.js') }}"></script>
 
-    <script async src="{{ asset('styleWeb/assets/js/hideMaxListItem.js') }}"></script>
+    <script src="{{ asset('styleWeb/assets/js/hideMaxListItem.js') }}"></script>
 
-    <script async src="{{ asset('styleWeb/assets/plugins/jquery.fs.scroller/jquery.fs.scroller.js') }}"></script>
-    <script async src="{{ asset('styleWeb/assets/plugins/jquery.fs.selecter/jquery.fs.selecter.js') }}"></script>
-    <script async src="{{ asset('styleWeb/assets/js/script.js') }}"></script>
+    <script src="{{ asset('styleWeb/assets/plugins/jquery.fs.scroller/jquery.fs.scroller.js') }}"></script>
+    <script src="{{ asset('styleWeb/assets/plugins/jquery.fs.selecter/jquery.fs.selecter.js') }}"></script>
+    <script src="{{ asset('styleWeb/assets/js/script.js') }}"></script>
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\adminSite;
 
+use App\Blog;
 use App\Http\Controllers\Controller;
 use App\Service;
 use App\User;
@@ -50,15 +51,19 @@ class DashboardController extends Controller
         $sitemap->add(URL::to('https://avisosmendoza.com.ar/listado'), \Carbon\Carbon::now(), '0.50', 'daily');
 
         $services = Service::orderBy('created_at', 'desc')->get();
-        
-        $priorityService = '0.80';
-
-        // listado de comercios
+        $posts = Blog::orderBy('created_at', 'desc')->get();
+        // listado de servicios
         foreach ($services as $service) {
-            $sitemap->add("https://avisosmendoza.com.ar/servicio/" . $service->slug .'/referencia/'. $service->ref, $service->created_at, $priorityService);
+            $sitemap->add("https://avisosmendoza.com.ar/servicio/" . $service->slug .'/referencia/'. $service->ref, $service->created_at);
+        }
+
+        // listado de post
+        foreach ($posts as $post) {
+            $sitemap->add("https://avisosmendoza.com.ar/blog/" . $post->slug, $service->created_at);
         }
 
         $sitemap->store('xml', 'sitemap', base_path('../public_html'));
+        // $sitemap->store('xml', 'sitemap');
         return back();
     }
 }
