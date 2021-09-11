@@ -8,6 +8,7 @@ use App\Http\Requests\CreateServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
 use App\Image as AppImage;
 use App\Mail\PublishServiceMail;
+use App\Mail\RepublishServiceMail;
 use File;
 use Image;
 use App\Service;
@@ -309,6 +310,21 @@ class ServiceController extends Controller
         $service->delete();
 
         toast()->success('Servicio eliminado correctamente');
+        return back();
+    }
+
+    public function republishService($id)
+    {
+        $service = Service::find($id);
+
+        $this->authorize('ownerService', $service);
+
+        $service->end_date = \Carbon\Carbon::parse(now()->addDay(60));
+        $service->save();
+
+        Mail::to($service->user->email)->send(new RepublishServiceMail($service));
+
+        toast()->success('Servicio actuzalido correctamente');
         return back();
     }
 }

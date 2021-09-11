@@ -26,14 +26,19 @@ class DashboardController extends Controller
         $users = User::with(['region'])
             ->get();
 
-        $services = Service::paginate(10);
+        $services = Service::orderBy('created_at', 'DESC')
+            ->paginate(30);
+
+        $servicePending = Service::where('status', 'PENDIENTE')
+            ->get();
 
         return view('admin.indexAdminSite', compact(
             'userClientCount',
             'userAnunCount',
             'serviceActiveCount',
             'users',
-            'services'
+            'services',
+            'servicePending'
         ));
     }
 
@@ -46,7 +51,7 @@ class DashboardController extends Controller
         // dd($siteMap);
         unlink($siteMap); */
         $sitemap = App::make("sitemap");
-        
+
         $sitemap->add(URL::to('/'), \Carbon\Carbon::now(), '1.0', 'daily');
         $sitemap->add(URL::to('https://avisosmendoza.com.ar/listado'), \Carbon\Carbon::now(), '0.50', 'daily');
 
@@ -54,7 +59,7 @@ class DashboardController extends Controller
         $posts = Blog::orderBy('created_at', 'desc')->get();
         // listado de servicios
         foreach ($services as $service) {
-            $sitemap->add("https://avisosmendoza.com.ar/servicio/" . $service->slug .'/referencia/'. $service->ref, $service->created_at);
+            $sitemap->add("https://avisosmendoza.com.ar/servicio/" . $service->slug . '/referencia/' . $service->ref, $service->created_at);
         }
 
         // listado de post

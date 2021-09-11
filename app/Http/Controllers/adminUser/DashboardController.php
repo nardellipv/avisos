@@ -9,11 +9,19 @@ use App\Region;
 use App\Service;
 use App\User;
 use Illuminate\Support\Facades\Cookie;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+        SEOMeta::setTitle('Avisos Mendoza | Dashboard');
+        SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio clasificados totalmente gratis');
+
+        OpenGraph::setDescription('Llegá a más mendocinos publicando tu servicio totalmente gratis');
+        OpenGraph::setTitle('Avisos Mendoza');
+
         $user = User::where('id', userConnect()->id)
             ->first();
 

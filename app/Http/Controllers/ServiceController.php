@@ -26,13 +26,20 @@ class ServiceController extends Controller
         SEOMeta::setCanonical('https://avisosmendoza.com.ar/listado');
         SEOMeta::addMeta('Servicio Creado', $service->created_at->toW3CString(), 'property');
         SEOMeta::addMeta('Categoría', $service->category->name, 'property');
+        SEOMeta::addKeyword([
+            'Clasificados', 'Avisos Clasificados', 'Mendoza', 'Mendoza Trabajo', 'Mendoza Clasificados',
+            'Avisos en Mendoza', 'Clasificados Los Andes', 'Clasificados diario uno', 'alquileres en mendoza',
+            'clasificados mendoza', 'clasificados mendoza para caseros', 'clasificados alamaula mendoza',
+            'clasificados mendoza empleos','avisos clasificados de mendoza','clasificados mendoza facebook',
+            'clasificados de hoy mendoza','clasificados mendoza trabajo'
+        ]);
 
         OpenGraph::setUrl('htts://avisosmendoza.com.ar/servicio/' . $service->slug . '/referencia/' . $service->ref);
         OpenGraph::addProperty('type', 'website');
         OpenGraph::setTitle($service->title);
         OpenGraph::setSiteName('Avisos Mendoza');
         OpenGraph::setDescription(Str::limit($service->description, 150));
-        OpenGraph::addImage('http://avisosmendoza.test/users/' . $service->user_id . '/service/' . $service->photo, ['height' => 300, 'width' => 300]);
+        OpenGraph::addImage('https://avisosmendoza.com.ar/users/' . $service->user_id . '/service/' . $service->photo, ['height' => 300, 'width' => 300]);
 
 
         $images = Image::where('service_id', $service->id)
