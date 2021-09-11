@@ -42,8 +42,9 @@
       25 => 'Sentry\\Laravel\\ServiceProvider',
       26 => 'App\\Providers\\AppServiceProvider',
       27 => 'App\\Providers\\AuthServiceProvider',
-      28 => 'App\\Providers\\EventServiceProvider',
-      29 => 'App\\Providers\\RouteServiceProvider',
+      28 => 'App\\Providers\\BroadcastServiceProvider',
+      29 => 'App\\Providers\\EventServiceProvider',
+      30 => 'App\\Providers\\RouteServiceProvider',
     ),
     'aliases' => 
     array (
@@ -641,9 +642,9 @@
     array (
       'defaults' => 
       array (
-        'title' => 'Avisos Mendoza',
+        'title' => false,
         'titleBefore' => false,
-        'description' => 'Publica tu servicio y llegá a muchas más personas.',
+        'description' => false,
         'separator' => ' - ',
         'keywords' => 
         array (
@@ -666,8 +667,8 @@
     array (
       'defaults' => 
       array (
-        'title' => 'Avisos Mendoza',
-        'description' => 'Publica tu servicio y llegá a muchas más personas.',
+        'title' => false,
+        'description' => false,
         'url' => NULL,
         'type' => true,
         'site_name' => true,
@@ -686,8 +687,8 @@
     array (
       'defaults' => 
       array (
-        'title' => 'Over 9000 Thousand!',
-        'description' => 'For those who helped create the Genki Dama',
+        'title' => false,
+        'description' => false,
         'url' => false,
         'type' => 'WebPage',
         'images' => 

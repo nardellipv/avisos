@@ -4,13 +4,20 @@ namespace App\Http\Controllers\adminUser;
 
 use App\Favorite;
 use App\Http\Controllers\Controller;
-
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
 
 class FavoriteController extends Controller
 {
 
     public function listFavorite()
     {
+        SEOMeta::setTitle('Avisos Mendoza | Favoritos');
+        SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio clasificados totalmente gratis');
+
+        OpenGraph::setDescription('Llegá a más mendocinos publicando tu servicio totalmente gratis');
+        OpenGraph::setTitle('Avisos Mendoza');
+
         $favorites = Favorite::with(['service', 'service.region', 'service.user'])
             ->where('user_id', userConnect()->id)
             ->get();

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\adminSite;
 
 use App\Http\Controllers\Controller;
+use App\Mail\statusServiceMail;
 use App\Service;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ServiceController extends Controller
 {
@@ -13,6 +14,8 @@ class ServiceController extends Controller
         $service = Service::find($id);
         $service->status = 'Activo';
         $service->save();
+
+        Mail::to($service->user->email)->send(new statusServiceMail($service));
 
         toast()->success('Servicio Activado');
         return back();

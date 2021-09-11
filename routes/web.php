@@ -40,6 +40,9 @@ Route::view('/contacto', 'web.parts.contact')->name('contact');
 Route::post('/contacto/enviar', 'EmailController@contactMail')->name('contactMail');
 Route::post('/contacto/servicio-enviar', 'EmailController@contactServiceMail')->name('contactServiceMail');
 
+//Job Site
+Route::get('/service-end-date', 'JobSiteController@serviceEndDate')->name('jobService.endDate');
+
 //admin client
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', 'adminUser\DashboardController@index')->name('dashboard.index');
@@ -57,6 +60,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/agregar-servicio', 'adminUser\ServiceController@storeService')->name('service.store');
     Route::get('/pendiente-servicio', 'adminUser\ServiceController@pendingService')->name('service.pending');
     Route::get('/eliminar-foto/{id}', 'adminUser\ServiceController@deletePhoto')->name('service.deletePhoto');
+    Route::get('/republicar-servicio/{id}', 'adminUser\ServiceController@republishService')->name('service.republish');
 
     Route::post('/agregar-comentario/{service}', 'CommentController@storeComment')->name('comment.store');
 
@@ -75,6 +79,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/favoritos/agregar/{id}', 'adminUser\FavoriteController@addFavorite')->name('favorite.add');
 });
 
+//Admin
 Route::middleware(['auth','AdminSite'])->group(function () {
     Route::get('/admin/dashboard', 'adminSite\DashboardController@dashboard')->name('adminDashboard.index');
 

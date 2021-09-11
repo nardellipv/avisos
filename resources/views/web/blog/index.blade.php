@@ -65,8 +65,7 @@
                                         <div class="row">
                                             <div class="col-md-12 clearfix blog-post-bottom">
                                                 <a class="btn btn-primary  pull-left"
-                                                    href="{{ route('blog.post', $post->slug) }}">More
-                                                    info</a>
+                                                    href="{{ route('blog.post', $post->slug) }}">Leer Nota</a>
                                             </div>
                                         </div>
                                     </div>

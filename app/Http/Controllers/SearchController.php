@@ -13,6 +13,7 @@ class SearchController extends Controller
         $services = Service::with(['region', 'category', 'user'])
             ->withCount('Comment')
             ->where('status', 'Activo')
+            ->where('end_date', '>=', now())
             ->regions($request->location)
             ->service($request->service)
             ->get();

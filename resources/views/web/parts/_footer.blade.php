@@ -14,5 +14,4 @@
             <li> &copy; {{ date('Y') }} <a href="https://mikant.com.ar" target="_blank">MikAnt</a></li>
         </ul>
     </div>
-
 </div>
