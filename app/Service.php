@@ -65,4 +65,22 @@ class Service extends Model
         if ($type)
             return $query->where('title', 'LIKE', '%' . $type . '%');
     }
+
+    public function scopePhoto($query, $type)
+    {
+        if ($type)
+            return $query->orWhere('photo', $type);
+    }
+
+    public function scopePhone($query, $type)
+    {
+        if ($type)
+            return $query->orWhere('phone', $type);
+    }
+
+    public function scopePhoneWsp($query, $type)
+    {
+        if ($type)
+            return $query->orWhere('phoneWsp', 'N');
+    }
 }

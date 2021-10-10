@@ -42,6 +42,7 @@ Route::post('/contacto/servicio-enviar', 'EmailController@contactServiceMail')->
 
 //Job Site
 Route::get('/service-end-date', 'JobSiteController@serviceEndDate')->name('jobService.endDate');
+Route::get('/complete-profile', 'JobSiteController@completeProfile')->name('jobService.completeProfile');
 
 //admin client
 Route::middleware(['auth'])->group(function () {
