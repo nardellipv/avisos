@@ -16,12 +16,20 @@ use App\Subcategory;
 use App\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
 
 class ServiceController extends Controller
 {
 
     public function listServices()
     {
+        SEOMeta::setTitle('Avisos Mendoza | Servicios');
+        SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio clasificados totalmente gratis');
+
+        OpenGraph::setDescription('Llegá a más mendocinos publicando tu servicio totalmente gratis');
+        OpenGraph::setTitle('Avisos Mendoza');
+
         $services = Service::with(['category', 'region', 'user'])
             ->where('user_id', userConnect()->id)
             ->where('status', 'Activo')
