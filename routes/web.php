@@ -22,6 +22,8 @@ Route::get('/listado/{slug}/subcategoria/{id}', 'CategoryController@listSubCateg
 Route::get('/listado/voto/{id}', 'ServiceController@vote')->name('service.vote');
 
 Route::get('/servicio/{slug}/referencia/{ref}', 'ServiceController@service')->name('service');
+// aprobar
+Route::get('/activar-servicio-mail/{id}/{ref}', 'ServiceController@serviceActiveEmail')->name('adminService.activeByEmail');
 
 Route::post('/busqueda/{location?}/{service?}', 'SearchController@search')->name('search');
 
@@ -92,4 +94,7 @@ Route::middleware(['auth','AdminSite'])->group(function () {
     Route::post('/admin/subir-post', 'adminSite\BlogController@storePost')->name('blog.storePost');
 
     Route::get('/admin/generar-sitemap', 'adminSite\DashboardController@sitemap')->name('adminDashboard.sitemap');
+    Route::get('/admin/incrementar-visitas', 'adminSite\DashboardController@incrementService')->name('adminDashboard.incrementService');
+
+    Route::get('/admin/servicio-pendiente/{slug}/referencia/{ref}', 'ServiceController@servicePending')->name('adminDashboard.servicePending');
 });

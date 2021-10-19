@@ -26,8 +26,8 @@ class HomeController extends Controller
         OpenGraph::setDescription('Llegá a más mendocinos publicando tu servicio totalmente gratis');
         OpenGraph::setTitle('Avisos Mendoza');
         OpenGraph::setUrl('https://avisosmendoza.com.ar');
-        OpenGraph::addImage(['url' => 'https://avisosmendoza.com.ar/styleWeb/assets/logo.png']);
-        OpenGraph::addImage(['url' => 'https://avisosmendoza.com.ar/styleWeb/assets/logo.png', 'size' => 300]);
+        OpenGraph::addImage(['url' => 'https://avisosmendoza.com.ar/styleWeb/assets/logoFace.png']);
+        // OpenGraph::addImage(['url' => 'https://avisosmendoza.com.ar/styleWeb/assets/logo.png', 'size' => 300]);
         OpenGraph::addProperty('type', 'articles');
 
         $services = Service::with(['region', 'category', 'user'])

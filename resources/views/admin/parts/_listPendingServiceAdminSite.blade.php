@@ -18,7 +18,7 @@
                                 </tr>
                                 @foreach ($servicePending as $servPending)
                                     <tr>
-                                        <td>{{ $servPending->title }}</td>
+                                        <td><a href="{{ route('adminDashboard.servicePending', [$servPending->slug, $servPending->ref]) }}"> {{ $servPending->title }} </a></td>
                                         <td>{{ Str::limit($servPending->description, 50) }}</td>
                                         <td>{{ $servPending->status }}</td>
                                         <td>{{ $servPending->end_date }}</td>

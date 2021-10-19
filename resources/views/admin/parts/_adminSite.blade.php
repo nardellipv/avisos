@@ -7,7 +7,8 @@
                 </div>
                 <div class="card-body">
                     <div class="buttons">
-                        <a href="{{ route('adminDashboard.sitemap') }}" class="btn btn-outline-primary btn-lg">Generar Site Map</a>
+                        <a href="{{ route('adminDashboard.incrementService') }}" class="btn btn-outline-primary btn-lg">Incrementar Servicios</a>
+                        <a href="{{ route('adminDashboard.sitemap') }}" class="btn btn-outline-secondary btn-lg">Generar Site Map</a>
                     </div>
                 </div>
             </div>
