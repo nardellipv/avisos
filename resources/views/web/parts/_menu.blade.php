@@ -6,7 +6,7 @@
                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
                         class="icon-bar"></span> <span class="icon-bar"></span></button>
                 <a href="{{ route('home') }}" class="navbar-brand logo logo-title">
-                    <img src="{{ asset('styleWeb/assets/logo.png') }}" class="img-responsive">
+                    <img src="{{ asset('styleWeb/assets/logo.png') }}" class="img-responsive" alt="Avisos Mendoza">
                 </a>
             </div>
             <div class="navbar-collapse collapse">

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
 use App\Image as AppImage;
+use App\Mail\EditServiceMail;
 use App\Mail\PublishServiceMail;
 use App\Mail\RepublishServiceMail;
 use File;
@@ -84,6 +85,7 @@ class ServiceController extends Controller
 
     public function storeService(CreateServiceRequest $request)
     {
+
         $user = User::where('id', userConnect()->id)
             ->first();
 
@@ -291,9 +293,9 @@ class ServiceController extends Controller
             }
         }
 
-
-
         $service->save();
+
+        Mail::to('mikanthost@gmail.com')->send(new EditServiceMail($service));
 
         toast()->success('Servicio actualizado correctamente');
         return back();

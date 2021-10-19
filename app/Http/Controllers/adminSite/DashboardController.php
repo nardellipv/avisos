@@ -42,6 +42,21 @@ class DashboardController extends Controller
         ));
     }
 
+    public function incrementService()
+    {
+        $services = Service::get();
+
+        foreach ($services as $service) {
+            $visitRand = $service->visit + rand('20', '50');
+            $votePositve = $service->like + rand('6', '15');
+            $service->visit = $visitRand;
+            $service->like = $votePositve;
+            $service->save();
+        }
+
+        return back();
+    }
+
     public function sitemap()
     {
         /* $files = storage_path('public');

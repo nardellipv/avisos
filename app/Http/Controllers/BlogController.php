@@ -34,7 +34,7 @@ class BlogController extends Controller
             'Avisos en Mendoza', 'Clasificados Los Andes', 'Clasificados diario uno', 'alquileres en mendoza'
         ]);
         OpenGraph::addImage(['url' => 'https://avisosmendoza.com.ar/imgBlog/' . $post->photo]);
-        OpenGraph::addImage(['url' => 'https://avisosmendoza.com.ar/imgBlog/' . $post->photo, 'size' => 300]);
+        // OpenGraph::addImage(['url' => 'https://avisosmendoza.com.ar/imgBlog/' . $post->photo, 'size' => 300]);
         OpenGraph::addProperty('type', 'articles');
 
         return view('web.blog.post', compact('post'));
