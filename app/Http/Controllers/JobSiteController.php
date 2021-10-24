@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MessageNotReadMail;
+use App\Mail\ResumeClientMail;
+use App\Message;
 use App\Service;
+use App\User;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Mail;
 
@@ -39,6 +43,31 @@ class JobSiteController extends Controller
                 $msj->subject('Completa tu Servicio');
                 $msj->to($service->user->email, $service->user->name);
             });
+        }
+    }
+
+    public function messageNotRead()
+    {
+        $messages = Message::where('read', 'N')
+            ->get();
+
+        foreach ($messages as $message) {
+            $name = User::where('id', $message->user_id)
+                ->first();
+
+            Mail::to($message->user->email)->send(new MessageNotReadMail($name));
+        }
+    }
+
+    public function resumeClient()
+    {
+        $services = Service::get();
+
+        foreach ($services as $service) {
+            $name = User::where('id', $service->user_id)
+                ->first();
+
+            Mail::to($service->user->email)->send(new ResumeClientMail($service));
         }
     }
 }
