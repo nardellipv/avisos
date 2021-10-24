@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Favorite::class);
     }
+
+    public function Message()
+    {
+        return $this->hasMany(Message::class);
+    }
 }

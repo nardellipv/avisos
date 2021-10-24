@@ -26,7 +26,8 @@ class DashboardController extends Controller
         $users = User::with(['region'])
             ->get();
 
-        $services = Service::orderBy('created_at', 'DESC')
+        $services = Service::with(['user'])
+            ->orderBy('created_at', 'DESC')
             ->paginate(30);
 
         $servicePending = Service::where('status', 'PENDIENTE')

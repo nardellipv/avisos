@@ -11,7 +11,7 @@
                         <div class="inner">
                             <h2><span>Últimos</span>
                                 Servicios <a href="{{ route('category.index') }}" class="sell-your-item"> Ver Todos
-                                    los servicios <i class="  icon-th-list"></i> </a></h2>
+                                    los servicios <i class="icon-th-list"></i> </a></h2>
                         </div>
                     </div>
 

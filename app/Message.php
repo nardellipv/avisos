@@ -9,4 +9,9 @@ class Message extends Model
     protected $fillable = [
         'name', 'email', 'message', 'service_id', 'user_id'
     ];
+
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

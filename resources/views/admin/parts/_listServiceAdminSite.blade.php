@@ -12,6 +12,7 @@
                                 <tr>
                                     <th>Título</th>
                                     <th>Descripción</th>
+                                    <th>EMail</th>
                                     <th>Estado</th>
                                     <th>Fecha Fin</th>
                                     <th>Action</th>
@@ -20,6 +21,7 @@
                                     <tr>
                                         <td>{{ $service->title }}</td>
                                         <td>{{ Str::limit($service->description, 50) }}</td>
+                                        <td>{{ $service->user->email }}</td>
                                         <td>{{ $service->status }}</td>
                                         <td>{{ $service->end_date }}</td>
                                         <td>
