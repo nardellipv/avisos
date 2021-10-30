@@ -69,7 +69,7 @@
                                         <li><a href="{{ route('favorite.add', $service) }}"> <i
                                                     class=" fa fa-heart-o"></i> Agregar a favoritos </a></li>
                                         {{-- <li><a href="#reportAdvertiser" data-toggle="modal"> <i
-                                                        class="fa icon-info-circled-alt"></i> Reportar Abuso </a></li> --}}
+                                                    class="fa icon-info-circled-alt"></i> Reportar Abuso </a></li> --}}
                                     </ul>
                                 </div>
                             </div>
@@ -125,7 +125,8 @@
                                     <p>Ubicación: <strong>{{ $service->region->name }}</strong></p>
 
                                     <p> Miembro desde:
-                                        <strong>{{ \Carbon\Carbon::parse($service->created_at)->format('d/m/Y') }}</strong>
+                                        <strong>{{ \Carbon\Carbon::parse($service->created_at)->format('d/m/Y')
+                                            }}</strong>
                                     </p>
 
                                     <p> Cantidad de Visitas:
@@ -180,6 +181,35 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="panel sidebar-panel">
+                        <div class="panel-heading">Últimos Publicados</div>
+                        <div class="panel-content">
+                            <div class="panel-body text-left">
+                                @foreach ($services as $service)
+                                <div class="item"><a href="{{ route('service', [$service->slug, $service->ref]) }}">
+                                        <span class="item-carousel-thumb">
+                                            @if ($service->photo)
+                                            <img class="img-responsive"
+                                                src="{{ asset('users/' . $service->user->id . '/service/' . $service->photo) }}"
+                                                alt="{{ $service->title }}">
+                                            @else
+                                            <img class="img-responsive"
+                                                src="{{ asset('styleWeb/assets/sin_imagen.jpg') }}"
+                                                alt="{{ $service->title }}">
+                                            @endif
+                                        </span>
+                                        <p style="text-align: center"> <b>{{ $service->title }}</b> </p>
+                                        <p style="text-align: center"><i class="fa fa-map-marker"></i> <i>{{
+                                                $service->region->name }}</i> </p>
+                                    </a>
+                                </div>
+                                <hr>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+
                 </aside>
             </div>
         </div>

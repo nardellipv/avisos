@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Region;
 use App\Service;
 use App\Subcategory;
 use Artesaos\SEOTools\Facades\SEOMeta;
