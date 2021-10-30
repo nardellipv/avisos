@@ -26,6 +26,7 @@ Route::get('/servicio/{slug}/referencia/{ref}', 'ServiceController@service')->na
 Route::get('/activar-servicio-mail/{id}/{ref}', 'ServiceController@serviceActiveEmail')->name('adminService.activeByEmail');
 
 Route::post('/busqueda/{location?}/{service?}', 'SearchController@search')->name('search');
+Route::get('/listado/localidad/{slug}', 'SearchController@listLocation')->name('search.listLocation');
 
 Route::get('/blog', 'BlogController@list')->name('blog.list');
 Route::get('/blog/{slug}', 'BlogController@post')->name('blog.post');

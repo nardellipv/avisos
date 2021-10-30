@@ -9,7 +9,6 @@ use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Str;
-use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\statusServiceMail;
 
@@ -61,7 +60,12 @@ class ServiceController extends Controller
             ->where('comments.service_id', $service->id)
             ->get();
 
-        return view('web.services.service', compact('service', 'feedbackCount', 'comments', 'images'));
+        $services = Service::with(['region','user'])
+            ->take(3)
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
+        return view('web.services.service', compact('service', 'feedbackCount', 'comments', 'images', 'services'));
     }
 
     public function vote($id)

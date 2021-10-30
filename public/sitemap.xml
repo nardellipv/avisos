@@ -4,54 +4,148 @@
 	<url>
 	<loc>http://avisosmendoza.test</loc>
 		<priority>1.0</priority>
-		<lastmod>2021-08-27T22:14:11+00:00</lastmod>
+		<lastmod>2021-10-30T23:01:11+00:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
 	<loc>https://avisosmendoza.com.ar/listado</loc>
 		<priority>0.50</priority>
-		<lastmod>2021-08-27T22:14:11+00:00</lastmod>
+		<lastmod>2021-10-30T23:01:11+00:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/modi/referencia/fb3126358542accb35f9a2fc089e6488</loc>
-		<lastmod>2021-08-24T23:16:29+00:00</lastmod>
+	<loc>https://avisosmendoza.com.ar/servicio/inventore/referencia/6642bb8cdccf8709845a36a52a962e85</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
 	</url>
 	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/dolor/referencia/a3c3d2297de2dff9047e3709b617c048</loc>
-		<lastmod>2021-08-24T23:16:29+00:00</lastmod>
+	<loc>https://avisosmendoza.com.ar/servicio/molestias/referencia/7e95fa5a2a3714b3b0566c85010928e8</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
 	</url>
 	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/quo/referencia/9a2b85958791ce3279e781a9a001be56</loc>
-		<lastmod>2021-08-24T23:16:29+00:00</lastmod>
+	<loc>https://avisosmendoza.com.ar/servicio/quos/referencia/44d335fd1e4bc00433c9472877fc7b0d</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
 	</url>
 	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/porro/referencia/0b163901eb76aeb79ba2a5c6f305a3ea</loc>
-		<lastmod>2021-08-24T23:16:29+00:00</lastmod>
+	<loc>https://avisosmendoza.com.ar/servicio/dolores/referencia/67b54d96ed933944927d109a13f7d4ec</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
 	</url>
 	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/magnam/referencia/f4d20a455ab90080b0d599a4cb8759ce</loc>
-		<lastmod>2021-08-24T23:16:28+00:00</lastmod>
+	<loc>https://avisosmendoza.com.ar/servicio/itaque/referencia/ae78461852302bc32305048327024d11</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
 	</url>
 	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/error/referencia/5c3284673053ab0fd2469d723f1c4727</loc>
-		<lastmod>2021-08-24T23:16:28+00:00</lastmod>
+	<loc>https://avisosmendoza.com.ar/servicio/et/referencia/e7e5b57e501083212958753ac4b2bacc</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
 	</url>
 	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/expedita/referencia/4aeec93b7270a2fd5a67cfdb945b9801</loc>
-		<lastmod>2021-08-24T23:16:28+00:00</lastmod>
+	<loc>https://avisosmendoza.com.ar/servicio/eveniet/referencia/0b0ee918b818de05ff589fb23ab0db6c</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
 	</url>
 	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/voluptas/referencia/b0e7f47f514126b1b655c8ceffeef35f</loc>
-		<lastmod>2021-08-24T23:16:28+00:00</lastmod>
+	<loc>https://avisosmendoza.com.ar/servicio/aperiam/referencia/4f2383403970d66e15e8c677dc1eeb1a</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
 	</url>
 	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/officia/referencia/76d621024677f9ca6f462fe38cb5cb50</loc>
-		<lastmod>2021-08-24T23:16:28+00:00</lastmod>
+	<loc>https://avisosmendoza.com.ar/servicio/non/referencia/dc3eef7bdd682f13a1372bb266ba0d60</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
 	</url>
 	<url>
-	<loc>https://avisosmendoza.com.ar/blog/rerum-quisquam-sint</loc>
-		<lastmod>2021-08-24T23:16:28+00:00</lastmod>
+	<loc>https://avisosmendoza.com.ar/servicio/est/referencia/655f45916be026055acfe8aa51ee2d40</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/listado/localidad/capital</loc>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/listado/localidad/general-alvear</loc>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/listado/localidad/godoy-cruz</loc>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/listado/localidad/guaymallen</loc>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/listado/localidad/junin</loc>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/listado/localidad/la-paz</loc>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/listado/localidad/las-heras</loc>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/listado/localidad/lavalle</loc>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/listado/localidad/lujan-de-cuyo</loc>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/listado/localidad/maipu</loc>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/listado/localidad/malargue</loc>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/listado/localidad/rivadavia</loc>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/listado/localidad/san-carlos</loc>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/listado/localidad/san-martin</loc>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/listado/localidad/san-rafael</loc>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/listado/localidad/santa-rosa</loc>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/listado/localidad/tunuyan</loc>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/listado/localidad/tupungato</loc>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/blog/in</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/blog/ut</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/blog/qui</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/blog/sed</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/blog/esse</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/blog/vel</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/blog/voluptas</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/blog/error</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/blog/tenetur</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
+	</url>
+	<url>
+	<loc>https://avisosmendoza.com.ar/blog/magni</loc>
+		<lastmod>2021-10-30T22:06:16+00:00</lastmod>
 	</url>
 </urlset>
 

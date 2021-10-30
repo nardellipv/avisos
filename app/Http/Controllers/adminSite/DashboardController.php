@@ -4,6 +4,7 @@ namespace App\Http\Controllers\adminSite;
 
 use App\Blog;
 use App\Http\Controllers\Controller;
+use App\Region;
 use App\Service;
 use App\User;
 use File;
@@ -73,9 +74,16 @@ class DashboardController extends Controller
 
         $services = Service::orderBy('created_at', 'desc')->get();
         $posts = Blog::orderBy('created_at', 'desc')->get();
+        $regions = Region::get();
+
         // listado de servicios
         foreach ($services as $service) {
             $sitemap->add("https://avisosmendoza.com.ar/servicio/" . $service->slug . '/referencia/' . $service->ref, $service->created_at);
+        }
+
+        // listado de regiones
+        foreach ($regions as $region) {
+            $sitemap->add("https://avisosmendoza.com.ar/listado/localidad/" . $region->slug);
         }
 
         // listado de post
