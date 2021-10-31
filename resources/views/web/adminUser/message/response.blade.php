@@ -31,7 +31,11 @@
 
                                             <div class="form-group">
                                                 <div class="col-md-12 ">
+                                                    @if($message->read == 'N')
                                                     <button type="submit" class="btn btn-success btn-lg">Responder</button>
+                                                    @else
+                                                    <p>Mensaje Respondido</p>
+                                                    @endif
                                                     <a href="{{ route('message.list') }}" type="submit" class="btn btn-link btn-lg">Volver</a>
                                                 </div>
                                             </div>
