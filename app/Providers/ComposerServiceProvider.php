@@ -51,7 +51,7 @@ class ComposerServiceProvider extends ServiceProvider
             ]);
         });
 
-        View::composer([
+        /* View::composer([
             'web.parts._location',
             'web.parts._headerList',
             'web.categories._asideList',
@@ -62,7 +62,7 @@ class ComposerServiceProvider extends ServiceProvider
             $view->with([
                 'regions' => $regions,
             ]);
-        });
+        }); */
 
         View::composer([
             'web.adminUser.parts._asideMenu',

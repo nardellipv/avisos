@@ -4,3 +4,6 @@ Disallow: /register
 Disallow: /login
 Disallow: /terminos
 Disallow: /politicas
+Disallow: /admin/*
+
+Sitemap: /sitemap.xml
