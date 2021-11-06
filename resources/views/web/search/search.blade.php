@@ -171,7 +171,7 @@
 
     <script src="{{ asset('styleWeb/assets/js/hideMaxListItem.js') }}"></script>
 
-    <script src="{{ asset('styleWeb/assets/plugins/jquery.fs.scroller/jquery.fs.scroller.js') }}"></script>
-    <script src="{{ asset('styleWeb/assets/plugins/jquery.fs.selecter/jquery.fs.selecter.js') }}"></script>
-    <script src="{{ asset('styleWeb/assets/js/script.js') }}"></script>
+    <script src="{{ asset('styleWeb/assets/plugins/jquery.fs.scroller/jquery.fs.scroller-min.js') }}"></script>
+    <script src="{{ asset('styleWeb/assets/plugins/jquery.fs.selecter/jquery.fs.selecter-min.js') }}"></script>
+    <script src="{{ asset('styleWeb/assets/js/script-min.js') }}"></script>
 @endsection

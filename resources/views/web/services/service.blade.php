@@ -220,7 +220,7 @@
 @endsection
 
 @section('js')
-<script src="{{ asset('styleWeb/assets/plugins/bxslider/jquery.bxslider.min.js') }}"></script>
+<script src="{{ asset('styleWeb/assets/plugins/bxslider/jquery.bxslider.min-min.js') }}"></script>
 <script>
     $(document).ready(function() {
 
