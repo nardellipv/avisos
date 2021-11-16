@@ -20,9 +20,8 @@ class SearchController extends Controller
             ->service($request->service)
             ->get();
 
-        SEOMeta::setTitle('Listado Servicios - ' . $request->service->name);
+        SEOMeta::setTitle('Listado Servicios - ' . $request->service);
         SEOMeta::setDescription('Listado completo de servicios ofrecidos en Mendoza');
-        SEOMeta::setCanonical('https://avisosmendoza.com.ar/listado/' . $request->service->slug);
 
         SEOMeta::addKeyword([
             'Clasificados', 'Avisos Clasificados', 'Mendoza', 'Mendoza Trabajo', 'Mendoza Clasificados',
@@ -42,7 +41,7 @@ class SearchController extends Controller
 
         SEOMeta::setTitle('Listado Servicios - ' . $region->name);
         SEOMeta::setDescription('Listado completo de servicios ofrecidos en Mendoza');
-        SEOMeta::setCanonical('https://avisosmendoza.com.ar/listado/' . $region->slug);
+        SEOMeta::setCanonical('https://avisosmendoza.com.ar/listado/localidad/' . $region->slug);
 
         SEOMeta::addKeyword([
             'Clasificados', 'Avisos Clasificados', 'Mendoza', 'Mendoza Trabajo', 'Mendoza Clasificados',

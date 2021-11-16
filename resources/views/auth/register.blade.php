@@ -88,8 +88,8 @@
                                                 <sup>*</sup></label>
 
                                             <div class="col-md-6">
-                                                <select id="inputState" name="region_id" class="form-control floating">
-                                                    <option>Elegir Localidad</option>
+                                                <select id="inputState" name="region_id" class="form-control floating" required>
+                                                    <option value="">Elegir Localidad</option>
                                                     <option disabled>---------------------</option>
                                                     @foreach ($regions as $region)
                                                         <option value="{{ $region->id }}">{{ $region->name }}</option>
