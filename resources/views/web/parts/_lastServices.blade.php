@@ -88,15 +88,13 @@
                                     href="{{ route('service', [$service->slug, $service->ref]) }}">
                                     Ver Servicio
                                 </a>
-
-
                             </div>
-                            <!--/.add-desc-box-->
                         </div>
                         @endforeach
                     </div>
                 </div>
             </div>
+            <img src="{{ asset('styleWeb/assets/img/bannerHome.png') }}">
         </div>
     </div>
 </div>

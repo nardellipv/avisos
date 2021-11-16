@@ -17,7 +17,7 @@
     <link href="{{ asset('styleWeb/assets/css/style-min.css') }}" rel="stylesheet">
 
     @yield('css')
-    
+
     <!-- styles needed for carousel slider -->
 
     <!-- Just for debugging purposes. -->
@@ -38,10 +38,11 @@
     <script async src="{{ asset('styleWeb/assets/js/pace.min-min.js') }}"></script>
 
     {!! htmlScriptTagJsApi() !!}
-    {{--  @include('external.analytics')  --}}
+    {{-- @include('external.analytics') --}}
     @include('external.shareit')
-    {{--  @include('external.pixel')  --}}
-    {{--  @include('external.hotjar')  --}}
+    {{-- @include('external.pixel') --}}
+    {{-- @include('external.hotjar') --}}
+    {{-- @include('external.ads') --}}
 </head>
 
 <body>

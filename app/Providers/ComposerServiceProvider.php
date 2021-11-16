@@ -13,6 +13,7 @@ use App\Subcategory;
 use Illuminate\Support\Facades\View;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use OpenWeather;
 
 class ComposerServiceProvider extends ServiceProvider
@@ -40,29 +41,24 @@ class ComposerServiceProvider extends ServiceProvider
             'web.categories._asideList',
             'web.parts._menu',
         ], function ($view) {
-            $categories = Category::withCount([
-                'service as services_count' => function ($query) {
-                    $query->where('status', 'Activo');
-                }
-            ])->get();
+
+            if (Cache::has('categoryCache')) {
+                $categories = Cache::get('categoryCache');
+            } else {
+                $categories = Category::withCount([
+                    'service as services_count' => function ($query) {
+                        $query->where('status', 'Activo');
+                    }
+                ])->get();
+
+                Cache::put('categoryCache', $categories, 600);
+            }
+
 
             $view->with([
                 'categories' => $categories,
             ]);
         });
-
-        /* View::composer([
-            'web.parts._location',
-            'web.parts._headerList',
-            'web.categories._asideList',
-        ], function ($view) {
-            $regions = Region::withCount(['service'])
-                ->get();
-
-            $view->with([
-                'regions' => $regions,
-            ]);
-        }); */
 
         View::composer([
             'web.adminUser.parts._asideMenu',
@@ -70,19 +66,38 @@ class ComposerServiceProvider extends ServiceProvider
         ], function ($view) {
 
             if (Auth::check()) {
-                $service = Service::where('user_id', userConnect()->id)
-                    ->first();
 
-                $countFavorite = Favorite::where('user_id', userConnect()->id)
-                    ->count();
+                if (Cache::has('serviceCache')) {
+                    $service = Cache::get('serviceCache');
+                } else {
+                    $service = Service::where('user_id', userConnect()->id)
+                        ->first();
 
-                $countService = Service::where('user_id', userConnect()->id)
-                    ->where('status', 'Activo')
-                    ->count();
+                    Cache::put('serviceCache', $service, 600);
+                }
+
+                if (Cache::has('countFavoriteCache')) {
+                    $countFavorite = Cache::get('countFavoriteCache');
+                } else {
+                    $countFavorite = Favorite::where('user_id', userConnect()->id)
+                        ->count();
+
+                    Cache::put('countFavoriteCache', $countFavorite, 600);
+                }
+
+                if (Cache::has('countServiceCache')) {
+                    $countService = Cache::get('countServiceCache');
+                } else {
+                    $countService = Service::where('user_id', userConnect()->id)
+                        ->where('status', 'Activo')
+                        ->count();
+
+                    Cache::put('countServiceCache', $countService, 600);
+                }
 
                 $countPendingService = Service::where('user_id', userConnect()->id)
-                    ->where('status', 'Pendiente')
-                    ->count();
+                ->where('status', 'Pendiente')
+                ->count();
 
                 if (!empty($service->id)) {
                     $countPendingMessages = Message::where('user_id', userConnect()->id)

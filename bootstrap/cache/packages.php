@@ -14,6 +14,17 @@
       'SEO' => 'Artesaos\\SEOTools\\Facades\\SEOTools',
     ),
   ),
+  'barryvdh/laravel-debugbar' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Barryvdh\\Debugbar\\ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Debugbar' => 'Barryvdh\\Debugbar\\Facade',
+    ),
+  ),
   'beyondcode/laravel-query-detector' => 
   array (
     'providers' => 
