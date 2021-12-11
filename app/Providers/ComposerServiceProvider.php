@@ -76,14 +76,8 @@ class ComposerServiceProvider extends ServiceProvider
                     Cache::put('serviceCache', $service, 600);
                 }
 
-                if (Cache::has('countFavoriteCache')) {
-                    $countFavorite = Cache::get('countFavoriteCache');
-                } else {
-                    $countFavorite = Favorite::where('user_id', userConnect()->id)
-                        ->count();
-
-                    Cache::put('countFavoriteCache', $countFavorite, 600);
-                }
+                $countFavorite = Favorite::where('user_id', userConnect()->id)
+                    ->count();
 
                 if (Cache::has('countServiceCache')) {
                     $countService = Cache::get('countServiceCache');
@@ -96,8 +90,8 @@ class ComposerServiceProvider extends ServiceProvider
                 }
 
                 $countPendingService = Service::where('user_id', userConnect()->id)
-                ->where('status', 'Pendiente')
-                ->count();
+                    ->where('status', 'Pendiente')
+                    ->count();
 
                 if (!empty($service->id)) {
                     $countPendingMessages = Message::where('user_id', userConnect()->id)
