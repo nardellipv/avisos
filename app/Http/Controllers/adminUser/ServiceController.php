@@ -26,9 +26,9 @@ class ServiceController extends Controller
     public function listServices()
     {
         SEOMeta::setTitle('Avisos Mendoza | Servicios');
-        SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio clasificados totalmente gratis');
+        SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
 
-        OpenGraph::setDescription('Llegá a más mendocinos publicando tu servicio totalmente gratis');
+        OpenGraph::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
         OpenGraph::setTitle('Avisos Mendoza');
 
         $services = Service::with(['category', 'region', 'user'])

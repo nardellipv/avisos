@@ -91,7 +91,7 @@
                                                     </li>
 
                                                     <li>
-                                                        <a href="" class="email-job">
+                                                        <a href="{{ route('favorite.add', $service) }}" class="email-job">
                                                             <i class="fa fa-tag"></i>
                                                             Favorito
                                                         </a>

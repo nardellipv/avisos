@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function index()
     {
         SEOMeta::setTitle('Avisos Mendoza ' . date('Y'));
-        SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio clasificados totalmente gratis');
+        SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
 
         SEOMeta::addKeyword([
             'Clasificados', 'Avisos Clasificados', 'Mendoza', 'Mendoza Trabajo', 'Mendoza Clasificados',
@@ -27,24 +27,20 @@ class HomeController extends Controller
         OpenGraph::setDescription('Llegá a más mendocinos publicando tu servicio totalmente gratis');
         OpenGraph::setTitle('Avisos Mendoza');
         OpenGraph::setUrl('https://avisosmendoza.com.ar');
+        OpenGraph::setSiteName('Avisos Mendoza');
         OpenGraph::addImage(['url' => 'https://avisosmendoza.com.ar/styleWeb/assets/logoFace.png']);
+        OpenGraph::addProperty('locale', 'es_AR');
         // OpenGraph::addImage(['url' => 'https://avisosmendoza.com.ar/styleWeb/assets/logo.png', 'size' => 300]);
         OpenGraph::addProperty('type', 'articles');
 
-        // cacheo listado nuevos servicios
-        if (Cache::has('servicesCache')) {
-            $services = Cache::get('servicesCache');
-        } else {
-            $services = Service::with(['region', 'category', 'user'])
-                ->withCount('Comment')
-                ->where('status', 'Activo')
-                ->where('end_date', '>=', now())
-                ->orderBy('created_at', 'DESC')
-                ->take(6)
-                ->get();
+        $services = Service::with(['region', 'category', 'user'])
+            ->withCount('Comment')
+            ->where('status', 'Activo')
+            ->where('end_date', '>=', now())
+            ->orderBy('created_at', 'DESC')
+            ->take(6)
+            ->get();
 
-            Cache::put('servicesCache', $services, 600);
-        }
 
         //cacheo location forever
         if (Cache::has('regionsCache')) {

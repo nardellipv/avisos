@@ -11,7 +11,7 @@
                             <div class="inner-box">
                                 <!--blog image-->
                                 <div class="blog-post-img">
-                                    <a href="blog-details.html">
+                                    <a href="#">
                                         <figure>
                                             <img class="img-responsive" alt="{{ $post->title }}" src="{{ asset('imgBlog/' . $post->photo) }}">
                                         </figure>

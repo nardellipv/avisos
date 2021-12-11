@@ -13,9 +13,9 @@ class FavoriteController extends Controller
     public function listFavorite()
     {
         SEOMeta::setTitle('Avisos Mendoza | Favoritos');
-        SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio clasificados totalmente gratis');
+        SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
 
-        OpenGraph::setDescription('Llegá a más mendocinos publicando tu servicio totalmente gratis');
+        OpenGraph::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
         OpenGraph::setTitle('Avisos Mendoza');
 
         $favorites = Favorite::with(['service', 'service.region', 'service.user'])
