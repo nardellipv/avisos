@@ -6,6 +6,7 @@
             <div class="row">
                 <div class="col-md-8 page-content">
                     <div class="inner-box category-content">
+                        @include('web.alerts.error')
                         <h2 class="title-2"><i class="icon-user-add"></i> Creá tu cuenta totalmente gratis </h2>
 
                         <div class="row">
@@ -132,12 +133,19 @@
 
                                         <div class="form-group">
                                             <label class="col-md-4 control-label"></label>
+                                            <div class="col-md-8">
+                                                {!! htmlFormSnippet() !!}
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label"></label>
 
                                             <div class="col-md-8">
                                                 <div class="termbox mb10">
                                                     <label class="checkbox-inline" for="checkboxes-1">
                                                         <input name="checkboxes" id="checkboxes-1" value="1"
-                                                            type="checkbox" required>
+                                                            type="checkbox" checked required>
                                                         Leí y estoy de acuerdo con los <a
                                                             href="{{ route('terms') }}">Términos y condiciones</a> </label>
                                                 </div>
