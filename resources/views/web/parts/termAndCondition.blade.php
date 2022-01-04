@@ -89,15 +89,14 @@
                             suspendida por más tiempo para una investigación más rigurosa, para evitar transacciones
                             fraudulentas.</p>
                         <p><strong>PRIVACIDAD</strong></p>
-                        <p>Este avisosmendoza.com.ar garantiza que la <a href="https://noticiasceltadevigo.es/"
-                                target="_blank">celta de vigo noticias</a> información personal que usted envía cuenta con
+                        <p>Este avisosmendoza.com.ar garantiza que la información personal que usted envía cuenta con
                             la seguridad necesaria. Los datos ingresados por usuario o en el caso de requerir una validación
                             de los pedidos no serán entregados a terceros, salvo que deba ser revelada en cumplimiento a una
                             orden judicial o requerimientos legales.</p>
                         <p>La suscripción a boletines de correos electrónicos publicitarios es voluntaria y podría ser
                             seleccionada al momento de crear su cuenta.</p>
                         <p>Avisos Mendoza reserva los derechos de cambiar o de modificar estos términos sin previo aviso.
-                        </p>
+                        </p>                        
                     </div>
                 </div>
             </div>
