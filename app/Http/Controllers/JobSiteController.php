@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\MessageNotReadMail;
+use App\Mail\RegisterUserMail;
 use App\Mail\ResumeClientMail;
 use App\Message;
 use App\Service;
@@ -89,5 +90,15 @@ class JobSiteController extends Controller
 
             Mail::to($service->user->email)->send(new ResumeClientMail($service));
         }
+    }
+
+    public function registerUser()
+    {
+        $users = User::whereMonth('created_at', date('m'))
+            ->whereYear('created_at', date('Y'))
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
+        Mail::to('info@avisosmendoza.com.ar')->send(new RegisterUserMail($users));        
     }
 }

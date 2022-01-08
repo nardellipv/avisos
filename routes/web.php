@@ -49,6 +49,7 @@ Route::get('/service-change-status', 'JobSiteController@serviceChangeStatus')->n
 Route::get('/complete-profile', 'JobSiteController@completeProfile')->name('jobService.completeProfile');
 Route::get('/message-not-read', 'JobSiteController@messageNotRead')->name('jobService.messageNotRead');
 Route::get('/resume-client', 'JobSiteController@resumeClient')->name('jobService.resumeClient');
+Route::get('/register-user', 'JobSiteController@registerUser')->name('jobService.registerUser');
 
 //admin client
 Route::middleware(['auth'])->group(function () {
