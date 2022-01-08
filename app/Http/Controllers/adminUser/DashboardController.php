@@ -27,9 +27,6 @@ class DashboardController extends Controller
 
         $regions = Region::all();
 
-        $newsLetter = NewsLetter::where('email', $user->email)
-            ->first();
-
         $countVisit = Service::where('user_id', $user->id)
             ->sum('visit');
 
@@ -52,7 +49,6 @@ class DashboardController extends Controller
         return view('web.adminUser.dashboard.indexUser', compact(
             'user',
             'regions',
-            'newsLetter',
             'countVisit',
             'countFavorite',
             'countService'

@@ -29,6 +29,25 @@ class JobSiteController extends Controller
         }
     }
 
+    public function serviceChangeStatus()
+    {
+        $serviceChangeStatus = Service::with(['user'])
+            ->where('end_date', now()->format('Y-m-d'))
+            ->where('status', 'Activo')
+            ->get();
+
+        foreach ($serviceChangeStatus as $service) {
+            $service->status = 'Desactivo';
+            $service->save();
+
+            Mail::send('emails.jobSite.serviceEndingMail', ['service' => $service], function ($msj) use ($service) {
+                $msj->from('no-responder@avisosmendoza.com.ar', 'Avisos Mendoza');
+                $msj->subject('Servicio vencido');
+                $msj->to($service->user->email, $service->user->name);
+            });
+        }
+    }
+
     public function completeProfile()
     {
         $services = Service::with(['user'])
@@ -61,7 +80,8 @@ class JobSiteController extends Controller
 
     public function resumeClient()
     {
-        $services = Service::get();
+        $services = Service::with(['user'])
+            ->get();
 
         foreach ($services as $service) {
             $name = User::where('id', $service->user_id)

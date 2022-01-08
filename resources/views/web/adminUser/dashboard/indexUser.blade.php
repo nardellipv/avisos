@@ -207,7 +207,7 @@
                                                     <div class="checkbox">
                                                         <label>
                                                             <input name="recive" type="checkbox"
-                                                                {{ $newsLetter->recive == 'Y' ? 'checked' : '' }}>
+                                                                {{ $user->recive == 'Y' ? 'checked' : '' }}>
                                                             Quiero recibir noticias del sitio. </label>
                                                     </div>
                                                 </div>

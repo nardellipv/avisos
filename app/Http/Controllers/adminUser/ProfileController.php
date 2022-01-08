@@ -67,8 +67,10 @@ class ProfileController extends Controller
 
     public function updateNewsLetters(Request $request)
     {
-        $user = NewsLetter::where('email', userConnect()->email)
+        $user = User::where('email', userConnect()->email)
             ->first();
+
+        $this->authorize('updateClient', $user);
 
         if ($request->recive) {
             $user->recive = 'Y';
