@@ -1,9 +1,13 @@
-<!-- [if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
-<!-- [if !mso]><!-->
-<!--<![endif]-->
-<!-- [if !mso]><!-->
-<!--<![endif]-->
 <p>&nbsp;</p>
+<!-- [if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+<p></p>
+<!-- [if !mso]><!-->
+<p></p>
+<!--<![endif]-->
+<p></p>
+<!-- [if !mso]><!-->
+<p> </p>
+<!--<![endif]-->
 <!-- [if IE]><div class="ie-browser"><![endif]-->
 <table class="nl-container"
     style="table-layout: fixed; vertical-align: top; min-width: 320px; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; width: 100%;"
@@ -88,8 +92,7 @@
                                 style="min-width: 320px; max-width: 500px; display: table-cell; vertical-align: top; width: 500px;">
                                 <div class="col_cont" style="width: 100% !important;">
                                     <!-- [if (!mso)&(!IE)]><!-->
-                                    <div
-                                        style="border: 0px solid transparent; padding: 0px 0px 5px; text-align: center;">
+                                    <div style="border: 0px solid transparent; padding: 0px 0px 5px 0px;">
                                         <!--<![endif]-->
                                         <table
                                             style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"
@@ -105,33 +108,35 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        <span
-                                            style="text-align: center; color: #393d47; font-family: Tahoma, Verdana, Segoe, sans-serif;">Te
-                                            estamos enviando este mail desde avisosmendoza.com.ar para compartirte el
-                                            resum&eacute;n mensual de tu publicaci&oacute;n {{ $service->name }}</span>
+                                        <!-- [if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Tahoma, Verdana, sans-serif"><![endif]-->
                                         <div
                                             style="color: #393d47; font-family: Tahoma, Verdana, Segoe, sans-serif; line-height: 1.5; padding: 10px;">
                                             <div class="txtTinyMce-wrapper"
-                                                style="line-height: 1.5; font-size: 12px; font-family: Tahoma, Verdana, Segoe, sans-serif; color: #393d47; text-align: center;">
+                                                style="line-height: 1.5; font-size: 12px; font-family: Tahoma, Verdana, Segoe, sans-serif; color: #393d47; mso-line-height-alt: 18px;">
+                                                <p
+                                                    style="margin: 0; font-size: 14px; line-height: 1.5; word-break: break-word; text-align: center; mso-line-height-alt: 21px; margin-top: 0; margin-bottom: 0;">
+                                                    Te estamos enviando este email ya que tu servicio <strong>{{
+                                                        $service->title }}</strong> se acaba de vencer y despublicar
+                                                    de nuestra plataforma, recomendamos que lo renueves para que sigas
+                                                    llegando a muchos m&aacute;s potenciales clientes.</p>
                                                 <p
                                                     style="margin: 0; font-size: 14px; line-height: 1.5; word-break: break-word; text-align: center; mso-line-height-alt: 21px; margin-top: 0; margin-bottom: 0;">
                                                     &nbsp;</p>
                                                 <p
                                                     style="margin: 0; font-size: 14px; line-height: 1.5; word-break: break-word; text-align: center; mso-line-height-alt: 21px; margin-top: 0; margin-bottom: 0;">
-                                                    Te recomendamos mantener actualizado tus servicios publicados dentro
-                                                    de la plataforma para que puedas llegar a mas potenciales clientes.
-                                                </p>
+                                                    El rendimiento de tu publicación fue:</p>
+                                                <p
+                                                    style="margin: 0; font-size: 14px; line-height: 1.5; word-break: break-word; text-align: center; mso-line-height-alt: 21px; margin-top: 0; margin-bottom: 0;">
+                                                    Visto por: <strong>{{ $service->visit }}</strong> personas</p>
+                                                <p
+                                                    style="margin: 0; font-size: 14px; line-height: 1.5; word-break: break-word; text-align: center; mso-line-height-alt: 21px; margin-top: 0; margin-bottom: 0;">
+                                                    Votos: <strong>{{ $service->like }}</strong> positivos</p>
                                                 <p
                                                     style="margin: 0; font-size: 14px; line-height: 1.5; word-break: break-word; text-align: center; mso-line-height-alt: 21px; margin-top: 0; margin-bottom: 0;">
                                                     &nbsp;</p>
-                                                <h3 style="text-align: center;"><strong>Has tenido <span
-                                                            style="color: #333399;">{{ $service->visit }}</span>
-                                                        visitas a tu local dentro de avisosmendoza.com.ar&nbsp;</strong>
-                                                </h3>
-                                                <h3 style="text-align: center;">&nbsp;</h3>
-                                                <h3 style="text-align: center;"><strong>Tambi&eacute;n tuviste <span
-                                                            style="color: #333399;">{{ $service->like }}</span> votos
-                                                        positivos</strong></h3>
+                                                <p
+                                                    style="margin: 0; font-size: 14px; line-height: 1.5; word-break: break-word; text-align: center; mso-line-height-alt: 21px; margin-top: 0; margin-bottom: 0;">
+                                                    Te agradecemos por seguir utilizando Avisos Mendoza.</p>
                                             </div>
                                         </div>
                                         <!-- [if mso]></td></tr></table><![endif]-->
