@@ -26,10 +26,19 @@ class MessageController extends Controller
             'message' => $request['messageService'],
             'read' => 'N',
             'service_id' => $request['serviceUser'],
-            'user_id' => $user->id,
+            'user_id' => $user->id,            
         ]);
 
-        Mail::to($message['email'])->send(new ContactServiceMail($message));
+
+        $data = [
+            'title_service' => $service->title,
+            'name_user' => $user->name,
+            'email' => $user->email,
+            'message' => $request['messageService'],
+        ];
+
+
+        Mail::to($message['email'])->send(new ContactServiceMail($data));
 
         toast()->info('El mensaje se envió correctamente');
         return back();

@@ -247,7 +247,7 @@
                                                         valign="top" width="100%">
                                                         <h1
                                                             style="color:#393d47;direction:ltr;font-family:Tahoma, Verdana, Segoe, sans-serif;font-size:25px;font-weight:normal;letter-spacing:normal;line-height:120%;text-align:center;margin-top:0;margin-bottom:0;">
-                                                            <strong>Hola, {{ $data['name'] }}</strong></h1>
+                                                            <strong>Hola, {{ $data['name_user'] }}</strong></h1>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -258,7 +258,7 @@
                                                     style="line-height: 1.5; font-size: 12px; font-family: Tahoma, Verdana, Segoe, sans-serif; color: #393d47; mso-line-height-alt: 18px;">
                                                     <p
                                                         style="margin: 0; font-size: 14px; line-height: 1.5; word-break: break-word; text-align: center; mso-line-height-alt: 21px; margin-top: 0; margin-bottom: 0;">
-                                                        Te contactaron desde el sitio avisos mendoza por tu servicio,
+                                                        Te contactaron desde el sitio avisos mendoza por tu servicio <strong>{{ $data['title_service'] }}</strong>,
                                                         ingresa a tu cuenta y responde el mensaje, puede ser un futuro
                                                         cliente.</p>
                                                 </div>
