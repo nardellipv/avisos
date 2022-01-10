@@ -7,7 +7,7 @@
                 <div class="col-sm-12">
                     <div class="text-content has-lead-para text-center">
                         <p class="lead"> Todos pueden publicar en avisos mendoza, empresas, emprendedores e
-                            independientes. </p>
+                            independientes. Publica tus avisos clasificados y llega a muchos más mendocionos.</p>
 
                         <p class="lead"> Comuníquese de inmediato con personas que estén buscando expertos en
                             construcción, renovación, instalación, reubicación, arquitectos, etc. </p>
