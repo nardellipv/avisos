@@ -12,6 +12,10 @@
                         data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
             <li>
+                <a href="{{ route('adminService.list') }}" class="nav-link"><i
+                        data-feather="archive"></i><span>Servicios</span></a>
+            </li>
+            <li>
                 <a href="{{ route('blog.addPost') }}" class="nav-link"><i
                         data-feather="paperclip"></i><span>Agregar Post</span></a>
             </li>

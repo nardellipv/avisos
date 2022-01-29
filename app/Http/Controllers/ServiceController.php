@@ -11,9 +11,17 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\statusServiceMail;
+use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
+    public $publicDays;
+
+    public function __construct()
+    {
+        $this->publicDays = Storage::disk('public')->get('dayPublic.txt');
+    }
+    
     public function service($slug, $ref)
     {
         $service = Service::where('slug', $slug)
@@ -112,6 +120,7 @@ class ServiceController extends Controller
             ->first();
 
         $service->status = 'Activo';
+        $service->end_date = now()->addDays($this->publicDays);
         $service->save();
 
         Mail::to($service->user->email)->send(new statusServiceMail($service));

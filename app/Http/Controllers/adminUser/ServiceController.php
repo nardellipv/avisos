@@ -33,7 +33,8 @@ class ServiceController extends Controller
 
         $services = Service::with(['category', 'region', 'user'])
             ->where('user_id', userConnect()->id)
-            ->where('status', 'Activo')
+            ->where('status','!=', 'Desactivo')
+            ->where('status','!=', 'Pendiente')
             ->get();
 
         if ($services->isEmpty()) {
@@ -101,7 +102,7 @@ class ServiceController extends Controller
             'status' => 'Pendiente',
             'phone' => $request['phone'],
             'phoneWsp' => $phoneWsp,
-            'end_date' => now()->addDays(60),
+            'end_date' => now(),
             'user_id' => $user->id,
             'category_id' => $request['category_id'],
             'subcategory_id' => $request['subcategory_id'],

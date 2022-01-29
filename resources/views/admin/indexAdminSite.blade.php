@@ -5,5 +5,5 @@
     @include('admin.parts._adminSite')
     @include('admin.parts._listPendingServiceAdminSite')
     @include('admin.parts._listClientAdminSite')
-    @include('admin.parts._listServiceAdminSite')
+    {{--  @include('admin.parts._listServiceAdminSite')  --}}
 @endsection

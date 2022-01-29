@@ -90,10 +90,14 @@ Route::middleware(['auth'])->group(function () {
 //Admin
 Route::middleware(['auth','AdminSite'])->group(function () {
     Route::get('/admin/dashboard', 'adminSite\DashboardController@dashboard')->name('adminDashboard.index');
-
-    Route::get('/admin/activar-servicio/{id}', 'adminSite\ServiceController@serviceActive')->name('adminService.active');
+    
+    Route::post('/admin/daysPublicFree', 'adminSite\DashboardController@changeDaysPublicFree')->name('adminDashboard.changeDaysPublicFree');
+    
+    Route::get('/admin/listado', 'adminSite\ServiceController@serviceList')->name('adminService.list');
+    Route::post('/admin/activar-servicio/{id}', 'adminSite\ServiceController@serviceActive')->name('adminService.active');
     Route::get('/admin/desactivar-servicio/{id}', 'adminSite\ServiceController@serviceDesactive')->name('adminService.desactive');
     Route::get('/admin/borrar-servicio/{id}', 'adminSite\ServiceController@serviceDelete')->name('adminService.delete');
+    Route::get('/admin/reactivar-servicios', 'adminSite\ServiceController@serviceReactivate')->name('adminService.reactivate');
     
     Route::get('/admin/agregar-post', 'adminSite\BlogController@addPost')->name('blog.addPost');
     Route::post('/admin/subir-post', 'adminSite\BlogController@storePost')->name('blog.storePost');

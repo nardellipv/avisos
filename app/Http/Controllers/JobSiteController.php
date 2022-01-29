@@ -38,7 +38,7 @@ class JobSiteController extends Controller
             ->get();
 
         foreach ($serviceChangeStatus as $service) {
-            $service->status = 'Desactivo';
+            $service->status = 'Pausado';
             $service->save();
 
             Mail::send('emails.jobSite.serviceEndingMail', ['service' => $service], function ($msj) use ($service) {
