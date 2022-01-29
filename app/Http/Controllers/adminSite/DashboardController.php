@@ -8,8 +8,10 @@ use App\Region;
 use App\Service;
 use App\User;
 use File;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
@@ -24,23 +26,25 @@ class DashboardController extends Controller
         $serviceActiveCount = Service::where('status', 'Activo')
             ->count();
 
+        $servicePausedCount = Service::where('status', 'Pausado')
+            ->count();
+
         $users = User::with(['region'])
             ->get();
 
-        $services = Service::with(['user'])
-            ->orderBy('created_at', 'DESC')
-            ->paginate(30);
-
         $servicePending = Service::where('status', 'PENDIENTE')
             ->get();
+
+        $publicDays = Storage::disk('public')->get('dayPublic.txt');
 
         return view('admin.indexAdminSite', compact(
             'userClientCount',
             'userAnunCount',
             'serviceActiveCount',
             'users',
-            'services',
-            'servicePending'
+            'servicePending',
+            'servicePausedCount',
+            'publicDays'
         ));
     }
 
@@ -58,7 +62,7 @@ class DashboardController extends Controller
 
         return back();
     }
-
+    
     public function sitemap()
     {
         /* $files = storage_path('public');
@@ -93,6 +97,12 @@ class DashboardController extends Controller
 
         $sitemap->store('xml', 'sitemap', base_path('../public_html'));
         // $sitemap->store('xml', 'sitemap');
+        return back();
+    }
+
+    public function changeDaysPublicFree(Request $request)
+    {
+        Storage::disk('public')->put('dayPublic.txt', $request->publicDays);
         return back();
     }
 }
