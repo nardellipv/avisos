@@ -25,7 +25,7 @@ class UpdateServiceRequest extends FormRequest
     {
         return [
             'title' => 'required | min:5 | max:60',
-            'description' => 'required | min:10',
+            'description' => 'required | min:100',
         ];
     }
     public function messages()
@@ -35,7 +35,7 @@ class UpdateServiceRequest extends FormRequest
             'title.min' => 'El Título es muy corto',
             'title.max' => 'El Título es muy largo',
             'description.required' => 'La Descripción es requerido',
-            'description.min' => 'La Descripción es muy corto',
+            'description.min' => 'La Descripción es muy corta',
         ];
     }
 }
