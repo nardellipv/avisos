@@ -71,8 +71,9 @@
                                         <label class="col-md-3 control-label" for="textarea">Descripción </label>
 
                                         <div class="col-md-8">
-                                            <textarea name="description" class="form-control" rows="5"
+                                            <textarea name="description" class="form-control" rows="5" minlength="100"
                                                 required>{{ old('description') }}</textarea>
+                                                <span class="help-block">Ingresar un mínimo de 100 caracteres. </span>
                                         </div>
                                     </div>
 
