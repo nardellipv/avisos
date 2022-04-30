@@ -1,164 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/vendor/sitemap/styles/xml.xsl" type="text/xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 	<url>
-	<loc>https://avisosmendoza.com.ar</loc>
+	<loc>http://avisosmendoza.test</loc>
 		<priority>1.0</priority>
-		<lastmod>2021-10-30T23:05:25+00:00</lastmod>
+		<lastmod>2022-04-14T15:41:09+00:00</lastmod>
 		<changefreq>daily</changefreq>
 	</url>
 	<url>
 	<loc>https://avisosmendoza.com.ar/listado</loc>
 		<priority>0.50</priority>
-		<lastmod>2021-10-30T23:05:25+00:00</lastmod>
+		<lastmod>2022-04-14T15:41:09+00:00</lastmod>
 		<changefreq>daily</changefreq>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/construcciones-en-mendoza-marcos-pereira/referencia/rz9NZ3xH3KFr5LS4BWPF</loc>
-		<lastmod>2021-10-26T21:47:16+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/techos-construimos-y-refaccionamos/referencia/lBlavZLxevywIJ3rtUph</loc>
-		<lastmod>2021-10-26T21:38:29+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/albanileria-mano-de-obra-especializada/referencia/QMBldWNXMXT52vYfkK3q</loc>
-		<lastmod>2021-10-26T21:35:16+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/durlock-construccion-en-seco-marcos-pereira/referencia/LgXgL5RjcmKzMdp1B8zk</loc>
-		<lastmod>2021-10-26T21:32:56+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/ceramicos-y-porcelanato-colocacion-mano-de-obra/referencia/9SMM2OxLlR2HCmc9RnuU</loc>
-		<lastmod>2021-10-26T21:30:04+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/agrimensor/referencia/n7jPgnH4LXRa5bziCgUT</loc>
-		<lastmod>2021-10-25T20:51:04+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/inmobiliaria/referencia/qURfDPdvtMJHup2iWNWZ</loc>
-		<lastmod>2021-10-21T16:28:25+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/servicios-juridicos/referencia/u10i8ZhOMABU3jgxBI0k</loc>
-		<lastmod>2021-10-21T15:57:52+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/servicios-contables/referencia/qGhtFFgn05EeV2TSd9K5</loc>
-		<lastmod>2021-10-21T14:43:12+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/apoyo-escolartodas-las-materias-tene-un-ano-en-paz/referencia/bydY016TVQpQXa6hzW4k</loc>
-		<lastmod>2021-10-21T06:11:30+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/propagandas-animadas-digialmente/referencia/7Idaa97zuafUv2wDxIXU</loc>
-		<lastmod>2021-10-19T14:57:55+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/propagandas-animadas/referencia/tt7O3qODx8hQjtQv9uih</loc>
-		<lastmod>2021-10-18T20:53:27+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/reparacion-de-motos/referencia/EctvD9YyhlqMX6tEaGba</loc>
-		<lastmod>2021-10-18T20:50:24+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/colocacion-de-durlock-en-general-y-pintura/referencia/qV4nlgrLMVOl66gmt7kg</loc>
-		<lastmod>2021-10-18T12:02:37+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/aire-acondicionado-usado/referencia/NDMT0KljnAQBPzcEq2qq</loc>
-		<lastmod>2021-10-18T03:31:04+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/re-frio-refrigeracion/referencia/aYJt8yr7rpARdKHTr4tT</loc>
-		<lastmod>2021-10-18T03:12:33+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/cuadros-de-interior/referencia/989uyc2ou5wsLnv6tDve</loc>
-		<lastmod>2021-10-18T03:05:54+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/cuadros-de-interiores/referencia/pR6KO352h0ftYrrDT4ug</loc>
-		<lastmod>2021-10-18T03:00:40+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/cursos-de-ingles-online/referencia/VA7FEB05EOvxhfY4kJzl</loc>
-		<lastmod>2021-10-18T00:54:27+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/curso-de-ingles/referencia/erveruk1zF616Ne8AFxb</loc>
-		<lastmod>2021-10-18T00:52:56+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/curso-de-ingles/referencia/53ow0YEEnHYbvM35rYdX</loc>
-		<lastmod>2021-10-18T00:52:44+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/cerco-electrico-seguridad-para-el-hogar/referencia/yPc03gDlCDj8sfdFd87U</loc>
-		<lastmod>2021-10-17T23:49:06+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/empresa-constructora/referencia/TeJ79JFbaTDpLtg9JI78</loc>
-		<lastmod>2021-10-16T21:46:25+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/venta-recipientes-acero-quirurgico/referencia/aIWv4Y7ZqbKRwsI1nnef</loc>
-		<lastmod>2021-10-16T18:19:53+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/venta-recipientes-acero-quirurgico/referencia/nkDem8TZlMtpFO6zPJtB</loc>
-		<lastmod>2021-10-16T18:19:07+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/electricista-domicilio-y-comercio/referencia/scSG6fwr8QaVyF5IH5tU</loc>
-		<lastmod>2021-10-08T05:58:42+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/electricista-para-domicilio-y-comercio/referencia/r8DlHVVbZ24Onqn37YNz</loc>
-		<lastmod>2021-10-06T21:39:51+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/electricista-para-domicilio-y-comercio/referencia/7XPPV7kOPKJvOj6yxB3v</loc>
-		<lastmod>2021-10-06T21:39:18+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/cabanas-ruka-papay-poyen/referencia/ej2jyi1OW3gPDpQ2wLzG</loc>
-		<lastmod>2021-09-08T14:18:23+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/cabanas-ruka-papay-poyen/referencia/WXfLaGKn8W19fJq15ahO</loc>
-		<lastmod>2021-09-08T14:18:13+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/cabanas-ruka-papay-poyen/referencia/Nmw6ev11wjwcaZChnshW</loc>
-		<lastmod>2021-09-08T14:18:13+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/cabanas-ruka-papay-poyen/referencia/dzLAXLuGpTeZtMZGsvWo</loc>
-		<lastmod>2021-09-08T14:06:21+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/nutricionista/referencia/V0Dt4EEZg5aY97T4Rv6C</loc>
-		<lastmod>2021-09-06T21:08:23+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/nutricionista/referencia/Cc5aVnuHju47kKuD4CoC</loc>
-		<lastmod>2021-09-06T20:57:51+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/nutricionista/referencia/PXA6ODv8yh9JAP1LT2to</loc>
-		<lastmod>2021-09-06T20:48:36+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/tarot/referencia/Lm2eUYNmeZngGNGfSZaz</loc>
-		<lastmod>2021-07-05T23:11:41+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/servicio/tarot/referencia/ZfYxZk5jWlc6QEmnL3lu</loc>
-		<lastmod>2021-07-05T23:05:11+00:00</lastmod>
 	</url>
 	<url>
 	<loc>https://avisosmendoza.com.ar/listado/localidad/capital</loc>
@@ -213,30 +66,6 @@
 	</url>
 	<url>
 	<loc>https://avisosmendoza.com.ar/listado/localidad/tupungato</loc>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/blog/la-importancia-de-los-cambios-de-aceite-de-rutina</loc>
-		<lastmod>2021-07-05T23:05:11+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/blog/como-se-que-necesito-neumaticos-nuevos</loc>
-		<lastmod>2021-07-05T23:05:11+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/blog/como-cuidar-a-tu-tortuga</loc>
-		<lastmod>2021-07-05T23:05:11+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/blog/alimentacion-de-aves-guia-de-cuidado-de-aves-silvestres</loc>
-		<lastmod>2021-07-05T23:05:11+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/blog/5-soluciones-de-iluminacion-exterior-que-gritan-primavera</loc>
-		<lastmod>2021-07-05T23:05:11+00:00</lastmod>
-	</url>
-	<url>
-	<loc>https://avisosmendoza.com.ar/blog/ruidos-comunes-de-los-automoviles-y-sus-causas</loc>
-		<lastmod>2021-07-05T23:05:11+00:00</lastmod>
 	</url>
 </urlset>
 

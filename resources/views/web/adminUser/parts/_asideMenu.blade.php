@@ -28,13 +28,13 @@
                         <ul class="acc-list">
                             <li><a class="{{ Route::current()->getName() == 'favorite.list' ? 'active' : '' }}"
                                     href="{{ route('favorite.list') }}"><i class="icon-heart"></i>
-                                    Servicios Favoritos <span class="badge">{{ $countFavorite }}</span>
+                                    Mis Favoritos <span class="badge">{{ $countFavorite }}</span>
                                 </a></li>
                             @if (userConnect()->type == 'Anunciante')
                                 <li><a href="{{ route('service.list') }}"><i class="icon-docs"></i> Mis Servicios
                                         <span class="badge">{{ $countService }}</span> </a></li>
                                 <li><a href="{{ route('service.pending') }}"><i class="fa fa-clock-o"></i>
-                                        Servicios Pendientes <span class="badge">{{ $countPendingService }}</span>
+                                        Pendientes <span class="badge">{{ $countPendingService }}</span>
                                     </a></li>
                                 <li><a href="{{ route('message.list') }}"><i class="fa fa-envelope"></i>
                                         Mensajes <span class="badge">{{ $countPendingMessages }}</span></a></li>

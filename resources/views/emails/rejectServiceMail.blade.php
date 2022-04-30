@@ -1,4 +1,4 @@
-<!DOCTYPE html
+https://www.facebook.com/avisosmendozaOk<!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office"
@@ -329,21 +329,12 @@
                                                                         valign="top">
                                                                         <td style="word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 5px; padding-left: 5px;"
                                                                             valign="top"><a
-                                                                                href="https://www.facebook.com/"
+                                                                                href="https://www.facebook.com/avisosmendozaOk"
                                                                                 target="_blank"><img alt="Facebook"
                                                                                     height="32"
                                                                                     src="https://avisosmendoza.com.ar/styleWeb/assetEmail/images/facebook2x.png"
                                                                                     style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;"
                                                                                     title="Facebook" width="32" /></a>
-                                                                        </td>
-                                                                        <td style="word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 5px; padding-left: 5px;"
-                                                                            valign="top"><a
-                                                                                href="https://instagram.com/"
-                                                                                target="_blank"><img alt="Instagram"
-                                                                                    height="32"
-                                                                                    src="https://avisosmendoza.com.ar/styleWeb/assetEmail/images/instagram2x.png"
-                                                                                    style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;"
-                                                                                    title="Instagram" width="32" /></a>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>

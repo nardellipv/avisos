@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-9 page-content">
                 <div class="inner-box category-content">
-                    <h2 class="title-2 uppercase"><strong> <i class="icon-docs"></i> Publicar Servicio</strong></h2>
+                    <h2 class="title-2 uppercase"><strong> <i class="icon-docs"></i> Publicar Nuevo Servicio</strong></h2>
                     @include('web.alerts.error')
                     <div class="row">
                         <div class="col-sm-12">

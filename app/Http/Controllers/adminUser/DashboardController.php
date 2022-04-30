@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AdminUser;
 use App\Favorite;
 use App\Http\Controllers\Controller;
 use App\NewsLetter;
+use App\Notification;
 use App\Region;
 use App\Service;
 use App\User;
@@ -36,6 +37,14 @@ class DashboardController extends Controller
         $countFavorite = Favorite::where('user_id', $user->id)
             ->count();
 
+        $countServiceSponsor = Service::where('user_id', userConnect()->id)
+            ->where('status', 'Activo')
+            ->where('publish', 'Destacado')
+            ->count();
+
+        $notificationList = Notification::where('date', '>=', now())
+            ->get();
+
 
         if (!Cookie::get('lastLogin')) {
             $lastLogin = User::find($user->id);
@@ -51,7 +60,9 @@ class DashboardController extends Controller
             'regions',
             'countVisit',
             'countFavorite',
-            'countService'
+            'countService',
+            'countServiceSponsor',
+            'notificationList'
         ));
     }
 

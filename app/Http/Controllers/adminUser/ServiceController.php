@@ -19,9 +19,20 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
+use Illuminate\Support\Facades\Storage;
+
 
 class ServiceController extends Controller
 {
+
+    public $publicDays;
+    public $sponsorDays;
+
+    public function __construct()
+    {
+        $this->publicDays = Storage::disk('public')->get('dayPublic.txt');
+        $this->sponsorDays = Storage::disk('public')->get('daySponsor.txt');
+    }
 
     public function listServices()
     {
@@ -102,7 +113,7 @@ class ServiceController extends Controller
             'status' => 'Pendiente',
             'phone' => $request['phone'],
             'phoneWsp' => $phoneWsp,
-            'end_date' => now(),
+            'end_date' => \Carbon\Carbon::parse(now()->addDay($this->publicDays)),
             'user_id' => $user->id,
             'category_id' => $request['category_id'],
             'subcategory_id' => $request['subcategory_id'],
@@ -330,7 +341,7 @@ class ServiceController extends Controller
 
         $this->authorize('ownerService', $service);
 
-        $service->end_date = \Carbon\Carbon::parse(now()->addDay(60));
+        $service->end_date = \Carbon\Carbon::parse(now()->addDay($this->publicDays));
         $service->save();
 
         Mail::to($service->user->email)->send(new RepublishServiceMail($service));

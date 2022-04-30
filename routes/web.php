@@ -24,6 +24,7 @@ Route::get('/listado/voto/{id}', 'ServiceController@vote')->name('service.vote')
 Route::get('/servicio/{slug}/referencia/{ref}', 'ServiceController@service')->name('service');
 // aprobar
 Route::get('/activar-servicio-mail/{id}/{ref}', 'ServiceController@serviceActiveEmail')->name('adminService.activeByEmail');
+Route::get('/activar-servicio-mail-destacado/{id}/{ref}', 'ServiceController@serviceActiveEmailSponsor')->name('adminService.activeByEmailSponsor');
 
 Route::post('/busqueda/{location?}/{service?}', 'SearchController@search')->name('search');
 Route::get('/listado/localidad/{slug}', 'SearchController@listLocation')->name('search.listLocation');
@@ -70,6 +71,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/eliminar-foto/{id}', 'adminUser\ServiceController@deletePhoto')->name('service.deletePhoto');
     Route::get('/republicar-servicio/{id}', 'adminUser\ServiceController@republishService')->name('service.republish');
 
+    Route::get('/destacar-info', 'adminUser\PriceController@highlightInfo')->name('info.highlight');
+    Route::get('/destacar-servicio/{id}', 'adminUser\PriceController@highlightService')->name('service.highlight');
+
     Route::post('/agregar-comentario/{service}', 'CommentController@storeComment')->name('comment.store');
 
     Route::get('/listar-servicios', 'adminUser\ServiceController@listServices')->name('service.list');
@@ -91,10 +95,11 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth','AdminSite'])->group(function () {
     Route::get('/admin/dashboard', 'adminSite\DashboardController@dashboard')->name('adminDashboard.index');
     
-    Route::post('/admin/daysPublicFree', 'adminSite\DashboardController@changeDaysPublicFree')->name('adminDashboard.changeDaysPublicFree');
+    Route::post('/admin/daysPublic', 'adminSite\DashboardController@changeDaysService')->name('adminDashboard.changeDaysService');
     
     Route::get('/admin/listado', 'adminSite\ServiceController@serviceList')->name('adminService.list');
     Route::post('/admin/activar-servicio/{id}', 'adminSite\ServiceController@serviceActive')->name('adminService.active');
+    Route::post('/admin/activar-servicio-destacado/{id}', 'adminSite\ServiceController@serviceSponsorActive')->name('adminService.sponsorActive');
     Route::get('/admin/desactivar-servicio/{id}', 'adminSite\ServiceController@serviceDesactive')->name('adminService.desactive');
     Route::get('/admin/borrar-servicio/{id}', 'adminSite\ServiceController@serviceDelete')->name('adminService.delete');
     Route::get('/admin/reactivar-servicios', 'adminSite\ServiceController@serviceReactivate')->name('adminService.reactivate');
@@ -106,4 +111,7 @@ Route::middleware(['auth','AdminSite'])->group(function () {
     Route::get('/admin/incrementar-visitas', 'adminSite\DashboardController@incrementService')->name('adminDashboard.incrementService');
 
     Route::get('/admin/servicio-pendiente/{slug}/referencia/{ref}', 'ServiceController@servicePending')->name('adminDashboard.servicePending');
+
+    Route::get('/admin/notificaciones/', 'adminSite\NotificationController@listNotification')->name('adminNotification.listNotification');
+    Route::post('/admin/crear-notificacion/', 'adminSite\NotificationController@createNotification')->name('adminNotification.createNotification');
 });

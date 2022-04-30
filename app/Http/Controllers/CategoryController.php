@@ -29,7 +29,8 @@ class CategoryController extends Controller
         $services = Service::with(['region', 'category', 'user'])
             ->withCount('Comment')
             ->where('status', 'Activo')
-            ->where('end_date', '>=', now())
+            ->where('end_date', '>=', now())            
+            ->orderBy('publish', 'DESC')
             ->orderBy('created_at', 'DESC')
             ->paginate(10);
 
@@ -64,6 +65,7 @@ class CategoryController extends Controller
             ->where('status', 'Activo')
             ->where('category_id', $category->id)
             ->where('end_date', '>=', now())
+            ->orderBy('publish', 'DESC')
             ->orderBy('created_at', 'DESC')
             ->paginate(10);
 
