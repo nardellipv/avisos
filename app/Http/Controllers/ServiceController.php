@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Image;
+use App\Mail\ActiveServiceSponsorMail;
 use App\Service;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
@@ -15,11 +16,13 @@ use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
+    public $sponsorDays;
     public $publicDays;
 
     public function __construct()
     {
         $this->publicDays = Storage::disk('public')->get('dayPublic.txt');
+        $this->sponsorDays = Storage::disk('public')->get('daySponsor.txt');
     }
     
     public function service($slug, $ref)
@@ -69,6 +72,7 @@ class ServiceController extends Controller
             ->get();
 
         $services = Service::with(['region','user'])
+            ->where('status', 'Activo')
             ->take(3)
             ->orderBy('created_at', 'DESC')
             ->get();
@@ -124,5 +128,19 @@ class ServiceController extends Controller
         $service->save();
 
         Mail::to($service->user->email)->send(new statusServiceMail($service));
+    }
+
+    public function serviceActiveEmailSponsor($id, $ref)
+    {
+        $service = Service::where('id', $id)
+            ->where('ref', $ref)
+            ->first();
+
+        $service->status = 'Activo';
+        $service->end_date = now()->addDays($this->sponsorDays);
+        $service->publish = 'Destacado';
+        $service->save();
+
+        Mail::to($service->user->email)->send(new ActiveServiceSponsorMail($service));
     }
 }

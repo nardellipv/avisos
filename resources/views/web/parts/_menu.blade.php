@@ -24,7 +24,7 @@
 
                 @if (!Auth::check())
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ route('blog.list') }}">Visita Nuestro Blog</a></li>
+                    {{--  <li><a href="{{ route('blog.list') }}">Visita Nuestro Blog</a></li>  --}}
                     <li><a href="{{ route('login') }}">Ingresar</a></li>
                     <li><a href="{{ route('register') }}">Registrarse</a></li>
                     <li class="postadd"><a class="btn btn-block btn-border btn-post btn-danger"
@@ -32,7 +32,7 @@
                 </ul>
                 @else
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ route('blog.list') }}"><b style="color: red">Visita Nuestro Blog</b></a></li>
+                    {{--  <li><a href="{{ route('blog.list') }}"><b style="color: red">Visita Nuestro Blog</b></a></li>  --}}
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <span>{{ userConnect()->name }}</span> <i class="icon-user fa"></i>
                             @if (userConnect()->type == 'Anunciante')

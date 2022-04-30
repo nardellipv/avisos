@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\adminSite;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ActiveServiceSponsorMail;
 use App\Mail\RejectServiceMail;
 use App\Mail\RepublishServiceMail;
 use App\Mail\statusServiceMail;
 use App\Service;
+use App\TempSponsor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
@@ -15,10 +17,12 @@ class ServiceController extends Controller
 {
 
     public $publicDays;
+    public $sponsorDays;
 
     public function __construct()
     {
         $this->publicDays = Storage::disk('public')->get('dayPublic.txt');
+        $this->sponsorDays = Storage::disk('public')->get('daySponsor.txt');
     }
 
     public function serviceList()
@@ -47,6 +51,35 @@ class ServiceController extends Controller
             $service->save();
 
             Mail::to($service->user->email)->send(new statusServiceMail($service));
+        }
+
+        toast()->success('Servicio Activado');
+        return back();
+    }
+
+    public function serviceSponsorActive(Request $request, $id)
+    {
+        // dd($request->all());
+        $motive = $request->motive;
+        if ($request->motive) {
+            $service = Service::find($id);
+            $service->status = 'Desactivo';
+            $service->save();
+
+            Mail::to($service->user->email)->send(new RejectServiceMail($service, $motive));
+        } else {
+            $service = Service::find($id);
+            $service->status = 'Activo';
+            $service->publish = 'Destacado';
+            $service->end_date = now()->addDays($this->sponsorDays);
+            $service->save();
+
+            $serviceTemp = TempSponsor::where('service_id', $id)
+                ->first();
+            $serviceTemp->pay = 'Y';
+            $serviceTemp->save();
+
+            Mail::to($service->user->email)->send(new ActiveServiceSponsorMail($service));
         }
 
         toast()->success('Servicio Activado');

@@ -7,7 +7,7 @@
                 @include('web.adminUser.parts._asideMenu')
                 <div class="col-sm-9 page-content">
                     <div class="inner-box">
-                        <h2 class="title-2"><i class="icon-heart-1"></i> Servicios Favoritos </h2>
+                        <h2 class="title-2"> Servicios Favoritos </h2>
 
                         <div class="table-responsive">
                             <table id="addManageTable"

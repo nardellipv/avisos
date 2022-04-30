@@ -6,6 +6,7 @@ use App\Blog;
 use App\Http\Controllers\Controller;
 use App\Region;
 use App\Service;
+use App\TempSponsor;
 use App\User;
 use File;
 use Illuminate\Http\Request;
@@ -35,7 +36,12 @@ class DashboardController extends Controller
         $servicePending = Service::where('status', 'PENDIENTE')
             ->get();
 
+        $serviceSponsorPending = TempSponsor::with(['service'])
+            ->where('pay', 'N')
+            ->get();
+
         $publicDays = Storage::disk('public')->get('dayPublic.txt');
+        $sponsorDays = Storage::disk('public')->get('daySponsor.txt');
 
         return view('admin.indexAdminSite', compact(
             'userClientCount',
@@ -44,7 +50,9 @@ class DashboardController extends Controller
             'users',
             'servicePending',
             'servicePausedCount',
-            'publicDays'
+            'publicDays',
+            'sponsorDays',
+            'serviceSponsorPending'
         ));
     }
 
@@ -62,7 +70,7 @@ class DashboardController extends Controller
 
         return back();
     }
-    
+
     public function sitemap()
     {
         /* $files = storage_path('public');
@@ -76,7 +84,7 @@ class DashboardController extends Controller
         $sitemap->add(URL::to('/'), \Carbon\Carbon::now(), '1.0', 'daily');
         $sitemap->add(URL::to('https://avisosmendoza.com.ar/listado'), \Carbon\Carbon::now(), '0.50', 'daily');
 
-        $services = Service::orderBy('created_at', 'desc')->get();
+        $services = Service::where('status', 'Activo')->orderBy('created_at', 'desc')->get();
         $posts = Blog::orderBy('created_at', 'desc')->get();
         $regions = Region::get();
 
@@ -100,9 +108,10 @@ class DashboardController extends Controller
         return back();
     }
 
-    public function changeDaysPublicFree(Request $request)
+    public function changeDaysService(Request $request)
     {
         Storage::disk('public')->put('dayPublic.txt', $request->publicDays);
+        Storage::disk('public')->put('daySponsor.txt', $request->sponsorDays);
         return back();
     }
 }

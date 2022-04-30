@@ -7,6 +7,13 @@
         <div class="row">
             <div class="col-sm-9 page-content col-thin-left">
                 <div class="category-list">
+                    <div class="listing-filter">
+                        <div class="pull-left col-xs-6">
+                            <div class="breadcrumb-list"><a href="#" class="current"> <span>Últimos Publicados</span></a>
+                            </div>
+                        </div>
+                        <div style="clear:both"></div>
+                    </div>
                     <div class="adds-wrapper property-list">
                         @foreach ($services as $service)
                         <div class="item-list">
@@ -94,7 +101,7 @@
                     </div>
                 </div>
             </div>
-            <img src="{{ asset('styleWeb/assets/img/bannerHome.png') }}">
+            <img id="noimg" src="{{ asset('styleWeb/assets/img/bannerHome.png') }}">
         </div>
     </div>
 </div>

@@ -61,4 +61,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Message::class);
     }
+
+    public function TempSponsor()
+    {
+        return $this->hasMany(TempSponsor::class);
+    }
 }

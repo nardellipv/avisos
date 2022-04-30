@@ -42,6 +42,15 @@ class HomeController extends Controller
             ->get();
 
 
+        $servicesPublish = Service::with(['region', 'category', 'user'])
+            ->withCount('Comment')
+            ->where('status', 'Activo')
+            ->where('publish', 'Destacado')
+            ->where('end_date', '>=', now())
+            ->orderBy('created_at', 'DESC')
+            ->take(6)
+            ->get();
+
         //cacheo location forever
         if (Cache::has('regionsCache')) {
             $locations = Cache::get('regionsCache');
@@ -51,6 +60,6 @@ class HomeController extends Controller
             Cache::forever('regionsCache', $locations);
         }
 
-        return view('web.index', compact('services', 'locations'));
+        return view('web.index', compact('services', 'locations', 'servicesPublish'));
     }
 }

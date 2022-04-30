@@ -51,6 +51,11 @@ class Service extends Model
         return $this->hasMany(Favorite::class);
     }
 
+    public function TempSponsor()
+    {
+        return $this->hasMany(TempSponsor::class);
+    }
+
 
     //Scopes
 

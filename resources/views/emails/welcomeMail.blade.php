@@ -191,20 +191,12 @@
                                                                 <tr style="vertical-align: top; display: inline-block; text-align: center;"
                                                                     align="center" valign="top">
                                                                     <td style="word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 5px; padding-left: 5px;"
-                                                                        valign="top"><a href="https://www.facebook.com/"
+                                                                        valign="top"><a href="https://www.facebook.com/avisosmendozaOk"
                                                                             target="_blank"><img
                                                                                 style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;"
                                                                                 title="Facebook"
                                                                                 src="https://avisosmendoza.com.ar/styleWeb/assetEmail/images/facebook2x.png"
                                                                                 alt="Facebook" width="32"
-                                                                                height="32" /></a></td>
-                                                                    <td style="word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 5px; padding-left: 5px;"
-                                                                        valign="top"><a href="https://instagram.com/"
-                                                                            target="_blank"><img
-                                                                                style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;"
-                                                                                title="Instagram"
-                                                                                src="https://avisosmendoza.com.ar/styleWeb/assetEmail/images/instagram2x.png"
-                                                                                alt="Instagram" width="32"
                                                                                 height="32" /></a></td>
                                                                 </tr>
                                                             </tbody>

@@ -16,8 +16,8 @@
                         data-feather="archive"></i><span>Servicios</span></a>
             </li>
             <li>
-                <a href="{{ route('blog.addPost') }}" class="nav-link"><i
-                        data-feather="paperclip"></i><span>Agregar Post</span></a>
+                <a href="{{ route('adminNotification.listNotification') }}" class="nav-link"><i
+                        data-feather="bookmark"></i><span>Notificationes</span></a>
             </li>
         </ul>
     </aside>

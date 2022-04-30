@@ -25,14 +25,20 @@
                         <h4>Días Publicación</h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('adminDashboard.changeDaysPublicFree') }}" method="POST">
+                        <form action="{{ route('adminDashboard.changeDaysService') }}" method="POST">
                             @csrf
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="publicDays" value="{{ $publicDays }}"
-                                    aria-label="">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit">Cambiar Servicios Free
-                                    </button>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                  <label for="inputEmail4">Email</label>
+                                  <input type="text" class="form-control" name="publicDays" value="{{ $publicDays }}">
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <label for="inputPassword4">Password</label>
+                                  <input type="text" class="form-control" name="sponsorDays" value="{{ $sponsorDays }}">
+                                </div>
+                                <div class="form-group col-md-6">
+                                
+                                    <button class="btn btn-primary">Cambiar días Servicios</button>
                                 </div>
                             </div>
                         </form>

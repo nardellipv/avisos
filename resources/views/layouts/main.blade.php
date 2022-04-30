@@ -18,8 +18,6 @@
 
     @yield('css')
 
-    <!-- styles needed for carousel slider -->
-
     <!-- Just for debugging purposes. -->
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

@@ -42,7 +42,9 @@
                     </span>
 
                     <div class="ads-image">
-                        {{-- <h1 class="pricetag"> $25</h1> --}}
+                        @if($service->publish == 'Destacado')
+                        <h1 class="pricetag"> Destacado</h1>
+                        @endif
                         @if ($service->photo)
                         <img src="{{ asset('users/' . $service->user->id . '/service/' . $service->photo) }}"
                             alt="{{ $service->title }}" class="img-responsive" />
@@ -187,7 +189,8 @@
                         <div class="panel-content">
                             <div class="panel-body text-left">
                                 @foreach ($services as $service)
-                                <div class="item"><a href="{{ route('service', [$service->slug, $service->ref]) }}">
+                                <div class="item">
+                                    <a href="{{ route('service', [$service->slug, $service->ref]) }}">
                                         <span class="item-carousel-thumb">
                                             @if ($service->photo)
                                             <img class="img-responsive"
@@ -201,7 +204,7 @@
                                         </span>
                                         <p style="text-align: center"> <b>{{ $service->title }}</b> </p>
                                         <p style="text-align: center"><i class="fa fa-map-marker"></i> <i>{{
-                                                $service->region->name }}</i> </p>
+                                                $service->region->name }}</i> </p>                                                
                                     </a>
                                 </div>
                                 <hr>

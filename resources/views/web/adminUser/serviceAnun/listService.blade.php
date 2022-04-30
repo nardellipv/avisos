@@ -7,7 +7,7 @@
             @include('web.adminUser.parts._asideMenu')
             <div class="col-sm-9 page-content">
                 <div class="inner-box">
-                    <h2 class="title-2"><i class="icon-heart-1"></i> Servicios Favoritos </h2>
+                    <h2 class="title-2"> Servicios Publicados </h2>
 
                     <div class="table-responsive">
                         <table id="addManageTable"
@@ -56,6 +56,9 @@
 
                                             <p><strong>Visto por </strong>: {{ $service->visit }} usuarios</p>
                                             <p><strong>Localidad:</strong> {{ $service->region->name }}</p>
+                                            @if($service->publish == 'Destacado')
+                                            <p class="text text-center text-info"><strong>Servicio Destacado</strong></p>
+                                            @endif
                                         </div>
                                     </td>
 
@@ -64,22 +67,33 @@
                                     <td>{{ $service->category->name }}</td>
 
                                     <td style="width:10%" class="action-td">
-                                            @if($service->end_date <= \Carbon\Carbon::parse(now()->addDay(10)))
-                                                <p><a class="btn btn-info btn-xs"
-                                                        href="{{ route('service.republish', $service) }}"> <i
-                                                            class=" fa fa-calendar-plus-o"></i> Republicar
-                                                    </a>
-                                                </p>
+                                        @if($service->end_date <= \Carbon\Carbon::parse(now()->addDay(10)))
+                                            <p><a class="btn btn-info btn-xs"
+                                                    href="{{ route('service.republish', $service) }}"> <i
+                                                        class=" fa fa-calendar-plus-o"></i> Republicar
+                                                </a>
+                                            </p>
                                             @endif
                                             <p><a class="btn btn-primary btn-xs"
                                                     href="{{ route('service.edit', $service) }}"> <i
                                                         class="fa fa-edit"></i>
                                                     Editar
-                                                </a></p>
+                                                </a>
+                                            </p>
+                                            <p>
+                                                @if($service->publish == 'Free')
+                                                <a class="btn btn-warning btn-xs"
+                                                    href="{{ route('service.highlight', $service) }}"> <i
+                                                        class="fa fa-certificate"></i>
+                                                    Destacar
+                                                </a>
+                                                @endif
+                                            </p>
                                             <p><a class="btn btn-danger btn-xs"
                                                     href="{{ route('service.delete', $service) }}"> <i
                                                         class=" fa fa-trash"></i> Eliminar
-                                                </a></p>
+                                                </a>
+                                            </p>
                                     </td>
                                 </tr>
                                 @endforeach
