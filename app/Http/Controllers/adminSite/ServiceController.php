@@ -59,7 +59,6 @@ class ServiceController extends Controller
 
     public function serviceSponsorActive(Request $request, $id)
     {
-        // dd($request->all());
         $motive = $request->motive;
         if ($request->motive) {
             $service = Service::find($id);

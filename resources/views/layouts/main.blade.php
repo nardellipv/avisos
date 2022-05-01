@@ -36,8 +36,8 @@
     <script async src="{{ asset('styleWeb/assets/js/pace.min-min.js') }}"></script>
 
     {!! htmlScriptTagJsApi() !!}
-    @include('external.analytics')
-    @include('external.shareit')
+    {{--  @include('external.analytics')  --}}
+    {{--  @include('external.shareit')  --}}
     {{-- @include('external.pixel') --}}
     {{-- @include('external.hotjar') --}}
     @include('external.ads')
@@ -73,7 +73,7 @@
 
     <!-- Placed at the end of the document so the pages load faster -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{ asset('styleWeb/assets/bootstrap/js/bootstrap.min.js') }}"></script>
 
     @yield('js')

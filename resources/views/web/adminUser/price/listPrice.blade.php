@@ -12,10 +12,9 @@
                         <h2 class="text text-center text-danger"><strong> $200 </strong> / servicio</h2>
                         <ul class="list-check">
                             <li> Puedes destacar todos los servicios que desees</li>
-                            <li> Se promocionan por 60 días</li>
+                            <li> Se promocionan por {{ $sponsorDays }} días</li>
                             <li> Tus servicios se destacan en la página principal</li>
                             <li> Se destacan en la primera posición de los servicios listados</li>
-                            <li> La publicación se realiza automáticamente</li>
                             <li> Se comparten en nuestras redes sociales</li>
                         </ul>
                     </div>
