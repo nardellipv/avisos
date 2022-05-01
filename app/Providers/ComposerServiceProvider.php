@@ -125,7 +125,7 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         // aside Blog
-        View::composer([
+        /* View::composer([
             'web.blog._asideBlog',
         ], function ($view) {
 
@@ -141,6 +141,6 @@ class ComposerServiceProvider extends ServiceProvider
                 'lastServices' => $lastServices,
                 'categoriesBlog' => $categoriesBlog,
             ]);
-        });
+        }); */
     }
 }

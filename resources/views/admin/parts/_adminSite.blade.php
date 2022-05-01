@@ -29,11 +29,11 @@
                             @csrf
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                  <label for="inputEmail4">Email</label>
+                                  <label for="inputEmail4">Free</label>
                                   <input type="text" class="form-control" name="publicDays" value="{{ $publicDays }}">
                                 </div>
                                 <div class="form-group col-md-6">
-                                  <label for="inputPassword4">Password</label>
+                                  <label for="inputPassword4">Sponsor</label>
                                   <input type="text" class="form-control" name="sponsorDays" value="{{ $sponsorDays }}">
                                 </div>
                                 <div class="form-group col-md-6">

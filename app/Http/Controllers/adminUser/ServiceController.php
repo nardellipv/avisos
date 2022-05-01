@@ -75,6 +75,8 @@ class ServiceController extends Controller
 
     public function createService()
     {
+        SEOMeta::setTitle('Avisos Mendoza | Crear Servicio');
+
         $categories = Category::all();
 
         return view('web.adminUser.serviceAnun.createService', compact('categories'));
@@ -82,12 +84,15 @@ class ServiceController extends Controller
 
     public function createServiceCategoySelect()
     {
+        
         $selectCategory = request()->input(['id']);
-
+        
         $categories = Category::all();
-
+        
         $category = Category::where('id', $selectCategory)
-            ->first();
+        ->first();
+        
+        SEOMeta::setTitle('Avisos Mendoza | ' . $category->name );
 
         $subCategories = Subcategory::where('category_id', $selectCategory)
             ->get();

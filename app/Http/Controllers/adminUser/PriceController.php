@@ -9,31 +9,35 @@ use Illuminate\Support\Facades\Mail;
 use App\Service;
 use App\tempSponsor;
 use Artesaos\SEOTools\Facades\SEOMeta;
+use Illuminate\Support\Facades\Storage;
 
 class PriceController extends Controller
 {
 
     public function highlightInfo()
     {
+        SEOMeta::setTitle('Avisos Mendoza | Listado de Servicios');
+
         $serviceSponsor = Service::with(['category', 'region', 'user'])
             ->where('user_id', userConnect()->id)
             ->where('status', '!=', 'Desactivo')
             ->where('status', '!=', 'Pendiente')
             ->get();
 
-        return view('web.adminUser.price.listPrice', compact('serviceSponsor'));
+        $sponsorDays = Storage::disk('public')->get('daySponsor.txt');
+
+        return view('web.adminUser.price.listPrice', compact('serviceSponsor','sponsorDays'));
     }
 
     public function highlightService($id)
     {
         SEOMeta::setTitle('Avisos Mendoza | Destacar Servicio');
-        SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
 
         $service = Service::find($id);
 
         $this->authorize('ownerService', $service);
 
-        tempSponsor::create([
+        tempSponsor::Create([
             'service_id' => $service->id,
             'pay' => 'N',
         ]);
