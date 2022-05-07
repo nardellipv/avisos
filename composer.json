@@ -26,7 +26,6 @@
         "sentry/sentry-laravel": "^2.5"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.6",
         "beyondcode/laravel-query-detector": "^1.4",
         "facade/ignition": "^2.0",
         "fakerphp/faker": "^1.9.1",
