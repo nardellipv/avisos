@@ -130,7 +130,7 @@
                                                 desde el siguiente bot&oacute;n</p>
                                             <div class="button-container" style="padding: 15px;" align="center"><a
                                                     style="-webkit-text-size-adjust: none; text-decoration: none; display: inline-block; color: #393d47; background-color: #ddff75; border-radius: 20px; -webkit-border-radius: 20px; -moz-border-radius: 20px; width: auto; padding-top: 10px; padding-bottom: 10px; font-family: Tahoma, Verdana, Segoe, sans-serif; text-align: center; mso-border-alt: none; word-break: keep-all; border: 1px solid #FFC727;"
-                                                    href="https://mpago.la/2FdkkoF" target="_blank"><span
+                                                    href="https://mpago.la/2z3nRds" target="_blank"><span
                                                         style="padding-left: 50px; padding-right: 50px; font-size: 18px; display: inline-block; letter-spacing: normal;"><span
                                                             style="font-size: 16px; line-height: 2; word-break: break-word; mso-line-height-alt: 32px;"><span
                                                                 style="font-size: 18px; line-height: 36px;"><strong>Pagar</strong></span></span></span></a>

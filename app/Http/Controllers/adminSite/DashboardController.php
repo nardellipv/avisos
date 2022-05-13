@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\adminSite;
 
-use App\Blog;
 use App\Http\Controllers\Controller;
 use App\Region;
 use App\Service;
@@ -85,7 +84,6 @@ class DashboardController extends Controller
         $sitemap->add(URL::to('https://avisosmendoza.com.ar/listado'), \Carbon\Carbon::now(), '0.50', 'daily');
 
         $services = Service::where('status', 'Activo')->orderBy('created_at', 'desc')->get();
-        $posts = Blog::orderBy('created_at', 'desc')->get();
         $regions = Region::get();
 
         // listado de servicios
@@ -96,11 +94,6 @@ class DashboardController extends Controller
         // listado de regiones
         foreach ($regions as $region) {
             $sitemap->add("https://avisosmendoza.com.ar/listado/localidad/" . $region->slug);
-        }
-
-        // listado de post
-        foreach ($posts as $post) {
-            $sitemap->add("https://avisosmendoza.com.ar/blog/" . $post->slug, $service->created_at);
         }
 
         $sitemap->store('xml', 'sitemap', base_path('../public_html'));

@@ -38,8 +38,8 @@
     {!! htmlScriptTagJsApi() !!}
     {{--  @include('external.analytics')  --}}
     {{--  @include('external.shareit')  --}}
-    {{-- @include('external.pixel') --}}
-    {{-- @include('external.hotjar') --}}
+    {{--  @include('external.pixel')  --}}
+    {{--  @include('external.hotjar')  --}}
     @include('external.ads')
 </head>
 
