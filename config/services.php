@@ -32,7 +32,7 @@ return [
 
     'sendinblue' => [
         'v3'    => [
-            'key'   => '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'
+            'key'   => 'xsmtpsib-05fd09922e5bc01d5a9bfb70b4a4f9eb82f43b63cbc5952a331af373d69caa68-W5qrUvyQPLpI7JKt'
         ]
     ],
 

@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <!-- /.page-content -->
-                <a href="https://mpago.la/2FdkkoF" id="button1id" name="button1id" class="btn btn-success btn-block">
+                <a href="https://mpago.la/2z3nRds" id="button1id" name="button1id" class="btn btn-success btn-block">
                     Ir a MercadoPago
                 </a>
             </div>

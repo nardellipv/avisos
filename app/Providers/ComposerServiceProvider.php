@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Category;
-use App\CategoryBlog;
 use App\Favorite;
 use App\Message;
 use App\Region;
@@ -124,23 +123,5 @@ class ComposerServiceProvider extends ServiceProvider
             ]);
         });
 
-        // aside Blog
-        /* View::composer([
-            'web.blog._asideBlog',
-        ], function ($view) {
-
-            $lastServices = Service::with(['region', 'category', 'user'])
-                ->orderBy('created_at', 'DESC')
-                ->take(3)
-                ->get();
-
-            $categoriesBlog = CategoryBlog::withCount(['blog'])
-                ->get();
-
-            $view->with([
-                'lastServices' => $lastServices,
-                'categoriesBlog' => $categoriesBlog,
-            ]);
-        }); */
     }
 }

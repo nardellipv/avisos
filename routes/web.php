@@ -29,10 +29,6 @@ Route::get('/activar-servicio-mail-destacado/{id}/{ref}', 'ServiceController@ser
 Route::post('/busqueda/{location?}/{service?}', 'SearchController@search')->name('search');
 Route::get('/listado/localidad/{slug}', 'SearchController@listLocation')->name('search.listLocation');
 
-Route::get('/blog', 'BlogController@list')->name('blog.list');
-Route::get('/blog/{slug}', 'BlogController@post')->name('blog.post');
-Route::get('/blog/categoria/{slug}', 'BlogController@listCategory')->name('blog.listCategory');
-
 Route::post('/servicio/enviar-mensaje', 'MessageController@sendMessage')->name('message.send');
 
 Route::post('/alta/news-letter', 'NewsLetterController@addEmail')->name('newsLetter.addEmail');
@@ -103,9 +99,6 @@ Route::middleware(['auth','AdminSite'])->group(function () {
     Route::get('/admin/desactivar-servicio/{id}', 'adminSite\ServiceController@serviceDesactive')->name('adminService.desactive');
     Route::get('/admin/borrar-servicio/{id}', 'adminSite\ServiceController@serviceDelete')->name('adminService.delete');
     Route::get('/admin/reactivar-servicios', 'adminSite\ServiceController@serviceReactivate')->name('adminService.reactivate');
-    
-    Route::get('/admin/agregar-post', 'adminSite\BlogController@addPost')->name('blog.addPost');
-    Route::post('/admin/subir-post', 'adminSite\BlogController@storePost')->name('blog.storePost');
 
     Route::get('/admin/generar-sitemap', 'adminSite\DashboardController@sitemap')->name('adminDashboard.sitemap');
     Route::get('/admin/incrementar-visitas', 'adminSite\DashboardController@incrementService')->name('adminDashboard.incrementService');
