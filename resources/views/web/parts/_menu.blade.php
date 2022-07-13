@@ -1,81 +1,65 @@
-<div class="header">
-    <nav class="navbar   navbar-site navbar-default" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
-                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
-                        class="icon-bar"></span> <span class="icon-bar"></span></button>
-                <a href="{{ route('home') }}" class="navbar-brand logo logo-title">
-                    <img src="{{ asset('styleWeb/assets/logo.png') }}" class="img-responsive" alt="Avisos Mendoza">
-                </a>
-            </div>
-            <div class="navbar-collapse collapse">
-
-                <ul class="nav navbar-nav navbar-left">
-                    <li><img src="{{ $temp['condition']['icon'] }}"></li>
-                    <li>
-                        <p> Actual: {{ $temp['forecast']['temp'] }}°</p>
-                        <p> Mín: {{ $temp['forecast']['temp_min'] }}°</p>
-                    </li>
-                    {{--  <li><a href="{{ route('home') }}">Home</a></li> --}}
-                    {{-- <li><a href="">Add Resume</a></li> --}}
-
-                </ul>
-
-                @if (!Auth::check())
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ route('login') }}">Ingresar</a></li>
-                    <li><a href="{{ route('register') }}">Registrarse</a></li>
-                    <li class="postadd"><a class="btn btn-block btn-border btn-post btn-danger"
-                            href="{{ route('service.create') }}">Subir un servicio</a></li>
-                </ul>
-                @else
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span>{{ userConnect()->name }}</span> <i class="icon-user fa"></i>
-                            @if (userConnect()->type == 'Anunciante')
-                            @if ($countPendingService > 0 or $countPendingMessages > 0)
-                            <img src="{{ asset('styleWeb/assets/red_point.png') }}"
-                                style="height: 50%;margin: 0 0 10% -4%;">
-                            @endif
-                            @endif
-                            <i class=" icon-down-open-big fa"></i>
-                        </a>
-                        <ul class="dropdown-menu user-menu">
-                            <li class="active"><a href="{{ route('dashboard.index') }}"><i class="icon-user"></i>
-                                    Perfil
-                                </a></li>
-
-                            <li><a href="{{ route('favorite.list') }}"><i class="icon-heart"></i> Servicios
-                                    Favoritos ({{ $countFavorite }})</a>
+<header class="hero">
+    <div class="hero-wrapper">
+        <div class="main-navigation">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
+                    <a class="navbar-brand" href="{{ route('home') }}">
+                        <img src="{{ asset('styleWeb/assets/logo_chico.png') }}" alt="avisos mendoza logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
+                        aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('home') }}">Inicio</a>
                             </li>
-                            @if (userConnect()->type == 'Anunciante')
-                            <li><a href="{{ route('service.list') }}"><i class="icon-docs"></i> Mis Servicios
-                                    ({{ $countService }})
-                                </a></li>
-                            <li><a href="{{ route('service.pending') }}"><i class="fa fa-clock-o"></i>
-                                    Servicios Pendientes ({{ $countPendingService }})
-                                </a></li>
-                            <li><a href="{{ route('message.list') }}"><i class="fa fa-envelope"></i>
-                                    Mensajes ({{ $countPendingMessages }})
-                                </a></li>
-                            @endif
-                            <li><a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <i class="glyphicon glyphicon-off"></i> Salir </a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('contact') }}">Contacto</a>
                             </li>
+                            @if (!Auth::check())
+                            <li class="nav-item">
+                                <a href="{{ route('register') }}" class="btn btn-primary small">Registrar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('login') }}" class="btn btn-info small">Ingresar</a>
+                            </li>
+                            @else
+                            <li class="nav-item active has-child">
+                                <a class="nav-link" href="#">{{ userConnect()->name }}</a>
+                                <ul class="child">
+                                    <li class="nav-item"><a href="{{ route('dashboard.index') }}" class="nav-link"> Mis
+                                        Datos
+                                    </a></li>
+                                    <li class="nav-item"><a href="{{ route('service.list') }}" class="nav-link"> Mis
+                                            Servicios
+                                            ({{ $countService }})
+                                        </a></li>
+                                    <li class="nav-item"><a href="{{ route('service.pending') }}" class="nav-link">
+                                            Servicios Pendientes ({{ $countPendingService }})
+                                        </a></li>
+                                    <li class="nav-item"><a href="{{ route('message.list') }}" class="nav-link">
+                                            Mensajes ({{ $countPendingMessages }})
+                                        </a></li>
+                                </ul>
+                            </li>
+
+                            @if (userConnect()->type == 'Anunciante')
+                            <li class="nav-item">
+                                <a href="{{ route('service.create') }}"
+                                    class="btn btn-primary text-caps btn-rounded btn-framed">Subir un
+                                    servicio</a>
+                            </li>
+                            @endif
                         </ul>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
-                    @if (userConnect()->type == 'Anunciante')
-                    <li class="postadd"><a class="btn btn-block btn-border btn-post btn-danger"
-                            href="{{ route('service.create') }}">Subir un servicio</a></li>
-                    @endif
-                </ul>
-                @endif
+                        @endif
+                    </div>
+                </nav>
             </div>
+            @if (Route::current()->getName() == 'home')
+            @include('web.parts._header')
+            @endif
         </div>
-    </nav>
-</div>
+    </div>
+</header>

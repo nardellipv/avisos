@@ -11,19 +11,16 @@
         "php": "^7.2.5|^8.0",
         "artesaos/seotools": "^0.20.0",
         "biscolab/laravel-recaptcha": "^4.4",
-        "dnsimmons/openweather": "^1.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.2",
         "intervention/image": "^2.5",
-        "juanparati/sendinblue": "^4.0",
+        "jambasangsang/flash": "^1.0",
         "laravel/framework": "^7.29",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^2.5",
         "laravelium/sitemap": "^7.0",
-        "realrashid/sweet-alert": "^4.0",
-        "sendinblue/api-v3-sdk": "~6.1.4",
-        "sentry/sentry-laravel": "^2.5"
+        "rap2hpoutre/fast-excel": "^3.2"
     },
     "require-dev": {
         "beyondcode/laravel-query-detector": "^1.4",

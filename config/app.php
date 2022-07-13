@@ -168,7 +168,6 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         'App\Providers\ComposerServiceProvider',
-        Sentry\Laravel\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -231,7 +230,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
-        'Sentry' => Sentry\Laravel\Facade::class,
     ],
 
 ];

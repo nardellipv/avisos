@@ -39,12 +39,11 @@
       22 => 'Intervention\\Image\\ImageServiceProvider',
       23 => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
       24 => 'App\\Providers\\ComposerServiceProvider',
-      25 => 'Sentry\\Laravel\\ServiceProvider',
-      26 => 'App\\Providers\\AppServiceProvider',
-      27 => 'App\\Providers\\AuthServiceProvider',
-      28 => 'App\\Providers\\BroadcastServiceProvider',
-      29 => 'App\\Providers\\EventServiceProvider',
-      30 => 'App\\Providers\\RouteServiceProvider',
+      25 => 'App\\Providers\\AppServiceProvider',
+      26 => 'App\\Providers\\AuthServiceProvider',
+      27 => 'App\\Providers\\BroadcastServiceProvider',
+      28 => 'App\\Providers\\EventServiceProvider',
+      29 => 'App\\Providers\\RouteServiceProvider',
     ),
     'aliases' => 
     array (
@@ -86,7 +85,6 @@
       'View' => 'Illuminate\\Support\\Facades\\View',
       'Image' => 'Intervention\\Image\\Facades\\Image',
       'SEO' => 'Artesaos\\SEOTools\\Facades\\SEOTools',
-      'Sentry' => 'Sentry\\Laravel\\Facade',
     ),
   ),
   'auth' => 
@@ -376,6 +374,23 @@
       'D:\\Webs\\avisosmendoza\\public\\storage' => 'D:\\Webs\\avisosmendoza\\storage\\app/public',
     ),
   ),
+  'flash' => 
+  array (
+    'options' => 
+    array (
+      'message' => 'Default Message Here',
+      'messageTextColor' => '#ffffff',
+      'position' => 'top-right',
+      'customClass' => '',
+      'width' => 'auto',
+      'showCloseButton' => true,
+      'closeButtonText' => 'Cerrar',
+      'alertScreenReader' => true,
+      'duration' => 10000,
+      'onClose' => 'el',
+      'closeButtonTextColor' => '#FFFFFF',
+    ),
+  ),
   'hashing' => 
   array (
     'driver' => 'bcrypt',
@@ -524,19 +539,6 @@
       ),
     ),
   ),
-  'openweather' => 
-  array (
-    'api_key' => '5687d17368ba85557dcda7370d662c97',
-    'api_endpoint_current' => 'https://api.openweathermap.org/data/2.5/weather?',
-    'api_endpoint_forecast' => 'https://api.openweathermap.org/data/2.5/forecast?',
-    'api_endpoint_onecall' => 'https://api.openweathermap.org/data/2.5/onecall?',
-    'api_endpoint_history' => 'https://api.openweathermap.org/data/2.5/onecall/timemachine?',
-    'api_endpoint_icons' => 'https://openweathermap.org/img/w/',
-    'api_lang' => 'en',
-    'format_date' => 'm/d/Y',
-    'format_time' => 'h:i A',
-    'format_day' => 'l',
-  ),
   'queue' => 
   array (
     'default' => 'sync',
@@ -611,30 +613,6 @@
       'expired-callback' => NULL,
       'error-callback' => NULL,
     ),
-  ),
-  'sentry' => 
-  array (
-    'dsn' => 'https://9de63d90302e4696abbbd839ae56673a@o446801.ingest.sentry.io/5425865',
-    'environment' => NULL,
-    'breadcrumbs' => 
-    array (
-      'logs' => true,
-      'sql_queries' => true,
-      'sql_bindings' => true,
-      'queue_info' => true,
-      'command_info' => true,
-    ),
-    'tracing' => 
-    array (
-      'queue_job_transactions' => false,
-      'queue_jobs' => true,
-      'sql_queries' => true,
-      'sql_origin' => true,
-      'views' => true,
-    ),
-    'send_default_pii' => false,
-    'traces_sample_rate' => 1.0,
-    'controllers_base_namespace' => 'App\\Http\\Controllers',
   ),
   'seotools' => 
   array (
@@ -719,7 +697,7 @@
     array (
       'v3' => 
       array (
-        'key' => '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',
+        'key' => 'xsmtpsib-05fd09922e5bc01d5a9bfb70b4a4f9eb82f43b63cbc5952a331af373d69caa68-W5qrUvyQPLpI7JKt',
       ),
     ),
   ),
@@ -744,48 +722,6 @@
     'secure' => NULL,
     'http_only' => true,
     'same_site' => 'lax',
-  ),
-  'sweetalert' => 
-  array (
-    'cdn' => NULL,
-    'alwaysLoadJS' => false,
-    'neverLoadJS' => false,
-    'timer' => 5000,
-    'width' => '32rem',
-    'height_auto' => true,
-    'padding' => '1.25rem',
-    'animation' => 
-    array (
-      'enable' => false,
-    ),
-    'animatecss' => 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css',
-    'show_confirm_button' => true,
-    'show_close_button' => false,
-    'toast_position' => 'top-end',
-    'middleware' => 
-    array (
-      'autoClose' => false,
-      'toast_position' => 'top-end',
-      'toast_close_button' => true,
-      'timer' => 6000,
-      'auto_display_error_messages' => false,
-    ),
-    'customClass' => 
-    array (
-      'container' => NULL,
-      'popup' => NULL,
-      'header' => NULL,
-      'title' => NULL,
-      'closeButton' => NULL,
-      'icon' => NULL,
-      'image' => NULL,
-      'content' => NULL,
-      'input' => NULL,
-      'actions' => NULL,
-      'confirmButton' => NULL,
-      'cancelButton' => NULL,
-      'footer' => NULL,
-    ),
   ),
   'view' => 
   array (

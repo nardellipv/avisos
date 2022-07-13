@@ -8,12 +8,13 @@ use App\Message;
 use App\Service;
 use App\User;
 use Illuminate\Support\Facades\Mail;
+use Jambasangsang\Flash\Facades\LaravelFlash;
 
 class MessageController extends Controller
 {
     public function sendMessage(MessageToServiceRequest $request)
     {
-
+// dd($request->all());
         $service = Service::where('id', $request['serviceUser'])
             ->first();
 
@@ -22,7 +23,7 @@ class MessageController extends Controller
 
         $message = Message::create([
             'name' => $request['name'],
-            'email' => $user->email,
+            'email' => $request['email'],
             'message' => $request['messageService'],
             'read' => 'N',
             'service_id' => $request['serviceUser'],
@@ -37,10 +38,9 @@ class MessageController extends Controller
             'message' => $request['messageService'],
         ];
 
+        Mail::to($user->email)->send(new ContactServiceMail($data));
 
-        Mail::to($message['email'])->send(new ContactServiceMail($data));
-
-        toast()->info('El mensaje se envió correctamente');
+        LaravelFlash::withInfo('El mensaje se envió correctamente');
         return back();
     }
 }

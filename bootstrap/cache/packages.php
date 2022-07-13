@@ -32,17 +32,6 @@
       'ReCaptcha' => 'Biscolab\\ReCaptcha\\Facades\\ReCaptcha',
     ),
   ),
-  'dnsimmons/openweather' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Dnsimmons\\OpenWeather\\OpenWeatherServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'OpenWeather' => 'Dnsimmons\\OpenWeather\\OpenWeather',
-    ),
-  ),
   'facade/ignition' => 
   array (
     'providers' => 
@@ -79,11 +68,15 @@
       'Image' => 'Intervention\\Image\\Facades\\Image',
     ),
   ),
-  'juanparati/sendinblue' => 
+  'jambasangsang/flash' => 
   array (
     'providers' => 
     array (
-      0 => 'Juanparati\\Sendinblue\\ServiceProvider',
+      0 => 'Jambasangsang\\Flash\\FlashNotificationServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'LaravelFlash' => 'Jambasangsang\\Flash\\Facades\\LaravelFlash',
     ),
   ),
   'laravel/tinker' => 
@@ -121,27 +114,11 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
-  'realrashid/sweet-alert' => 
+  'rap2hpoutre/fast-excel' => 
   array (
     'providers' => 
     array (
-      0 => 'RealRashid\\SweetAlert\\SweetAlertServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Alert' => 'RealRashid\\SweetAlert\\Facades\\Alert',
-    ),
-  ),
-  'sentry/sentry-laravel' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Sentry\\Laravel\\ServiceProvider',
-      1 => 'Sentry\\Laravel\\Tracing\\ServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Sentry' => 'Sentry\\Laravel\\Facade',
+      0 => 'Rap2hpoutre\\FastExcel\\Providers\\FastExcelServiceProvider',
     ),
   ),
 );

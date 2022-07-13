@@ -6,6 +6,7 @@ use App\Comment;
 use App\Http\Requests\CommentServiceRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Jambasangsang\Flash\Facades\LaravelFlash;
 
 class CommentController extends Controller
 {
@@ -17,7 +18,7 @@ class CommentController extends Controller
             'comment' => $request['comment'],
         ]);
         
-        toast()->info('El comentario se agrego correctamente');
+        LaravelFlash::withInfo('El comentario se agrego correctamente');
         return back();
     }
 }

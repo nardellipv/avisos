@@ -1,89 +1,77 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="main-container">
+<section class="content">
+    <section class="block">
         <div class="container">
             <div class="row">
                 @include('web.adminUser.parts._asideMenu')
-                <div class="col-sm-9 page-content">
-                    <div class="inner-box">
-                        <h2 class="title-2"> Servicios Favoritos </h2>
-
-                        <div class="table-responsive">
-                            <table id="addManageTable"
-                                class="table table-striped table-bordered add-manage-table table demo" data-filter="#filter"
-                                data-filter-text-only="true">
-                                <thead>
-                                    <tr>
-                                        <th> Foto</th>
-                                        <th data-sort-ignore="true"> Descripción</th>
-                                        <th> Acción</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($favorites as $favorite)
-                                        <tr>
-                                            <td style="width:14%" class="add-img-td">
-                                                @if ($favorite->service->photo)
-                                                    <a
-                                                        href="{{ route('service', [$favorite->service->slug, $favorite->service->ref]) }}">
-                                                        <img class="thumbnail  img-responsive"
-                                                            src="{{ asset('users/' . $favorite->service->user->id . '/service/' . $favorite->service->photo) }}"
-                                                            alt="{{ $favorite->service->name }}">
-                                                    </a>
-                                                @else
-                                                    <a
-                                                        href="{{ route('service', [$favorite->service->slug, $favorite->service->ref]) }}">
-                                                        <img class="thumbnail  img-responsive"
-                                                            src="{{ asset('styleWeb/assets/sin_imagen.jpg') }}"
-                                                            alt="{{ $favorite->name }}">
-                                                    </a>
-                                                @endif
-                                            </td>
-                                            <td style="width:58%" class="ads-details-td">
-                                                <div>
-                                                    <p><strong> <a
-                                                                href="{{ route('service', [$favorite->service->slug, $favorite->service->ref]) }}"
-                                                                title="{{ $favorite->service->name }}">
-                                                                {{ $favorite->service->title }}
-                                                            </a> </strong></p>
-
-                                                    <p><strong> Actualizado </strong>:
-                                                        {{ \Carbon\Carbon::parse($favorite->service->updated_at)->diffForHumans() }}
-                                                    </p>
-
-                                                    <p><strong>Visto por </strong>: {{ $favorite->service->visit }} usuarios</p>
-                                                    <p><strong>Localidad:</strong> {{ $favorite->service->region->name }}</p>
-                                                </div>
-                                            </td>
-                                            <td style="width:10%" class="action-td">
-                                                <div>                                                    
-                                                    <p><a class="btn btn-danger btn-xs"
-                                                            href="{{ route('favorite.delete', $favorite) }}"> <i
-                                                                class=" fa fa-trash"></i> Eliminar
-                                                        </a></p>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td>
-                                                <p>Todavía no agregas ningún servicio como favorito</p>
-                                            </td>
-                                            <td>
-                                            </td>
-                                            <td>
-                                            </td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
+                <div class="col-md-9">
+                    <div class="items list compact grid-xl-3-items grid-lg-2-items grid-md-2-items">
+                        @forelse ($favorites as $favorite)
+                        <div class="item">
+                            @if($favorite->service->publish == 'Destacado')
+                            <div class="ribbon-featured">Destacado</div>
+                            @endif
+                            <div class="wrapper">
+                                <div class="image">
+                                    <h3>
+                                        <p>{{ Str::limit($favorite->service->title, 50) }}</p>
+                                    </h3>
+                                    @if ($favorite->service->photo)
+                                    <img alt="{{ $favorite->service->title }}"
+                                        src="{{ asset('users/' . $favorite->service->user->id . '/service/' . $favorite->service->photo) }}"
+                                        class="image-wrapper background-image">
+                                    @else
+                                    <img alt="{{ $favorite->service->title }}"
+                                        src="{{ asset('styleWeb/assets/sin_imagen.jpg') }}"
+                                        class="image-wrapper background-image">
+                                    @endif
+                                </div>
+                                <h4 class="location">
+                                    <a href="#">{{ $favorite->service->region->name }} - {{
+                                        $favorite->service->category->name }}</a>
+                                </h4>
+                                <div class="admin-controls">
+                                    <a href="{{ route('favorite.delete', $favorite) }}" class="ad-remove">
+                                        <i class="fa fa-trash"></i>Eliminar
+                                    </a>
+                                </div>
+                                <div class="additional-info">
+                                    <ul>
+                                        <li>
+                                            <figure>Visto por:</figure>
+                                            <aside>{{ $favorite->service->visit }} usuarios</aside>
+                                        </li>
+                                        <li>
+                                            <figure>Actualizado</figure>
+                                            <aside>{{
+                                                \Carbon\Carbon::parse($favorite->service->updated_at)->diffForHumans()
+                                                }}</aside>
+                                        </li>
+                                        <li>
+                                            <figure>Finaliza</figure>
+                                            <aside>{{
+                                                \Carbon\Carbon::parse($favorite->service->end_date)->format('d/m/Y') }}
+                                            </aside>
+                                        </li>
+                                        <li>
+                                            <figure>Estado</figure>
+                                            <aside>{{ $favorite->service->status }}</aside>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <a href="{{ route('service', [$favorite->service->slug, $favorite->service->ref]) }}"
+                                    class="detail text-caps underline">Ir al Servicio</a>
+                            </div>
                         </div>
-                        <!--/.row-box End-->
-
+                        @empty
+                        <p>Todavía no agregas ningún servicio como favorito</p>
+                        @endforelse
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+</section>
 @endsection

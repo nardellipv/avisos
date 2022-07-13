@@ -1,34 +1,30 @@
-<aside>
-    <div class="inner-box">
-        @if (Route::current()->getName() == 'category.listCategory')
-            <div class="locations-list  list-filter">
-                <h5 class="list-title"><strong><a href="#">SubCategorías</a></strong></h5>
-
-
-                <ul class="browse-list list-unstyled long-list">
-                    @foreach ($subcategories as $subcategory)
-                        <li><a href="{{ route('category.listSubCategory', [$category->slug, $subcategory]) }}">{{ $subcategory->name }} <span
-                                    class="count">{{ $subcategory->service_count }}</span> </a>
-                        </li>
-                    @endforeach
-                </ul>
-
-            </div>
-        @endif
-
-        <div class="locations-list  list-filter">
-            <h5 class="list-title"><strong><a href="#">Categorías</a></strong></h5>
-            <ul class="browse-list list-unstyled long-list">
-                @foreach ($categories as $category)
+<section>
+    <h2>Filtro</h2>
+    <div class="form-group">
+        <label for="what" class="col-form-label">Categorias</label>
+        <ul class="features-checkboxes">
+            @foreach ($categories as $category)
+                @if($category->services_count > 0)
                     <li><a href="{{ route('category.listCategory', $category->slug) }}">{{ $category->name }}
-                        <span class="count">{{ $category->services_count }}</span>
-                    </a>
+                            <span class="count">({{ $category->services_count }})</span>
+                        </a>
                     </li>
-                @endforeach
-            </ul>
-        </div>
+                @endif
+            @endforeach
+        </ul>
 
-        <div style="clear:both"></div>
+        @if (Route::current()->getName() == 'category.listCategory')
+        <label for="what" class="col-form-label">Sub Categorias</label>
+        <ul class="features-checkboxes">
+            @foreach ($subcategories as $subcategory)
+                @if($subcategory->service_count > 0)
+                    <li><a href="{{ route('category.listSubCategory', [$category->slug, $subcategory]) }}">{{
+                            $subcategory->name
+                            }} <span class="count">{{ $subcategory->service_count }}</span> </a>
+                    </li>
+                @endif
+            @endforeach
+        </ul>
+        @endif
     </div>
-
-</aside>
+</section>

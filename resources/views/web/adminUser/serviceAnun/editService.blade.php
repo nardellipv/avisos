@@ -1,261 +1,127 @@
 @extends('layouts.main')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('styleWeb/assets/css/owl.carousel.min.css') }}" type="text/css">
+<link href="{{ asset('styleWeb/assets/css/star-min.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
-    <div class="main-container">
+<section class="content">
+    <section class="block">
         <div class="container">
-            <div class="row">
-                <div class="col-md-9 page-content">
-                    <div class="inner-box category-content">
-                        <h2 class="title-2 uppercase"><strong> <i class="icon-docs"></i> Editar Servicio - {{ $service->title }}</strong></h2>
-                        @include('web.alerts.error')
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <form action="{{ route('service.update', $service) }}" class="form-horizontal"
-                                    method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <fieldset>
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label">Categoría</label>
-
-                                            <div class="col-md-8">
-                                                <select name="category_id" id="category-group" class="form-control"
-                                                    disabled>
-                                                    <option>
-                                                        {{ $service->category->name }}</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label">Sub Categoría</label>
-
-                                            <div class="col-md-8">
-                                                <select name="subcategory_id" id="category-group" class="form-control"
-                                                    disabled>
-                                                    @if ($subCategory)
-                                                        <option>{{ $subCategory->name }}</option>
-                                                    @else
-                                                        <option>Sin Sub Categoría</option>
-                                                    @endif
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label" for="Adtitle">Título</label>
-
-                                            <div class="col-md-8">
-                                                <input type="text" name="title"
-                                                    value="{{ old('title', $service->title) }}"
-                                                    class="form-control input-md" placeholder="Título del servicio"
-                                                    required>
-                                                <span class="help-block">No debe superar los 60 caracteres. </span>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label" for="textarea">Descripción </label>
-
-                                            <div class="col-md-8">
-                                                <textarea name="description" class="form-control" rows="5" minlength="10"
-                                                    required>{{ old('description', $service->description) }}</textarea>
-                                                    <span class="help-block">Ingresar un mínimo de 100 caracteres. </span>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label" for="Adtitle">Teléfono</label>
-
-                                            <div class="col-md-8">
-                                                <input type="text" name="phone"
-                                                    value="{{ old('phone', $service->phone) }}" class="form-control">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox"
-                                                            {{ $service->phoneWsp == 'Y' ? 'checked' : '' }}
-                                                            name="phoneWsp">
-                                                        <small> Habilitado para whatsapp</small>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label" for="textarea"> Imágen Principal </label>
-
-                                            <div class="col-md-8">
-                                                <div class="mb10">
-                                                    <input id="input-upload-img1" name="photo" type="file" class="file"
-                                                        data-preview-file-type="text">
-                                                    <p class="help-block">JPG, GIF o PNG</p>
-                                                </div>
-                                                @if ($service->photo)
-                                                    <img class="thumbnail  img-responsive"
-                                                        src="{{ asset('users/' . $service->user->id . '/service/' . $service->photo) }}"
-                                                        alt="{{ $service->name }}">
-                                                @else
-                                                    <img class="img-responsive"
-                                                        src="{{ asset('styleWeb/assets/sin_imagen_grande.png') }}"
-                                                        alt="{{ $service->name }}">
-                                                @endif
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label" for="textarea"> Imágenes </label>
-
-                                            <div class="col-md-8">
-                                                <div class="mb10">
-                                                    @if (count($images) < 3)
-                                                        <input id="input-upload-img2" name="photo2[]" type="file"
-                                                            class="file" data-preview-file-type="text" multiple>
-                                                    @else
-                                                        <small>Solo podes subir 3 imágenes por servicio</small>
-                                                        <input id="input-upload-img2" name="photo2[]" type="file"
-                                                            class="file" data-preview-file-type="text" multiple disabled>
-                                                    @endif
-                                                </div>
-                                                <p class="help-block">JPG, GIF o PNG</p>
-                                            </div>
-                                            @forelse($images as $image)
-                                                <div class="col-md-4">
-                                                    <img class="thumbnail  img-responsive"
-                                                        src="{{ asset('users/' . $service->user->id . '/service/' . $image->name) }}"
-                                                        alt="{{ $service->name }}">
-                                                    <a href="{{ route('service.deletePhoto', $image) }}" class="btn btn-danger btn-xs" style="margin-top: -20%;"> <i
-                                                            class=" fa fa-trash"></i> Eliminar
-                                                    </a>
-                                                </div>
-                                            @empty
-                                                <img class="img-responsive"
-                                                    src="{{ asset('styleWeb/assets/sin_imagen_grande.png') }}"
-                                                    alt="{{ $service->name }}">
-                                            @endforelse
-                                        </div>
-
-                                        {{-- <div class="well">
-                                            <h3><i class=" icon-certificate icon-color-1"></i> Make your Ad Premium
-                                            </h3>
-
-                                            <p>Premium ads help sellers promote their product or service by getting
-                                                their ads more visibility with more
-                                                buyers and sell what they want faster. <a href="help.html">Learn
-                                                    more</a></p>
-
-                                            <div class="form-group">
-                                                <table class="table table-hover checkboxtable">
-                                                    <tr>
-                                                        <td>
-                                                            <div class="radio">
-                                                                <label>
-                                                                    <input type="radio" name="optionsRadios"
-                                                                        id="optionsRadios0" value="option0" checked>
-                                                                    <strong>Regular List </strong> </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <p>$00.00</p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="radio">
-                                                                <label>
-                                                                    <input type="radio" name="optionsRadios"
-                                                                        id="optionsRadios1" value="option1">
-                                                                    <strong>Urgent Ad </strong> </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <p>$10.00</p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="radio">
-                                                                <label>
-                                                                    <input type="radio" name="optionsRadios"
-                                                                        id="optionsRadios2" value="option2">
-                                                                    <strong>Top of the Page Ad </strong> </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <p>$20.00</p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="radio">
-                                                                <label>
-                                                                    <input type="radio" name="optionsRadios"
-                                                                        id="optionsRadios3" value="option3">
-                                                                    <strong>Top of the Page Ad + Urgent Ad </strong>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <p>$40.00</p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-group">
-                                                                <div class="col-md-8">
-                                                                    <select class="form-control" name="Method"
-                                                                        id="PaymentMethod">
-                                                                        <option value="2">Select Payment Method</option>
-                                                                        <option value="3">Credit / Debit Card</option>
-                                                                        <option value="5">Paypal</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <p><strong>Payable Amount : $40.00</strong></p>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-
-                                            </div>
-                                        </div> --}}
-
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label"></label>
-
-                                            <div class="col-md-8"><button id="button1id"
-                                                    class="btn btn-success btn-lg">Modificar Servicio</button></div>
-                                        </div>
-                                    </fieldset>
-                                </form>
+            <form class="form form-submit" action="{{ route('service.update', $service) }}" method="POST"
+                onsubmit="submitButton.disabled = true; return true;" enctype="multipart/form-data">
+                @csrf
+                <section>
+                    <h2>Publicar Nuevo Servicio</h2>
+                    @include('web.alerts.error')
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="city" class="col-form-label required">Categoría</label>
+                                <select name="category_id" id="category-group" disabled>
+                                    <option>{{ $service->category->name }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="city" class="col-form-label required">Sub Categoría</label>
+                                <select name="subcategory_id" id="category-group" disabled>
+                                    @if ($subCategory)
+                                    <option>{{ $subCategory->name }}</option>
+                                    @else
+                                    <option>Sin Sub Categoría</option>
+                                    @endif
+                                </select>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-3 reg-sidebar">
-                    <div class="panel sidebar-panel">
-                        <div class="panel-heading uppercase">
-                            <small><strong>Seguridad Personal</strong></small>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="title" class="col-form-label required">Título</label>
+                                <input name="title" type="text" class="form-control" id="title" required
+                                    value="{{ old('title', $service->title) }}">
+                                <small>No debe superar los 60 caracteres. </small>
+                            </div>
                         </div>
-                        <div class="panel-content">
-                            <div class="panel-body text-left">
-                                <ul class="list-check">
-                                    <li> Insista en un lugar de reunión público como una cafetería, un banco o un centro
-                                        comercial. </li>
-                                    <li> Dígale a un amigo o familiar adónde va. </li>
-                                    <li> Lleve su teléfono celular si tiene uno. </li>
-                                    <li> Considere la posibilidad de que un amigo lo acompañe. </li>
-                                    <li> Confía en tus instintos. </li>
-                                </ul>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="phone" class="col-form-label">Teléfono</label>
+                                <input name="phone" type="text" class="form-control"
+                                    value="{{ old('phone', $service->phone) }}" id="phone"
+                                    placeholder="Teléfono de contacto">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" checked name="phoneWsp">
+                                        <small> Habilitado para whatsapp</small>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </section>
+
+                <section>
+                    <label for="description" class="col-form-label required">Descripción</label>
+                    <div class="form-group">
+                        <textarea name="description" id="description" class="form-control"
+                            rows="4">{{ old('description', $service->description) }}</textarea>
+                    </div>
+                    <small>Ingresar un mínimo de 100 caracteres. </small>
+                </section>
+
+
+                @if ($service->photo)
+                <div class="gallery-carousel owl-carousel">
+                    @foreach ($images as $key=>$image)
+                    <img src="{{ asset('users/' . $service->user->id . '/service/' . $image->name) }}"
+                        alt="{{ $service->category->name }}">
+                    @endforeach
                 </div>
-            </div>
+                <div class="gallery-carousel-thumbs owl-carousel">
+                    @foreach ($images as $key => $image)
+                    <a href="#{{ $key }}" class="owl-thumb background-image">
+                        <img src="{{ asset('users/' . $service->user->id . '/service/' . $image->name) }}"
+                            alt="{{ $service->category->name }}">                            
+                    </a>
+                    <a href="{{ route('service.deletePhoto', $image) }}" class="btn btn-danger small" id="deleteImage"> Eliminar
+                        </a>
+                    @endforeach
+                </div>
+                @else
+                <img alt="{{ $service->title }}" src="{{ asset('styleWeb/assets/sin_imagen.jpg') }}"
+                    class="image-wrapper background-image">
+                @endif
+
+
+                <section>
+                    <h2>Galeria</h2>
+                    <label for="file-upload" class="col-form-label">Imágenes</label>
+                    <div class="file-upload-previews"></div>
+                    <div class="file-upload">
+                        <input type="file" name="photo[]" class="file-upload-input with-preview">
+                        <span><i class="fa fa-plus-circle"></i>Seleccione las imagenes</span>
+                    </div>
+                    <small>Máximo 3 imágenes.</small>
+                </section>
+
+                <section class="clearfix">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary large icon float-right">Actualizar Servicio<i
+                                class="fa fa-chevron-right"></i></button>
+                    </div>
+                </section>
+            </form>
         </div>
-    </div>
+    </section>
+</section>
 @endsection
 
 @section('js')
-<script async src="{{ asset('styleWeb/assets/js/fileinput.min-min.js') }}" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+<script src="{{ asset('styleWeb/assets/js/jQuery.MultiFile.min.js') }}"></script>
+<script src="{{ asset('styleWeb/assets/js/owl.carousel.min.js') }}"></script>
 @endsection

@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactMailRequest;
-use App\Http\Requests\ResponseSerivceMailResquest;
 use App\Mail\ContactMail;
-use App\Mail\ResponseServiceMail;
-use App\Service;
 use Illuminate\Support\Facades\Mail;
+use Jambasangsang\Flash\Facades\LaravelFlash;
 
 class EmailController extends Controller
 {
@@ -21,7 +19,7 @@ class EmailController extends Controller
 
         Mail::to('info@avisosmendoza.com.ar')->send(new ContactMail($data));
 
-        toast()->info('El mensaje se envió correctamente');
+        LaravelFlash::withInfo('El mensaje se envió correctamente');
         return back();
     }
 
@@ -33,23 +31,5 @@ class EmailController extends Controller
             'email' => $request['email'],
             'message-client' => $request['message-client'],
         ];
-    }
-
-    public function responseMessageSendEmail(ResponseSerivceMailResquest $request)
-    {
-        $service = Service::where('user_id', userConnect()->id)
-            ->first();
-
-        $data = [
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'messageResponse' => $request['messageResponse'],
-            'title' => $service->title,
-        ];
-
-        Mail::to($data['email'])->send(new ResponseServiceMail($data));
-
-        toast()->info('El mensaje se envió correctamente');
-        return back();
     }
 }

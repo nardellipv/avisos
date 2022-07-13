@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Jambasangsang\Flash\Facades\LaravelFlash;
 
 class ProfileController extends Controller
 {
@@ -47,8 +48,8 @@ class ProfileController extends Controller
 
         $user->save();
 
-        toast()->success('Perfil modificado correctamente');
-        return back();
+        LaravelFlash::withInfo('Perfil modificado correctamente');
+        return redirect()->action('adminUser\DashboardController@index');
     }
 
     public function updatePassword(Request $request)
@@ -61,7 +62,7 @@ class ProfileController extends Controller
 
         User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
 
-        toast()->success('Perfil modificado correctamente');
+        LaravelFlash::withInfo('Perfil modificado correctamente');
         return back();
     }
 
@@ -79,7 +80,7 @@ class ProfileController extends Controller
         }
         $user->save();
 
-        toast()->success('Perfil modificado correctamente');
+        LaravelFlash::withInfo('Perfil modificado correctamente');
         return back();
     }
 }

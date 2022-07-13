@@ -1,27 +1,24 @@
-<div class="container">
-    <div class="col-lg-12 content-box ">
-        <div class="row row-featured row-featured-category row-featured-company">
-            <div class="col-lg-12  box-title no-border">
-                <div class="inner">
-                    <h2><span>Categorías</span>
-                        <a class="sell-your-item" href="{{ route('category.index') }}"> Ver listado completo <i
-                                class="  icon-th-list"></i> </a>
-                    </h2>
-                </div>
-            </div>
-
-            @foreach ($categories as $category)
-                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 f-category">
-                    <a href="{{ route('category.listCategory', $category->slug) }}"><img alt="img"
-                            class="img-responsive" src="{{ asset('styleWeb/assets/imgCat/' . $category->slug . '.png') }}">
-                        <h6><span class="company-name">{{ Str::limit($category->name, 15) }}</span> <span
-                                class="jobs-count text-muted">({{ $category->services_count }})</span>
-                        </h6>
-                    </a>
-                </div>
-            @endforeach
+<section class="block">
+    <div class="container">
+        <h2>Categorías</h2>
+        <div class="items grid grid-xl-3-items grid-lg-3-items grid-md-2-items">
+            <ul class="categories-list clearfix">
+                @foreach ($categories as $category)
+                <li>
+                    <i class="category-icon">
+                        <img src="{{ asset('styleWeb/assets/imgCat/' . $category->slug . '.png') }}" alt="{{ $category->slug }}">
+                    </i>
+                    <h4><a href="{{ route('category.listCategory', $category->slug) }}">{{ Str::limit($category->name,
+                            15) }} ({{ $category->services_count }})</a></h4>
+                </li>
+                @endforeach
+                <li>
+                    <i class="category-icon">
+                        <img src="{{ asset('styleWeb/assets/imgCat/categories_all.png') }}" alt="todas categorias">
+                    </i>
+                    <h4><a href="{{ route('category.index') }}">Listado Completo</a></h4>
+                </li>
+            </ul>
         </div>
     </div>
-    <div style="clear: both"></div>
-
-</div>
+</section>

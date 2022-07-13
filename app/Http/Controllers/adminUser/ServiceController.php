@@ -20,6 +20,7 @@ use Illuminate\Support\Str;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Illuminate\Support\Facades\Storage;
+use Jambasangsang\Flash\Facades\LaravelFlash;
 
 
 class ServiceController extends Controller
@@ -44,13 +45,13 @@ class ServiceController extends Controller
 
         $services = Service::with(['category', 'region', 'user'])
             ->where('user_id', userConnect()->id)
-            ->where('status','!=', 'Desactivo')
-            ->where('status','!=', 'Pendiente')
+            ->where('status', '!=', 'Desactivo')
+            ->where('status', '!=', 'Pendiente')
             ->get();
 
         if ($services->isEmpty()) {
             $categories = Category::all();
-            toast()->info('Crea tu primer servicio');
+            LaravelFlash::withInfo('Crea tu primer servicio');
             return redirect()->action('adminUser\ServiceController@createService');
         }
 
@@ -66,7 +67,7 @@ class ServiceController extends Controller
 
         if ($services->isEmpty()) {
             $categories = Category::all();
-            toast()->info('Crea tu primer servicio');
+            LaravelFlash::withInfo('Crea tu primer servicio');
             return redirect()->action('adminUser\ServiceController@createService');
         }
 
@@ -84,15 +85,15 @@ class ServiceController extends Controller
 
     public function createServiceCategoySelect()
     {
-        
+
         $selectCategory = request()->input(['id']);
-        
+
         $categories = Category::all();
-        
+
         $category = Category::where('id', $selectCategory)
-        ->first();
-        
-        SEOMeta::setTitle('Avisos Mendoza | ' . $category->name );
+            ->first();
+
+        SEOMeta::setTitle('Avisos Mendoza | ' . $category->name);
 
         $subCategories = Subcategory::where('category_id', $selectCategory)
             ->get();
@@ -102,7 +103,6 @@ class ServiceController extends Controller
 
     public function storeService(CreateServiceRequest $request)
     {
-
         $user = User::where('id', userConnect()->id)
             ->first();
 
@@ -137,44 +137,17 @@ class ServiceController extends Controller
             mkdir('users/' . $user->id . '/service');
         }
 
-
         if ($request->photo) {
-            $image = $request->file('photo');
+            $countPhoto = count($request->photo);
 
-            $img = Image::make($image->getRealPath());
-
-
-            if ($img->width() > 700) {
-                $img->resize(700, null);
-            }
-
-            if ($img->height() > 400) {
-                $img->resize(null, 400);
-            }
-
-
-            $img->save($pathSub . '/' . $image->getClientOriginalName());
-
-            if (!$service->photo) {
-                $service = Service::where('id', $service->id)
-                    ->first();
-                $service->photo = $image->getClientOriginalName();
-                $service->save();
-            }
-        }
-
-        if ($request['photo2']) {
-            $countPhoto2 = count($request->photo2);
-
-            if ($countPhoto2 > 2) {
-                $maxPhoto2 = array_slice($request['photo2'], 0, 3);
+            if ($countPhoto > 2) {
+                $maxPhoto = array_slice($request['photo'], 0, 3);
             } else {
-                $maxPhoto2 = $request['photo2'];
+                $maxPhoto = $request['photo'];
             }
 
-
-            if ($maxPhoto2) {
-                foreach ($maxPhoto2 as $photos) {
+            if ($maxPhoto) {
+                foreach ($maxPhoto as $photos) {
 
                     $image = $photos;
 
@@ -194,6 +167,11 @@ class ServiceController extends Controller
 
                     $photoName = $image->getClientOriginalName();
 
+                    $service = Service::where('id', $service->id)
+                        ->first();
+                    $service->photo = $image->getClientOriginalName();
+                    $service->save();
+
                     $image = AppImage::create([
                         'name' => $photoName,
                         'service_id' => $service->id,
@@ -204,7 +182,7 @@ class ServiceController extends Controller
 
         Mail::to('mikanthost@gmail.com')->send(new PublishServiceMail($service));
 
-        toast()->success('Servicio agregado correctamente');
+        LaravelFlash::withInfo('Servicio agregado correctamente');
         return redirect()->action('adminUser\DashboardController@index');
     }
 
@@ -254,35 +232,16 @@ class ServiceController extends Controller
         }
 
         if ($request->photo) {
-            $image = $request->file('photo');
+            $countPhoto = count($request->photo);
 
-            $img = Image::make($image->getRealPath());
-
-
-            if ($img->width() > 700) {
-                $img->resize(700, null);
-            }
-
-            if ($img->height() > 400) {
-                $img->resize(null, 400);
-            }
-
-            $img->save($pathSub . '/' . $image->getClientOriginalName());
-            $service->photo = $image->getClientOriginalName();
-        }
-
-        if ($request['photo2']) {
-            $countPhoto2 = count($request->photo2);
-
-            if ($countPhoto2 > 2) {
-                $maxPhoto2 = array_slice($request['photo2'], 0, 3);
+            if ($countPhoto > 2) {
+                $maxPhoto = array_slice($request['photo'], 0, 3);
             } else {
-                $maxPhoto2 = $request['photo2'];
+                $maxPhoto = $request['photo'];
             }
 
-
-            if ($maxPhoto2) {
-                foreach ($maxPhoto2 as $photos) {
+            if ($maxPhoto) {
+                foreach ($maxPhoto as $photos) {
 
                     $image = $photos;
 
@@ -302,6 +261,11 @@ class ServiceController extends Controller
 
                     $photoName = $image->getClientOriginalName();
 
+                    $service = Service::where('id', $service->id)
+                        ->first();
+                    $service->photo = $image->getClientOriginalName();
+                    $service->save();
+
                     $image = AppImage::create([
                         'name' => $photoName,
                         'service_id' => $service->id,
@@ -314,7 +278,7 @@ class ServiceController extends Controller
 
         Mail::to('mikanthost@gmail.com')->send(new EditServiceMail($service));
 
-        toast()->success('Servicio actualizado correctamente');
+        LaravelFlash::withSuccess("Servicio actualizado ssss correctamente");
         return back();
     }
 
@@ -324,7 +288,7 @@ class ServiceController extends Controller
         File::delete('users/' . userConnect()->id . '/service/' . $image->name);
         $image->delete();
 
-        toast()->success('Imágen eliminada correctamente');
+        LaravelFlash::withInfo('Imágen eliminada correctamente');
         return back();
     }
 
@@ -336,7 +300,7 @@ class ServiceController extends Controller
 
         $service->delete();
 
-        toast()->success('Servicio eliminado correctamente');
+        LaravelFlash::withInfo('Servicio eliminado correctamente');
         return back();
     }
 
@@ -351,7 +315,7 @@ class ServiceController extends Controller
 
         Mail::to($service->user->email)->send(new RepublishServiceMail($service));
 
-        toast()->success('Servicio actuzalido correctamente');
+        LaravelFlash::withInfo('Servicio actuzalido correctamente');
         return back();
     }
 }

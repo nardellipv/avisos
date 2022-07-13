@@ -1,83 +1,56 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Fav and touch icons -->
-
-    <link rel="shortcut icon" href="{{ asset('styleWeb/assets/ico/favicon-32x32.png') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     {!! SEO::generate() !!}
 
-    <!-- Bootstrap core CSS -->
-    <link href="{{ asset('styleWeb/assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('styleWeb/assets/css/style-min.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('styleWeb/assets/bootstrap/css/bootstrap.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('styleWeb/assets/fonts/font-awesome.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('styleWeb/assets/css/selectize-min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('styleWeb/assets/css/style-min.css') }}">
+    <link rel="stylesheet" href="{{ asset('styleWeb/assets/css/user.css') }}">
 
     @yield('css')
-
-    <!-- Just for debugging purposes. -->
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script async src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script async src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- include pace script for automatic web page progress bar  -->
-
-    <script async>
-        paceOptions = {
-            elements: true
-        };
-
-    </script>
-    <script async src="{{ asset('styleWeb/assets/js/pace.min-min.js') }}"></script>
+    @flashStyle
 
     {!! htmlScriptTagJsApi() !!}
-    {{--  @include('external.analytics')  --}}
-    {{--  @include('external.shareit')  --}}
-    {{--  @include('external.pixel')  --}}
-    {{--  @include('external.hotjar')  --}}
-    @include('external.ads')
+    {{-- @include('external.analytics') --}}
+    @include('external.shareit')
+    {{-- @include('external.pixel') --}}
+    {{-- @include('external.hotjar') --}}
+    {{-- @include('external.ads') --}}
+
 </head>
 
 <body>
+    <div class="page home-page">
 
-    <div id="wrapper">
         @include('web.parts._menu')
-        <!-- /.header -->
-        @include('sweetalert::alert')
 
-        @if (Route::current()->getName() == 'home')
-        <div class="intro jobs-intro hasOverly"
-            style="background-image: url({{ asset('styleWeb/assets/ciudad.jpg') }}); background-position: center center;">
-            @include('web.parts._header')
-        </div>
-        @endif
-        <!-- /.intro -->
-
-        <div class="main-container">
+        <section class="content">
             @yield('content')
-        </div>
+        </section>
 
-        <!-- /.main-container -->
         @include('web.parts._footer')
-        <!-- /.footer -->
     </div>
-    <!-- /.wrapper -->
 
-    <!-- Le javascript
-================================================== -->
+    <script src="{{ asset('styleWeb/assets/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+    <script type="text/javascript" src="{{ asset('styleWeb/assets/js/popper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('styleWeb/assets/bootstrap/js/bootstrap.min.js') }}"></script>
 
-    <!-- Placed at the end of the document so the pages load faster -->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="{{ asset('styleWeb/assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    @flashScript
+    @flashRender
 
     @yield('js')
 
+    <script src="{{ asset('styleWeb/assets/js/selectize.min.js') }}"></script>
+    <script src="{{ asset('styleWeb/assets/js/icheck.min.js') }}"></script>
+    <script src="{{ asset('styleWeb/assets/js/custom.js') }}"></script>
 </body>
 
 </html>
