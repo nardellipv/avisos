@@ -6,6 +6,7 @@ use App\Favorite;
 use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
+use Jambasangsang\Flash\Facades\LaravelFlash;
 
 class FavoriteController extends Controller
 {
@@ -32,7 +33,7 @@ class FavoriteController extends Controller
             'service_id' => $id
         ]);
 
-        toast()->success('Servicio agregado como favorito correctamente');
+        LaravelFlash::withInfo('Servicio agregado como favorito correctamente');
         return back();
     }
 
@@ -44,7 +45,7 @@ class FavoriteController extends Controller
 
         $favorite->delete();
 
-        toast()->success('Servicio favorito eliminado correctamente');
+        LaravelFlash::withInfo('Servicio favorito eliminado correctamente');
         return back();
     }
 }

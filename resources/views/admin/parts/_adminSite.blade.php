@@ -16,6 +16,14 @@
                                 class="btn btn-outline-secondary btn-lg">Generar
                                 Site Map</a>
                         </div>
+                        <div class="buttons">
+                            <a href="{{ route('exports.exportAllUsers') }}"
+                                class="btn btn-icon icon-left btn-warning"><i class="far fa-user"></i> Exportar Todos</a>
+                            <a href="{{ route('exports.exportAnnun') }}"
+                                class="btn btn-icon icon-left btn-warning"><i class="far fa-user"></i> Exportar Anunciantes</a>
+                            <a href="{{ route('exports.exportClient') }}"
+                                class="btn btn-icon icon-left btn-warning"><i class="far fa-user"></i> Exportar Clientes</a>
+                        </div>
                     </div>
                 </div>
             </div>

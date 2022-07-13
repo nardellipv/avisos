@@ -12,6 +12,7 @@ use App\TempSponsor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
+use Jambasangsang\Flash\Facades\LaravelFlash;
 
 class ServiceController extends Controller
 {
@@ -53,7 +54,7 @@ class ServiceController extends Controller
             Mail::to($service->user->email)->send(new statusServiceMail($service));
         }
 
-        toast()->success('Servicio Activado');
+        LaravelFlash::withInfo('Servicio Activado');
         return back();
     }
 
@@ -81,7 +82,7 @@ class ServiceController extends Controller
             Mail::to($service->user->email)->send(new ActiveServiceSponsorMail($service));
         }
 
-        toast()->success('Servicio Activado');
+        LaravelFlash::withInfo('Servicio Activado');
         return back();
     }
 
@@ -98,7 +99,7 @@ class ServiceController extends Controller
             Mail::to($pausedService->user->email)->send(new RepublishServiceMail($pausedService));
         }
 
-        toast()->success('Servicios Reactivados');
+        LaravelFlash::withInfo('Servicios Reactivados');
         return back();
     }
 
@@ -108,7 +109,7 @@ class ServiceController extends Controller
         $service->status = 'Desactivo';
         $service->save();
 
-        toast()->success('Servicio Desactivado');
+        LaravelFlash::withInfo('Servicio Desactivado');
         return back();
     }
 
@@ -117,7 +118,7 @@ class ServiceController extends Controller
         $service = Service::find($id);
         $service->delete();
 
-        toast()->success('Servicio eliminado');
+        LaravelFlash::withInfo('Servicio eliminado');
         return back();
     }
 }

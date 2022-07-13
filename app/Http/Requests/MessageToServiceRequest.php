@@ -28,6 +28,7 @@ class MessageToServiceRequest extends FormRequest
             'serviceUser' => 'required',
             'email' => 'required',
             'messageService' => 'required | min:10 | max:200',
+            'g-recaptcha-response' => 'recaptcha',
         ];
     }
     public function messages()
@@ -40,6 +41,7 @@ class MessageToServiceRequest extends FormRequest
             'messageService.required' => 'El Mensaje es requerido',
             'messageService.min' => 'La Mesaje es muy corto',
             'messageService.max' => 'La Mesaje es muy largo, máximo 200',
+            'g-recaptcha-response.recaptcha' => 'El captcha es necesario.'
         ];
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\adminSite;
 use App\Http\Controllers\Controller;
 use App\Notification;
 use Illuminate\Http\Request;
+use Jambasangsang\Flash\Facades\LaravelFlash;
 
 class NotificationController extends Controller
 {
@@ -23,7 +24,7 @@ class NotificationController extends Controller
             'date' => $request['date'],
         ]);
 
-        toast()->success('Notificación Creada');
+        LaravelFlash::withInfo('Notificación Creada');
         return back();
     }
 }

@@ -55,6 +55,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/anunciate/{id}', 'adminUser\DashboardController@changeType')->name('dashboard.changeType');
 
     Route::get('/dashboard/cliente', 'adminUser\DashboardController@profile')->name('dashboard.clientProfile');
+    Route::get('/dashboard/datos-personales/{id}/{name}', 'adminUser\DashboardController@personalData')->name('dashboard.personalData');
     Route::post('/dashboard/cliente/modificar/{id}', 'adminUser\ProfileController@updateProfile')->name('profile.updateProfile');
     Route::post('/dashboard/cliente/modificar-password', 'adminUser\ProfileController@updatePassword')->name('profile.updatePassword');
     Route::post('/dashboard/cliente/newsletters', 'adminUser\ProfileController@updateNewsLetters')->name('profile.updateNewsLetters');
@@ -78,8 +79,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/eliminar-servicio/{id}', 'adminUser\ServiceController@deleteService')->name('service.delete');
     
     Route::get('/mensajes', 'adminUser\MessageController@listMessage')->name('message.list');
-    Route::get('/mensajes/responder/{id}', 'adminUser\MessageController@responseMessage')->name('message.response');
-    Route::post('/mensajes/responder/email', 'EmailController@responseMessageSendEmail')->name('message.responseSendEmail');
+    Route::post('/mensajes/responder/{id}', 'adminUser\MessageController@responseMessage')->name('message.response');
+    // Route::get('/mensajes/responder/email', 'EmailController@responseMessageSendEmail')->name('message.responseSendEmail');
     Route::get('/mensajes/eliminar/{id}', 'adminUser\MessageController@deleteMessage')->name('message.delete');
     
     Route::get('/favoritos', 'adminUser\FavoriteController@listFavorite')->name('favorite.list');
@@ -107,4 +108,8 @@ Route::middleware(['auth','AdminSite'])->group(function () {
 
     Route::get('/admin/notificaciones/', 'adminSite\NotificationController@listNotification')->name('adminNotification.listNotification');
     Route::post('/admin/crear-notificacion/', 'adminSite\NotificationController@createNotification')->name('adminNotification.createNotification');
+
+    Route::get('/admin/exportar-usuarios/', 'adminSite\ExportController@exportAllUsers')->name('exports.exportAllUsers');
+    Route::get('/admin/exportar-anunciantes/', 'adminSite\ExportController@exportAnnun')->name('exports.exportAnnun');
+    Route::get('/admin/exportar-clientes/', 'adminSite\ExportController@exportClient')->name('exports.exportClient');
 });

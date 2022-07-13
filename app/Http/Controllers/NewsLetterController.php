@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddNewsLetterRequest;
 use App\NewsLetter;
-use Illuminate\Http\Request;
+use Jambasangsang\Flash\Facades\LaravelFlash;
 
 class NewsLetterController extends Controller
 {
@@ -15,7 +15,7 @@ class NewsLetterController extends Controller
             'email' => $request['email'],
         ]);
 
-        toast()->info('Gracias por suscribirte!');
+        LaravelFlash::withInfo('Gracias por suscribirte!');
         return back();
     }
 }

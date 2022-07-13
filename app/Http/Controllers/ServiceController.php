@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\statusServiceMail;
 use Illuminate\Support\Facades\Storage;
+use Jambasangsang\Flash\Facades\LaravelFlash;
 
 class ServiceController extends Controller
 {
@@ -24,12 +25,12 @@ class ServiceController extends Controller
         $this->publicDays = Storage::disk('public')->get('dayPublic.txt');
         $this->sponsorDays = Storage::disk('public')->get('daySponsor.txt');
     }
-    
+
     public function service($slug, $ref)
     {
         $service = Service::where('slug', $slug)
             ->where('ref', $ref)
-            ->where('status', 'Activo')
+            // ->where('status', 'Activo')
             ->first();
 
         // SEO
@@ -69,9 +70,10 @@ class ServiceController extends Controller
 
         $comments = Comment::with(['user'])
             ->where('comments.service_id', $service->id)
+            ->orderBy('created_at', 'DESC')
             ->get();
 
-        $services = Service::with(['region','user'])
+        $services = Service::with(['region', 'user'])
             ->where('status', 'Activo')
             ->take(3)
             ->orderBy('created_at', 'DESC')
@@ -88,13 +90,13 @@ class ServiceController extends Controller
         Cookie::queue('vote' . $id, '1');
 
         if (Cookie::get('vote' . $id) == 1) {
-            toast()->warning('Ya votaste este servicio');
+            LaravelFlash::withWarning('Ya votaste este servicio');
             return back();
         }
 
         Service::find($id)->increment('like');
 
-        toast()->success('Gracias por Votar');
+        LaravelFlash::withInfo('Gracias por Votar');
         return back();
     }
 

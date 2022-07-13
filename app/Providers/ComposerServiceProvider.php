@@ -109,19 +109,5 @@ class ComposerServiceProvider extends ServiceProvider
                 ]);
             }
         });
-
-
-        View::composer([
-            'web.parts._menu',
-        ], function ($view) {
-
-            $weather = new OpenWeather();
-            $temp = $weather->getCurrentWeatherByCityName('Mendoza', 'metric');
-
-            $view->with([
-                'temp' => $temp,
-            ]);
-        });
-
     }
 }

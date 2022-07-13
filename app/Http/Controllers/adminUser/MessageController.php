@@ -3,9 +3,14 @@
 namespace App\Http\Controllers\adminUser;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ResponseMailClientRequest;
+use App\Mail\ResponseServiceMail;
 use App\Message;
+use App\Service;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
+use Illuminate\Support\Facades\Mail;
+use Jambasangsang\Flash\Facades\LaravelFlash;
 
 class MessageController extends Controller
 {
@@ -17,22 +22,43 @@ class MessageController extends Controller
         OpenGraph::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
         OpenGraph::setTitle('Avisos Mendoza');
 
-        $messages = Message::where('user_id', userConnect()->id)
+        $messagesNoRead = Message::where('user_id', userConnect()->id)
+            ->where('read', 'N')
             ->get();
 
-        return view('web.adminUser.message.listMessage', compact('messages'));
+        $messagesRead = Message::where('user_id', userConnect()->id)
+            ->where('read', 'y')
+            ->get();
+
+        return view('web.adminUser.message.listMessage', compact('messagesNoRead','messagesRead'));
     }
 
-    public function responseMessage($id)
+    public function responseMessage(ResponseMailClientRequest $request, $id)
     {
         $message = Message::find($id);
 
         $this->authorize('ownerMessage', $message);
 
+        $message->response = $request['response'];
+        $message->save();
+
         $message->read = 'Y';
         $message->save();
 
-        return view('web.adminUser.message.response', compact('message'));
+        $service = Service::where('user_id', userConnect()->id)
+            ->first();
+
+        $data = [
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'messageResponse' => $request['response'],
+            'title' => $service->title,
+        ];
+
+        Mail::to($message->email)->send(new ResponseServiceMail($data));
+
+        LaravelFlash::withInfo('Mensaje enviado correctamente');
+        return back();
     }
 
     public function deleteMessage($id)
@@ -43,7 +69,7 @@ class MessageController extends Controller
 
         $messages->delete();
 
-        toast()->success('Mensaje eliminado correctamente');
+        LaravelFlash::withInfo('Mensaje eliminado correctamente');
         return back();
     }
 }

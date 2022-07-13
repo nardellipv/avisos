@@ -12,6 +12,7 @@ use App\User;
 use Illuminate\Support\Facades\Cookie;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
+use Jambasangsang\Flash\Facades\LaravelFlash;
 
 class DashboardController extends Controller
 {
@@ -25,8 +26,6 @@ class DashboardController extends Controller
 
         $user = User::where('id', userConnect()->id)
             ->first();
-
-        $regions = Region::all();
 
         $countVisit = Service::where('user_id', $user->id)
             ->sum('visit');
@@ -43,6 +42,7 @@ class DashboardController extends Controller
             ->count();
 
         $notificationList = Notification::where('date', '>=', now())
+            ->orderBy('created_at', 'DESC')
             ->get();
 
 
@@ -56,14 +56,26 @@ class DashboardController extends Controller
         Cookie::queue('login', 'ingreso', '2628000');
 
         return view('web.adminUser.dashboard.indexUser', compact(
-            'user',
-            'regions',
+            'user',            
             'countVisit',
             'countFavorite',
             'countService',
             'countServiceSponsor',
             'notificationList'
         ));
+    }
+
+    public function personalData($id, $name)
+    {
+        $user = User::where('id', $id)
+            ->where('name', $name)
+            ->first();
+
+        $this->authorize('updateClient', $user);
+
+        $regions = Region::all();
+
+        return view('web.adminUser.profile.editProfile', compact('user','regions'));
     }
 
     public function changeType($id)
@@ -75,7 +87,7 @@ class DashboardController extends Controller
         $user->type = 'Anunciante';
         $user->save();
 
-        toast()->success('Cambiaste el tipo de usuario a Anunciante');
+        LaravelFlash::withInfo('Cambiaste el tipo de usuario a Anunciante');
         return back();
     }
 }

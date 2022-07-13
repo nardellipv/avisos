@@ -32,8 +32,7 @@ class JobSiteController extends Controller
 
     public function serviceChangeStatus()
     {
-        $serviceChangeStatus = Service::with(['user'])
-            ->where('end_date', now()->format('Y-m-d'))
+        $serviceChangeStatus = Service::where('end_date', now()->format('Y-m-d'))
             ->where('status', 'Activo')
             ->get();
 
