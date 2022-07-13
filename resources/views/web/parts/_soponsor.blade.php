@@ -45,7 +45,7 @@
                 @endforeach
             </div>
             @else
-            <img id="sponsorImage" src="{{ asset('styleWeb/assets/img/sponsor.png') }}"
+            <img src="{{ asset('styleWeb/assets/img/sponsor.png') }}"
                 class="image-wrapper background-image">
             @endif
         </div>
