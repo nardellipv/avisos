@@ -78,7 +78,7 @@
                 <section>
                     <label for="description" class="col-form-label required">Descripción</label>
                     <div class="form-group">
-                        <textarea name="description" id="description" class="form-control" rows="4"></textarea>
+                        <textarea name="description" id="description" class="form-control" rows="4">{{ old('description') }}</textarea>
                     </div>
                     <small>Ingresar un mínimo de 100 caracteres. </small>
                 </section>

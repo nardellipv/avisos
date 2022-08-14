@@ -14,7 +14,6 @@ class MessageController extends Controller
 {
     public function sendMessage(MessageToServiceRequest $request)
     {
-// dd($request->all());
         $service = Service::where('id', $request['serviceUser'])
             ->first();
 

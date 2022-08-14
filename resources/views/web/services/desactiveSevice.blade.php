@@ -8,8 +8,8 @@
                 <div class="col-md-9">
                     <div class="section-title clearfix">
                         <div class="float-left float-xs-none">
-                            <h3 class="mr-3 align-text-bottom">{{ basename(Request::url()) != 'listado' ? $category->name : 'Todos los
-                                servicios' }} - <small> {{ $serviceCount }} encontrados</small></h3>
+                            <h3 class="mr-3 align-text-bottom">El servicio no se encuentra actualmente activo, pero puedes ver 
+                                el siguiente listado de servicios.</h3>
                         </div>
                     </div>
                     <div class="items list grid-xl-3-items grid-lg-3-items grid-md-2-items">

@@ -12,15 +12,12 @@ class HomeController extends Controller
 {
     public function index()
     {
-        SEOMeta::setTitle('Avisos Mendoza ' . date('Y'));
+        SEOMeta::setTitle('Avisos Clasificados Mendoza ' . date('Y'));
         SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
 
         SEOMeta::addKeyword([
-            'Clasificados', 'Avisos Clasificados', 'Mendoza', 'Mendoza Trabajo', 'Mendoza Clasificados',
-            'Avisos en Mendoza', 'Clasificados Los Andes', 'Clasificados diario uno', 'alquileres en mendoza',
-            'clasificados mendoza', 'clasificados mendoza para caseros', 'clasificados alamaula mendoza',
-            'clasificados mendoza empleos', 'avisos clasificados de mendoza', 'clasificados mendoza facebook',
-            'clasificados de hoy mendoza', 'clasificados mendoza trabajo'
+            'Mendoza Trabajo', 'Mendoza Clasificados', 'Clasificados Los Andes', 'Clasificados diario uno', 
+            'avisos clasificados de mendoza', 'Clasificados Mendoza alquileres'
         ]);
 
         OpenGraph::setDescription('Llegá a más mendocinos publicando tu servicio totalmente gratis');

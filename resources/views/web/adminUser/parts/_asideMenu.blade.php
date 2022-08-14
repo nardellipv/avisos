@@ -10,7 +10,7 @@
         </a>
         @if (userConnect()->type == 'Admin')
         <a class="nav-link icon" href="{{ route('adminDashboard.index') }}" target="_blank">
-            <i class="fa fa-user"></i>Aministración
+            <i class="fa fa-user"></i>Administración
         </a>
         @endif
         <a class="nav-link icon {{ Route::current()->getName() == 'favorite.list' ? 'active' : '' }}"
