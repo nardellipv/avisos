@@ -30,8 +30,13 @@ class ServiceController extends Controller
     {
         $service = Service::where('slug', $slug)
             ->where('ref', $ref)
-            // ->where('status', 'Activo')
+            ->where('status', 'Activo')
             ->first();
+
+
+        if ($service == NULL) {
+            return redirect()->action('ServiceController@desactiveService');
+        }
 
         // SEO
         SEOMeta::setTitle($service->title);
@@ -40,11 +45,8 @@ class ServiceController extends Controller
         SEOMeta::addMeta('Servicio Creado', $service->created_at->toW3CString(), 'property');
         SEOMeta::addMeta('Categoría', $service->category->name, 'property');
         SEOMeta::addKeyword([
-            'Clasificados', 'Avisos Clasificados', 'Mendoza', 'Mendoza Trabajo', 'Mendoza Clasificados',
-            'Avisos en Mendoza', 'Clasificados Los Andes', 'Clasificados diario uno', 'alquileres en mendoza',
-            'clasificados mendoza', 'clasificados mendoza para caseros', 'clasificados alamaula mendoza',
-            'clasificados mendoza empleos', 'avisos clasificados de mendoza', 'clasificados mendoza facebook',
-            'clasificados de hoy mendoza', 'clasificados mendoza trabajo'
+            'Mendoza Trabajo', 'Mendoza Clasificados', 'Clasificados Los Andes', 'Clasificados diario uno', 
+            'avisos clasificados de mendoza', 'Clasificados Mendoza alquileres'
         ]);
 
         OpenGraph::setUrl('htts://avisosmendoza.com.ar/servicio/' . $service->slug . '/referencia/' . $service->ref);
@@ -144,5 +146,18 @@ class ServiceController extends Controller
         $service->save();
 
         Mail::to($service->user->email)->send(new ActiveServiceSponsorMail($service));
+    }
+
+    public function desactiveService()
+    {
+        $services = Service::with(['region', 'category', 'user'])
+        ->withCount('Comment')
+        ->where('status', 'Activo')
+        ->where('end_date', '>=', now())            
+        ->orderBy('publish', 'DESC')
+        ->orderBy('created_at', 'DESC')
+        ->paginate(10);
+
+        return view('web.services.desactiveSevice', compact('services'));
     }
 }

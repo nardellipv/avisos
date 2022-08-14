@@ -19,7 +19,7 @@ class FavoriteController extends Controller
         OpenGraph::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
         OpenGraph::setTitle('Avisos Mendoza');
 
-        $favorites = Favorite::with(['service', 'service.region', 'service.user'])
+        $favorites = Favorite::with(['service', 'service.region', 'service.user', 'service.category'])
             ->where('user_id', userConnect()->id)
             ->get();
 

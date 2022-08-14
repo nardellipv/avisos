@@ -39,18 +39,18 @@
     </div>
 
     <script src="{{ asset('styleWeb/assets/js/jquery-3.3.1.min.js') }}"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+    {{--  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>  --}}
     <script type="text/javascript" src="{{ asset('styleWeb/assets/js/popper.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('styleWeb/assets/bootstrap/js/bootstrap.min.js') }}"></script>
 
-    @flashScript
-    @flashRender
-
     @yield('js')
-
+    
     <script src="{{ asset('styleWeb/assets/js/selectize.min.js') }}"></script>
     <script src="{{ asset('styleWeb/assets/js/icheck.min.js') }}"></script>
     <script src="{{ asset('styleWeb/assets/js/custom.js') }}"></script>
+    
+    @flashScript
+    @flashRender
 </body>
 
 </html>

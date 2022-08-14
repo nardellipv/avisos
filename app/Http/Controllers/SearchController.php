@@ -24,11 +24,8 @@ class SearchController extends Controller
         SEOMeta::setDescription('Listado completo de servicios ofrecidos en Mendoza');
 
         SEOMeta::addKeyword([
-            'Clasificados', 'Avisos Clasificados', 'Mendoza', 'Mendoza Trabajo', 'Mendoza Clasificados',
-            'Avisos en Mendoza', 'Clasificados Los Andes', 'Clasificados diario uno', 'alquileres en mendoza',
-            'clasificados mendoza', 'clasificados mendoza para caseros', 'clasificados alamaula mendoza',
-            'clasificados mendoza empleos', 'avisos clasificados de mendoza', 'clasificados mendoza facebook',
-            'clasificados de hoy mendoza', 'clasificados mendoza trabajo'
+            'Mendoza Trabajo', 'Mendoza Clasificados', 'Clasificados Los Andes', 'Clasificados diario uno', 
+            'avisos clasificados de mendoza', 'Clasificados Mendoza alquileres'
         ]);
 
         return view('web.search.search', compact('services'));
@@ -44,11 +41,8 @@ class SearchController extends Controller
         SEOMeta::setCanonical('https://avisosmendoza.com.ar/listado/localidad/' . $region->slug);
 
         SEOMeta::addKeyword([
-            'Clasificados', 'Avisos Clasificados', 'Mendoza', 'Mendoza Trabajo', 'Mendoza Clasificados',
-            'Avisos en Mendoza', 'Clasificados Los Andes', 'Clasificados diario uno', 'alquileres en mendoza',
-            'clasificados mendoza', 'clasificados mendoza para caseros', 'clasificados alamaula mendoza',
-            'clasificados mendoza empleos', 'avisos clasificados de mendoza', 'clasificados mendoza facebook',
-            'clasificados de hoy mendoza', 'clasificados mendoza trabajo'
+            'Mendoza Trabajo', 'Mendoza Clasificados', 'Clasificados Los Andes', 'Clasificados diario uno', 
+            'avisos clasificados de mendoza', 'Clasificados Mendoza alquileres'
         ]);
 
         $services = Service::with(['region', 'category', 'user'])

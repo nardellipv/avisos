@@ -22,6 +22,8 @@ Route::get('/listado/{slug}/subcategoria/{id}', 'CategoryController@listSubCateg
 Route::get('/listado/voto/{id}', 'ServiceController@vote')->name('service.vote');
 
 Route::get('/servicio/{slug}/referencia/{ref}', 'ServiceController@service')->name('service');
+Route::get('/servicio/desactivo', 'ServiceController@desactiveService')->name('service.desactive');
+
 // aprobar
 Route::get('/activar-servicio-mail/{id}/{ref}', 'ServiceController@serviceActiveEmail')->name('adminService.activeByEmail');
 Route::get('/activar-servicio-mail-destacado/{id}/{ref}', 'ServiceController@serviceActiveEmailSponsor')->name('adminService.activeByEmailSponsor');

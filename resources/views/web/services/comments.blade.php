@@ -68,7 +68,7 @@
         </div>
     </form>
     @else
-    <h4>Necesitas estar logueado para poder comentar</h4>
+    <h4 class="text text-center"><mark>Necesitas estar logueado para poder comentar</mark></h4>
     <form role="form" class="loginForm" method="POST" action="{{ route('login') }}">
         @csrf
         <div class="form-group">

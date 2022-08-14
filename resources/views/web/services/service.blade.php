@@ -101,29 +101,7 @@
                                     <dt>Cantidad de Votos:</dt>
                                     <dd>{{ $service->like }}</dd>
                                 </dl>
-                                <form class="form email" action="{{ route('message.send') }}" method="POST">
-                                    @csrf
-                                    <div class="form-group">
-                                        <label for="name" class="col-form-label">Nombre</label>
-                                        <input name="name" type="text" class="form-control" id="name"
-                                            placeholder="Tu Nombre" required value="{{ old('name') }}">
-                                        <input name="serviceUser" value="{{ $service->id }}" required readonly hidden>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email" class="col-form-label">Email</label>
-                                        <input name="email" type="email" class="form-control" id="email"
-                                            placeholder="Tu Email" required value="{{ old('email') }}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="message" class="col-form-label">Mensaje <small>(200)</small></label>
-                                        <textarea name="messageService" id="message" class="form-control" rows="4"
-                                            placeholder="Tu Mensaje">{{ old('messageService') }}</textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        {!! htmlFormSnippet() !!}
-                                    </div>
-                                    <button type="submit" class="btn btn-primary btn-block">Enviar</button>
-                                </form>
+                                @include('web.services._message')
                             </div>
                         </section>
                         <section>
