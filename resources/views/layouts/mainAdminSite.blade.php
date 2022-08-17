@@ -13,6 +13,7 @@
     <!-- Custom style CSS -->
 
     @yield('css')
+    @flashStyle
     <link rel="stylesheet" href="{{ asset('admin/assets/css/custom.css') }}">
     <link rel="shortcut icon" href="{{ asset('styleWeb/assets/ico/favicon-32x32.png') }}">
 </head>
@@ -49,5 +50,8 @@
     @yield('js')
     <!-- Custom JS File -->
     <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
+
+    @flashScript
+    @flashRender
 </body>
 </html>
