@@ -114,4 +114,7 @@ Route::middleware(['auth','AdminSite'])->group(function () {
     Route::get('/admin/exportar-usuarios/', 'adminSite\ExportController@exportAllUsers')->name('exports.exportAllUsers');
     Route::get('/admin/exportar-anunciantes/', 'adminSite\ExportController@exportAnnun')->name('exports.exportAnnun');
     Route::get('/admin/exportar-clientes/', 'adminSite\ExportController@exportClient')->name('exports.exportClient');
+    
+    Route::get('/admin/listado-mensajes/', 'adminSite\MessageController@listAdminMessage')->name('AdminMessage.list');
+    Route::get('/admin/eliminar-mensajes/{id}', 'adminSite\MessageController@deleteAdminMessage')->name('AdminMessage.delete');
 });

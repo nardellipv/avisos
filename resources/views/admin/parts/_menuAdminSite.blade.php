@@ -19,6 +19,10 @@
                 <a href="{{ route('adminNotification.listNotification') }}" class="nav-link"><i
                         data-feather="bookmark"></i><span>Notificationes</span></a>
             </li>
+            <li>
+                <a href="{{ route('AdminMessage.list') }}" class="nav-link"><i
+                        data-feather="message-square"></i><span>Mensajes</span></a>
+            </li>
         </ul>
     </aside>
 </div>

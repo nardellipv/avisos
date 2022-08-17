@@ -39,7 +39,7 @@ class MessageController extends Controller
 
         Mail::to($user->email)->send(new ContactServiceMail($data));
 
-        LaravelFlash::withInfo('El mensaje se envió correctamente');
+        LaravelFlash::withInfo('El mensaje se envió correctamente. La respuesta llegará a tu email, revisá la carpeta SPAM');
         return back();
     }
 }
