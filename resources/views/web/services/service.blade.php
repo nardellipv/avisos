@@ -112,7 +112,7 @@
                                     @if($service->publish == 'Destacado')
                                     <div class="ribbon-featured">Recomendado</div>
                                     @endif
-                                    <div class="wrapper">
+                                    <div class="wrapper" {{ $service->category_id == 12 || $service->category_id == 13 ? "style=background:honeydew;" : ""}}>
                                         <div class="image">
                                             <h3>
                                                 <a href="{{ route('service', [$service->slug, $service->ref]) }}"

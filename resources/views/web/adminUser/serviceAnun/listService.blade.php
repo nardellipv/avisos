@@ -16,7 +16,8 @@
                             <div class="wrapper">
                                 <div class="image">
                                     <h3>
-                                        <a href="{{ route('service', [$service->slug, $service->ref]) }}" class="title">{{
+                                        <a href="{{ route('service', [$service->slug, $service->ref]) }}"
+                                            class="title">{{
                                             Str::limit($service->title, 50) }}</a>
                                     </h3>
                                     @if ($service->photo)
@@ -52,11 +53,13 @@
                                         </li>
                                         <li>
                                             <figure>Actualizado</figure>
-                                            <aside>{{ \Carbon\Carbon::parse($service->updated_at)->diffForHumans() }}</aside>
+                                            <aside>{{ \Carbon\Carbon::parse($service->updated_at)->diffForHumans() }}
+                                            </aside>
                                         </li>
                                         <li>
                                             <figure>Finaliza</figure>
-                                            <aside>{{ \Carbon\Carbon::parse($service->end_date)->format('d/m/Y') }}</aside>
+                                            <aside>{{ \Carbon\Carbon::parse($service->end_date)->format('d/m/Y') }}
+                                            </aside>
                                         </li>
                                         <li>
                                             <figure>Estado</figure>
@@ -64,7 +67,9 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <a href="{{ route('service', [$service->slug, $service->ref]) }}" class="detail text-caps underline">Ir al Servicio</a>
+                                <a href="{{ route('service', [$service->slug, $service->ref]) }}"
+                                    class="detail text-caps underline">{{ $service->category_id == 12 ||
+                                    $service->category_id == 13 ? 'Ver Trabajo' : 'Ver Servicio' }}</a>
                             </div>
                         </div>
                         @endforeach

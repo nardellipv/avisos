@@ -7,7 +7,7 @@
                 @foreach($servicesPublish as $servicePublish)
                 <div class="item">
                     <div class="ribbon-featured">Recomendado</div>
-                    <div class="wrapper">
+                    <div class="wrapper" {{ $servicePublish->category_id == 12 || $servicePublish->category_id == 13 ? "style=background:honeydew;" : ""}}>
                         <div class="image">
                             <h3>
                                 <a href="{{ route('service', [$servicePublish->slug, $servicePublish->ref]) }}" class="title">{{
@@ -39,7 +39,7 @@
                             <p>{{ Str::limit($servicePublish->description, 100) }}</p>
                         </div>
                         <a href="{{ route('service', [$servicePublish->slug, $servicePublish->ref]) }}"
-                            class="detail text-caps underline">Ver Servicio</a>
+                            class="detail text-caps underline">{{ $servicePublish->category_id == 12 || $servicePublish->category_id == 13 ? 'Ver Trabajo' : 'Ver Servicio' }}</a>
                     </div>
                 </div>
                 @endforeach

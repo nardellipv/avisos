@@ -62,7 +62,7 @@
                                     </ul>
                                 </div>
                                 <a href="{{ route('service', [$favorite->service->slug, $favorite->service->ref]) }}"
-                                    class="detail text-caps underline">Ir al Servicio</a>
+                                    class="detail text-caps underline">{{ $service->category_id == 12 || $service->category_id == 13 ? 'Ver Trabajo' : 'Ver Servicio' }}</a>
                             </div>
                         </div>
                         @empty

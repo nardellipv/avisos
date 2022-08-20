@@ -18,7 +18,7 @@
                             @if($service->publish == 'Destacado')
                             <div class="ribbon-featured">Recomendado</div>
                             @endif
-                            <div class="wrapper">
+                            <div class="wrapper" {{ $service->category_id == 12 || $service->category_id == 13 ? "style=background:honeydew;" : ""}}>
                                 <div class="image">
                                     <h3>
                                         <a href="{{ route('service', [$service->slug, $service->ref]) }}" class="title">{{
@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                             <a href="{{ route('service', [$service->slug, $service->ref]) }}"
-                                class="detail text-caps underline">Ver Servicio</a>
+                                class="detail text-caps underline">{{ $service->category_id == 12 || $service->category_id == 13 ? 'Ver Trabajo' : 'Ver Servicio' }}</a>
                         </div>
                         @endforeach
                     </div>
