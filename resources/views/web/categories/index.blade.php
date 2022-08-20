@@ -8,7 +8,8 @@
                 <div class="col-md-9">
                     <div class="section-title clearfix">
                         <div class="float-left float-xs-none">
-                            <h3 class="mr-3 align-text-bottom">{{ basename(Request::url()) != 'listado' ? $category->name : 'Todos los
+                            <h3 class="mr-3 align-text-bottom">{{ basename(Request::url()) != 'listado' ?
+                                $category->name : 'Todos los
                                 servicios' }} - <small> {{ $serviceCount }} encontrados</small></h3>
                         </div>
                     </div>
@@ -18,10 +19,12 @@
                             @if($service->publish == 'Destacado')
                             <div class="ribbon-featured">Recomendado</div>
                             @endif
-                            <div class="wrapper">
+                            <div class="wrapper" {{ $service->category_id == 12 || $service->category_id == 13 ?
+                                "style=background:honeydew;" : ""}}>
                                 <div class="image">
                                     <h3>
-                                        <a href="{{ route('service', [$service->slug, $service->ref]) }}" class="title">{{
+                                        <a href="{{ route('service', [$service->slug, $service->ref]) }}"
+                                            class="title">{{
                                             Str::limit($service->title, 29) }}</a>
                                     </h3>
                                     @if ($service->photo)
@@ -38,7 +41,8 @@
                                 </h4>
                                 <div class="meta">
                                     <figure>
-                                        <i class="fa fa-calendar-o"></i>Publicado {{ $service->created_at->format('d.m.Y') }}
+                                        <i class="fa fa-calendar-o"></i>Publicado {{
+                                        $service->created_at->format('d.m.Y') }}
                                     </figure>
                                     <figure>
                                         <a href="#">
@@ -56,7 +60,8 @@
                                 </div>
                             </div>
                             <a href="{{ route('service', [$service->slug, $service->ref]) }}"
-                                class="detail text-caps underline">Ver Servicio</a>
+                                class="detail text-caps underline">{{ $service->category_id == 12 ||
+                                $service->category_id == 13 ? 'Ver Trabajo' : 'Ver Servicio' }}</a>
                         </div>
                         @endforeach
                     </div>
