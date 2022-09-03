@@ -13,7 +13,8 @@
                             @if($service->publish == 'Destacado')
                             <div class="ribbon-featured">Destacado</div>
                             @endif
-                            <div class="wrapper">
+                            <div class="wrapper" {{ $service->category_id == 12 || $service->category_id == 13 ?
+                                "style=background:honeydew;" : ""}}>
                                 <div class="image">
                                     <h3>
                                         <a href="{{ route('service', [$service->slug, $service->ref]) }}"
@@ -63,7 +64,7 @@
                                         </li>
                                         <li>
                                             <figure>Estado</figure>
-                                            <aside>{{ $service->status }}</aside>
+                                            <aside {{ $service->status != 'Activo' ? "style=background:red;" : ""}}>{{ $service->status }}</aside>
                                         </li>
                                     </ul>
                                 </div>

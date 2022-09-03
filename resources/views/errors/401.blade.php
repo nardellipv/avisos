@@ -1,45 +1,114 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Avisos Mendoza</title>
-    <!--meta tags -->
-    <meta charset="UTF-8">    
-    <script async type="application/x-javascript">
-        addEventListener("load", function() {
-            setTimeout(hideURLbar, 0);
-        }, false);
 
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
+	<meta charset="UTF-8">
+	<title>Avisos Mendoza</title>
 
-    </script>
-    <!-- //for-mobile-apps -->
-    <link href="{{ asset('styleWeb/assets/errors/css/style-min.css') }}" rel="stylesheet" type="text/css" media="all" />
-    <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
-        rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Dancing+Script:400,700&amp;subset=latin-ext,vietnamese"
-        rel="stylesheet">
+
+	<style>
+		@import 'https://fonts.googleapis.com/css?family=VT323';
+
+		body,
+		h1,
+		h2,
+		h3,
+		h4,
+		p,
+		a {
+			color: #e0e2f4;
+		}
+
+		body,
+		p {
+			font: normal 20px/1.25rem "VT323", monospace;
+		}
+
+		h1 {
+			font: normal 2.75rem/1.05em "VT323", monospace;
+		}
+
+		h2 {
+			font: normal 2.25rem/1.25em "VT323", monospace;
+		}
+
+		h3 {
+			font: lighter 1.5rem/1.25em "VT323", monospace;
+		}
+
+		h4 {
+			font: lighter 1.125rem/1.2222222em "VT323", monospace;
+		}
+
+		body {
+			background: #0414a7;
+		}
+
+		.container {
+			width: 90%;
+			margin: auto;
+			max-width: 640px;
+		}
+
+		.bsod {
+			padding-top: 10%;
+		}
+
+		.bsod .neg {
+			text-align: center;
+			color: #0414a7;
+		}
+
+		.bsod .neg .bg {
+			background: #aaaaaa;
+			padding: 0 15px 2px 13px;
+		}
+
+		.bsod .title {
+			margin-bottom: 50px;
+		}
+
+		.bsod .nav {
+			margin-top: 35px;
+			text-align: center;
+		}
+
+		.bsod .nav .link {
+			text-decoration: none;
+			padding: 0 9px 2px 8px;
+		}
+
+		.bsod .nav .link:hover,
+		.bsod .nav .link:focus {
+			background: #aaaaaa;
+			color: #0414a7;
+		}
+	</style>
+
+	<script>
+		window.console = window.console || function(t) {};
+	</script>
+
+
+
+	<script>
+		if (document.location.search.match(/type=embed/gi)) {
+	  window.parent.postMessage("resize", "*");
+	}
+	</script>
+
 </head>
 
-<body>
-    <div class="animating-bg"></div>
-    <div class="main-heading">
-        <h3>Estamos mejorando el sitio</h3>
-    </div>
-    <div class="main">
-        <h1>503</h1>
-        <h2>ooops, Estamos realizando mejoras al sitio, ya volvemos!!!</h2>
-        <div class="more_w3ls">
-            <a href="{{ route('home') }}">volver</a>
-        </div>
-        <div class="wthree_social_icons">
-            <div>
-                <a href="https://www.facebook.com/avisosmendozaOk"><span>Facebook</span></a>
-            </div>
-        </div>
-    </div>
-</body>
+<body translate="no">
+	<main class="bsod container">
+		<h1 class="neg title"><span class="bg">Error - 401</span></h1>
+		<p>Estamos realizando mejoras al sitio, ya volvemos!!!</p>
+		<p>Le pedimos disculpas, si continua el error puede enviar un email a:</p>
+		<p>* info@avisosmendoza.com.ar</p>
+		<nav class="nav">
+			<a href="{{ route('home') }}" class="link">Volver al inicio</a>
+		</nav>
+	</main>
 
+</body>
 </html>

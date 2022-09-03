@@ -23,9 +23,6 @@ class MessagePolicy
 
     public function ownerMessage(User $user, Message $message)
     {
-        $service = Service::where('user_id', $user->id)
-        ->first();
-
-        return $service->id == $message->service_id;
+        return $user->id == $message->user_id;
     }
 }

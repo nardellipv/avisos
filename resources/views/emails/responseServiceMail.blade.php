@@ -1,398 +1,754 @@
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office"
-    xmlns:v="urn:schemas-microsoft-com:vml">
+<html>
 
 <head>
-    <!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-    <meta content="width=device-width" name="viewport" />
-    <!--[if !mso]><!-->
-    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-    <!--<![endif]-->
-    <title></title>
-    <!--[if !mso]><!-->
-    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css" />
-    <!--<![endif]-->
-    <style type="text/css">
-        body {
-            margin: 0;
-            padding: 0;
-        }
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+    <title>Notify</title>
 
-        table,
-        td,
-        tr {
-            vertical-align: top;
-            border-collapse: collapse;
+    <style type="text/css">
+        div,
+        p,
+        a,
+        li,
+        td {
+            -webkit-text-size-adjust: none;
         }
 
         * {
-            line-height: inherit;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        a[x-apple-data-detectors=true] {
-            color: inherit !important;
-            text-decoration: none !important;
+        .ReadMsgBody {
+            width: 100%;
+            background-color: #ffffff;
         }
 
+        .ExternalClass {
+            width: 100%;
+            background-color: #ffffff;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            width: 100%;
+            background-color: #ffffff;
+        }
+
+        @font-face {
+            font-family: 'proxima_novalight';
+            src: url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-light-webfont.eot');
+            src: url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-light-webfont.eot?#iefix') format('embedded-opentype'), url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-light-webfont.woff') format('woff'), url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-light-webfont.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'proxima_nova_rgregular';
+            src: url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-regular-webfont.eot');
+            src: url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'), url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-regular-webfont.woff') format('woff'), url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-regular-webfont.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'proxima_novasemibold';
+            src: url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-semibold-webfont.eot');
+            src: url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-semibold-webfont.eot?#iefix') format('embedded-opentype'), url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-semibold-webfont.woff') format('woff'), url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-semibold-webfont.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'proxima_nova_rgbold';
+            src: url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-bold-webfont.eot');
+            src: url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-bold-webfont.eot?#iefix') format('embedded-opentype'), url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-bold-webfont.woff') format('woff'), url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-bold-webfont.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'proxima_novablack';
+            src: url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-black-webfont.eot');
+            src: url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-black-webfont.eot?#iefix') format('embedded-opentype'), url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-black-webfont.woff') format('woff'), url('http://rocketway.net/themebuilder/template/templates/titan/font/proximanova-black-webfont.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'proxima_novathin';
+            src: url('http://rocketway.net/themebuilder/template/templates/mason/font/proximanova-thin-webfont.eot');
+            src: url('http://rocketway.net/themebuilder/template/templates/mason/font/proximanova-thin-webfont.eot?#iefix') format('embedded-opentype'), url('http://rocketway.net/themebuilder/template/templates/mason/font/proximanova-thin-webfont.woff') format('woff'), url('http://rocketway.net/themebuilder/template/templates/mason/font/proximanova-thin-webfont.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        p {
+            padding: 0 !important;
+            margin-top: 0 !important;
+            margin-right: 0 !important;
+            margin-bottom: 0 !important;
+            margin-left: 0 !important;
+        }
+
+        .hover:hover {
+            opacity: 0.85;
+            filter: alpha(opacity=85);
+        }
+
+        .image77 img {
+            width: 77px;
+            height: auto;
+        }
+
+        .avatar125 img {
+            width: 125px;
+            height: auto;
+        }
+
+        .icon61 img {
+            width: 61px;
+            height: auto;
+        }
+
+        .logo img {
+            width: 75px;
+            height: auto;
+        }
+
+        .icon18 img {
+            width: 18px;
+            height: auto;
+        }
     </style>
-    <style id="media-query" type="text/css">
-        @media (max-width: 520px) {
 
-            .block-grid,
-            .col {
-                min-width: 320px !important;
-                max-width: 100% !important;
-                display: block !important;
+    <!-- @media only screen and (max-width: 640px) 
+               {*/
+               -->
+    <style type="text/css">
+        @media only screen and (max-width: 640px) {
+            body {
+                width: auto !important;
             }
 
-            .block-grid {
+            table[class=full2] {
                 width: 100% !important;
+                clear: both;
             }
 
-            .col {
+            table[class=mobile2] {
                 width: 100% !important;
+                padding-left: 20px;
+                padding-right: 20px;
+                clear: both;
             }
 
-            .col_cont {
-                margin: 0 auto;
+            table[class=fullCenter2] {
+                width: 100% !important;
+                text-align: center !important;
+                clear: both;
             }
 
-            img.fullwidth,
-            img.fullwidthOnMobile {
-                max-width: 100% !important;
+            td[class=fullCenter2] {
+                width: 100% !important;
+                text-align: center !important;
+                clear: both;
             }
 
-            .no-stack .col {
-                min-width: 0 !important;
-                display: table-cell !important;
+            td[class=pad15] {
+                width: 100% !important;
+                padding-left: 15px;
+                padding-right: 15px;
+                clear: both;
             }
 
-            .no-stack.two-up .col {
-                width: 50% !important;
+        }
+    </style>
+    <!--
+    
+    @media only screen and (max-width: 479px) 
+               {
+               -->
+    <style type="text/css">
+        @media only screen and (max-width: 479px) {
+            body {
+                width: auto !important;
             }
 
-            .no-stack .col.num2 {
-                width: 16.6% !important;
+            table[class=full2] {
+                width: 100% !important;
+                clear: both;
             }
 
-            .no-stack .col.num3 {
-                width: 25% !important;
+            table[class=mobile2] {
+                width: 100% !important;
+                padding-left: 20px;
+                padding-right: 20px;
+                clear: both;
             }
 
-            .no-stack .col.num4 {
-                width: 33% !important;
+            table[class=fullCenter2] {
+                width: 100% !important;
+                text-align: center !important;
+                clear: both;
             }
 
-            .no-stack .col.num5 {
-                width: 41.6% !important;
+            td[class=fullCenter2] {
+                width: 100% !important;
+                text-align: center !important;
+                clear: both;
             }
 
-            .no-stack .col.num6 {
-                width: 50% !important;
+            table[class=full] {
+                width: 100% !important;
+                clear: both;
             }
 
-            .no-stack .col.num7 {
-                width: 58.3% !important;
+            table[class=mobile] {
+                width: 100% !important;
+                padding-left: 20px;
+                padding-right: 20px;
+                clear: both;
             }
 
-            .no-stack .col.num8 {
-                width: 66.6% !important;
+            table[class=fullCenter] {
+                width: 100% !important;
+                text-align: center !important;
+                clear: both;
             }
 
-            .no-stack .col.num9 {
-                width: 75% !important;
+            td[class=fullCenter] {
+                width: 100% !important;
+                text-align: center !important;
+                clear: both;
             }
 
-            .no-stack .col.num10 {
-                width: 83.3% !important;
+            td[class=pad15] {
+                width: 100% !important;
+                padding-left: 15px;
+                padding-right: 15px;
+                clear: both;
             }
 
-            .video-block {
-                max-width: none !important;
-            }
-
-            .mobile_hide {
-                min-height: 0px;
-                max-height: 0px;
-                max-width: 0px;
+            .erase {
                 display: none;
-                overflow: hidden;
-                font-size: 0px;
             }
 
-            .desktop_hide {
-                display: block !important;
-                max-height: none !important;
-            }
         }
-
-    </style>
-    <style id="icon-media-query" type="text/css">
-        @media (max-width: 520px) {
-            .icons-inner {
-                text-align: center;
-            }
-
-            .icons-inner td {
-                margin: 0 auto;
-            }
         }
-
     </style>
+
 </head>
 
-<body class="clean-body" style="margin: 0; padding: 0; -webkit-text-size-adjust: 100%; background-color: #FFFFFF;">
-    <!--[if IE]><div class="ie-browser"><![endif]-->
-    <table bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" class="nl-container" role="presentation"
-        style="table-layout: fixed; vertical-align: top; min-width: 320px; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #FFFFFF; width: 100%;"
-        valign="top" width="100%">
-        <tbody>
-            <tr style="vertical-align: top;" valign="top">
-                <td style="word-break: break-word; vertical-align: top;" valign="top">
-                    <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color:#FFFFFF"><![endif]-->
-                    <div style="background-color:#f5f5f5;">
-                        <div class="block-grid"
-                            style="min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: transparent;">
-                            <div
-                                style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
-                                <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f5f5f5;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:500px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
-                                <!--[if (mso)|(IE)]><td align="center" width="500" style="background-color:transparent;width:500px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:0px; padding-bottom:5px;"><![endif]-->
-                                <div class="col num12"
-                                    style="min-width: 320px; max-width: 500px; display: table-cell; vertical-align: top; width: 500px;">
-                                    <div class="col_cont" style="width:100% !important;">
-                                        <!--[if (!mso)&(!IE)]><!-->
-                                        <div
-                                            style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
-                                            <!--<![endif]-->
-                                            <div align="center" class="img-container center fixedwidth"
-                                                style="padding-right: 0px;padding-left: 0px;">
-                                                <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><![endif]--><img
-                                                    align="center" alt="your-logo" border="0" class="center fixedwidth"
-                                                    src="https://avisosmendoza.com.ar/styleWeb/assets/logo.png"
-                                                    style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 125px; display: block;"
-                                                    title="your-logo" width="125" />
-                                                <div style="font-size:1px;line-height:10px"> </div>
-                                                <!--[if mso]></td></tr></table><![endif]-->
-                                            </div>
-                                            <!--[if (!mso)&(!IE)]><!-->
-                                        </div>
-                                        <!--<![endif]-->
-                                    </div>
-                                </div>
-                                <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-                                <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+    <!-- Notification 3 -->
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="full" bgcolor="#303030"
+        style="background-color: rgb(48, 48, 48);">
+        <tr>
+            <td style="background-image: url('images/not3_bg_image.jpg'); -webkit-background-size: cover; background-size: cover; background-color: rgb(48, 48, 48); background-position: center center; background-repeat: no-repeat;"
+                id="not3">
+
+
+                <!-- Mobile Wrapper -->
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="mobile">
+                    <tr>
+                        <td width="100%" align="center">
+
+                            <div class="sortable_inner ui-sortable">
+                                <!-- Space -->
+                                <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                    class="full" object="drag-module-small">
+                                    <tr>
+                                        <td width="352" height="30"></td>
+                                    </tr>
+                                </table><!-- End Space -->
+
+                                <!-- Space -->
+                                <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                    class="full" object="drag-module-small">
+                                    <tr>
+                                        <td width="352" height="50"></td>
+                                    </tr>
+                                </table><!-- End Space -->
                             </div>
-                        </div>
-                    </div>
-                    <div style="background-color:#f5f5f5;">
-                        <div class="block-grid"
-                            style="min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: transparent;">
-                            <div
-                                style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
-                                <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f5f5f5;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:500px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
-                                <!--[if (mso)|(IE)]><td align="center" width="500" style="background-color:transparent;width:500px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:0px;"><![endif]-->
-                                <div class="col num12"
-                                    style="min-width: 320px; max-width: 500px; display: table-cell; vertical-align: top; width: 500px;">
-                                    <div class="col_cont" style="width:100% !important;">
-                                        <!--[if (!mso)&(!IE)]><!-->
-                                        <div
-                                            style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:0px; padding-right: 0px; padding-left: 0px;">
-                                            <!--<![endif]-->
-                                            <div align="center" class="img-container center autowidth"
-                                                style="padding-right: 0px;padding-left: 0px;">
-                                                <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><![endif]--><img
-                                                    align="center" border="0" class="center autowidth"
-                                                    src="https://avisosmendoza.com.ar/styleWeb/assetEmail/images/Top.png"
-                                                    style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 500px; display: block;"
-                                                    width="500" />
-                                                <!--[if mso]></td></tr></table><![endif]-->
-                                            </div>
-                                            <!--[if (!mso)&(!IE)]><!-->
-                                        </div>
-                                        <!--<![endif]-->
-                                    </div>
-                                </div>
-                                <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-                                <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
-                            </div>
-                        </div>
-                    </div>
-                    <div style="background-color:#f5f5f5;">
-                        <div class="block-grid"
-                            style="min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: #ffffff;">
-                            <div style="border-collapse: collapse;display: table;width: 100%;background-color:#ffffff;">
-                                <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f5f5f5;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:500px"><tr class="layout-full-width" style="background-color:#ffffff"><![endif]-->
-                                <!--[if (mso)|(IE)]><td align="center" width="500" style="background-color:#ffffff;width:500px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:0px; padding-bottom:5px;"><![endif]-->
-                                <div class="col num12"
-                                    style="min-width: 320px; max-width: 500px; display: table-cell; vertical-align: top; width: 500px;">
-                                    <div class="col_cont" style="width:100% !important;">
-                                        <!--[if (!mso)&(!IE)]><!-->
-                                        <div
-                                            style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
-                                            <!--<![endif]-->
-                                            <table cellpadding="0" cellspacing="0" role="presentation"
-                                                style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"
-                                                valign="top" width="100%">
-                                                <tr style="vertical-align: top;" valign="top">
-                                                    <td align="center"
-                                                        style="word-break: break-word; vertical-align: top; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px; text-align: center; width: 100%;"
-                                                        valign="top" width="100%">
-                                                        <h1
-                                                            style="color:#393d47;direction:ltr;font-family:Tahoma, Verdana, Segoe, sans-serif;font-size:25px;font-weight:normal;letter-spacing:normal;line-height:120%;text-align:center;margin-top:0;margin-bottom:0;">
-                                                            <strong>Hola, {{ $data['name'] }}</strong></h1>
+
+                            <table width="352" border="0" cellpadding="0" cellspacing="0" align="center" class="mobile"
+                                bgcolor="#ffffff"
+                                style="border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; -webkit-box-shadow: rgba(68, 68, 68, 0.6) 5px 5px 5px; box-shadow: rgba(68, 68, 68, 0.2) 0px 0px 7px; background-color: rgb(255, 255, 255);">
+                                <tr>
+                                    <td width="352" valign="middle" align="center">
+
+
+                                        <div class="sortable_inner ui-sortable">
+                                            <!-- Start Top -->
+                                            <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                                class="mobile" bgcolor="#ffffff"
+                                                style="border-top-left-radius: 5px; border-top-right-radius: 5px; background-color: rgb(255, 255, 255);"
+                                                object="drag-module-small">
+                                                <tr>
+                                                    <td width="352" valign="middle" align="center">
+
+                                                        <!-- Header Text -->
+                                                        <table width="300" border="0" cellpadding="0" cellspacing="0"
+                                                            align="center"
+                                                            style="text-align: center; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"
+                                                            class="fullCenter">
+                                                            <tr>
+                                                                <td width="100%" height="30"></td>
+                                                            </tr>
+                                                        </table>
                                                     </td>
                                                 </tr>
                                             </table>
-                                            <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Tahoma, Verdana, sans-serif"><![endif]-->
-                                            <div
-                                                style="color:#393d47;font-family:Tahoma, Verdana, Segoe, sans-serif;line-height:1.5;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
-                                                <div class="txtTinyMce-wrapper"
-                                                    style="line-height: 1.5; font-size: 12px; font-family: Tahoma, Verdana, Segoe, sans-serif; color: #393d47; mso-line-height-alt: 18px;">
-                                                    <p
-                                                        style="margin: 0; font-size: 14px; line-height: 1.5; word-break: break-word; text-align: center; mso-line-height-alt: 21px; margin-top: 0; margin-bottom: 0;">
-                                                        Te respondió <b>{{ $data['title'] }}</b> </p>
-                                                </div>
-                                            </div>
-                                            <div
-                                                style="color:#393d47;font-family:Tahoma, Verdana, Segoe, sans-serif;line-height:1.5;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
-                                                <div class="txtTinyMce-wrapper"
-                                                    style="line-height: 1.5; font-size: 12px; font-family: Tahoma, Verdana, Segoe, sans-serif; color: #393d47; mso-line-height-alt: 18px;">
-                                                    <p
-                                                        style="margin: 0; font-size: 14px; line-height: 1.5; word-break: break-word; text-align: center; mso-line-height-alt: 21px; margin-top: 0; margin-bottom: 0;">
-                                                        {{ $data['messageResponse'] }} </p>
-                                                </div>
-                                            </div>
-                                            <!--[if mso]></td></tr></table><![endif]-->
-                                            <div align="center" class="button-container"
-                                                style="padding-top:15px;padding-right:15px;padding-bottom:15px;padding-left:15px;">
-                                                <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="www.yourwebsite.com" style="height:43.5pt;width:287.25pt;v-text-anchor:middle;" arcsize="35%" strokeweight="0.75pt" strokecolor="#FFC727" fillcolor="#ddff75"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#393d47; font-family:Tahoma, Verdana, sans-serif; font-size:18px"><![endif]--><a
-                                                    href="https://avisosmendoza.com.ar/dashboard"
-                                                    style="-webkit-text-size-adjust: none; text-decoration: none; display: inline-block; color: #393d47; background-color: #ddff75; border-radius: 20px; -webkit-border-radius: 20px; -moz-border-radius: 20px; width: auto; width: auto; border-top: 1px solid #FFC727; border-right: 1px solid #FFC727; border-bottom: 1px solid #FFC727; border-left: 1px solid #FFC727; padding-top: 10px; padding-bottom: 10px; font-family: Tahoma, Verdana, Segoe, sans-serif; text-align: center; mso-border-alt: none; word-break: keep-all;"
-                                                    target="_blank"><span
-                                                        style="padding-left:50px;padding-right:50px;font-size:18px;display:inline-block;letter-spacing:normal;"><span
-                                                            style="font-size: 16px; line-height: 2; word-break: break-word; mso-line-height-alt: 32px;"><span
-                                                                style="font-size: 18px; line-height: 36px;"><strong>Ir a
-                                                                    Avisos Mendoza</strong></span></span></span></a>
-                                                <!--[if mso]></center></v:textbox></v:roundrect></td></tr></table><![endif]-->
-                                            </div>
-                                            <!--[if (!mso)&(!IE)]><!-->
-                                        </div>
-                                        <!--<![endif]-->
-                                    </div>
-                                </div>
-                                <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-                                <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
-                            </div>
-                        </div>
-                    </div>
-                    <div style="background-color:#fff;">
-                        <div class="block-grid"
-                            style="min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: transparent;">
-                            <div
-                                style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
-                                <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#fff;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:500px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
-                                <!--[if (mso)|(IE)]><td align="center" width="500" style="background-color:transparent;width:500px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
-                                <div class="col num12"
-                                    style="min-width: 320px; max-width: 500px; display: table-cell; vertical-align: top; width: 500px;">
-                                    <div class="col_cont" style="width:100% !important;">
-                                        <!--[if (!mso)&(!IE)]><!-->
-                                        <div
-                                            style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
-                                            <!--<![endif]-->
-                                            <div
-                                                style="font-size:16px;text-align:center;font-family:Arial, Helvetica Neue, Helvetica, sans-serif">
-                                                <div style="height:30px;"> </div>
-                                            </div>
-                                            <table cellpadding="0" cellspacing="0" class="social_icons"
-                                                role="presentation"
-                                                style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;"
-                                                valign="top" width="100%">
-                                                <tbody>
-                                                    <tr style="vertical-align: top;" valign="top">
-                                                        <td style="word-break: break-word; vertical-align: top; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;"
-                                                            valign="top">
-                                                            <table align="center" cellpadding="0" cellspacing="0"
-                                                                class="social_table" role="presentation"
-                                                                style="table-layout: fixed; vertical-align: top; border-spacing: 0; border-collapse: collapse; mso-table-tspace: 0; mso-table-rspace: 0; mso-table-bspace: 0; mso-table-lspace: 0;"
-                                                                valign="top">
-                                                                <tbody>
-                                                                    <tr align="center"
-                                                                        style="vertical-align: top; display: inline-block; text-align: center;"
-                                                                        valign="top">
-                                                                        <td style="word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 5px; padding-left: 5px;"
-                                                                            valign="top"><a
-                                                                                href="https://www.facebook.com/avisosmendozaOk"
-                                                                                target="_blank"><img alt="Facebook"
-                                                                                    height="32"
-                                                                                    src="https://avisosmendoza.com.ar/styleWeb/assetEmail/images/facebook2x.png"
-                                                                                    style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;"
-                                                                                    title="Facebook" width="32" /></a>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
+
+                                            <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                                class="mobile" bgcolor="#ffffff" object="drag-module-small"
+                                                style="background-color: rgb(255, 255, 255);">
+                                                <tr>
+                                                    <td width="352" valign="middle" class="icon61" align="center">
+                                                        <table width="300" border="0" cellpadding="0" cellspacing="0"
+                                                            align="center"
+                                                            style="text-align: center; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"
+                                                            class="fullCenter">
+                                                            <tr>
+                                                                <td width="100%"><span><img
+                                                                            src="https://avisosmendoza.com.ar/styleWeb/assets/logo.png"
+                                                                            width="61" alt="" border="0"></span></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
                                             </table>
-                                            <div
-                                                style="font-size:16px;text-align:center;font-family:Arial, Helvetica Neue, Helvetica, sans-serif">
-                                                <div
-                                                    style="margin-top: 25px;border-top:1px dashed #D6D6D6;margin-bottom: 20px;">
-                                                </div>
-                                            </div>
-                                            <div
-                                                style="font-size:16px;text-align:center;font-family:Arial, Helvetica Neue, Helvetica, sans-serif">
-                                                <div style="height-top: 20px;"> </div>
-                                            </div>
-                                            <!--[if (!mso)&(!IE)]><!-->
+
+                                            <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                                class="mobile" bgcolor="#ffffff" object="drag-module-small"
+                                                style="background-color: rgb(255, 255, 255);">
+                                                <tr>
+                                                    <td width="352" valign="middle" align="center">
+
+                                                        <table width="265" border="0" cellpadding="0" cellspacing="0"
+                                                            align="center"
+                                                            style="text-align: center; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"
+                                                            class="fullCenter">
+                                                            <tr>
+                                                                <td width="100%" height="40"></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                                class="mobile" bgcolor="#ffffff" object="drag-module-small"
+                                                style="background-color: rgb(255, 255, 255);">
+                                                <tr>
+                                                    <td width="352" valign="middle" align="center">
+
+                                                        <table width="265" border="0" cellpadding="0" cellspacing="0"
+                                                            align="center"
+                                                            style="text-align: center; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"
+                                                            class="fullCenter">
+                                                            <tr>
+                                                                <td valign="middle" width="100%"
+                                                                    style="text-align: center; font-family: Helvetica, Arial, sans-serif; font-size: 43px; color: rgb(63, 67, 69); line-height: 48px;"
+                                                                    class="fullCenter">
+                                                                    <!--[if !mso]><!--><span
+                                                                        style="font-family: 'proxima_novasemibold', Helvetica; font-weight: normal;">
+                                                                        <!--<![endif]-->Te respondieron
+                                                                        <!--[if !mso]><!-->
+                                                                    </span>
+                                                                    <!--<![endif]-->
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                                class="mobile" bgcolor="#ffffff" object="drag-module-small"
+                                                style="background-color: rgb(255, 255, 255);">
+                                                <tr>
+                                                    <td width="352" valign="middle" align="center">
+
+                                                        <table width="265" border="0" cellpadding="0" cellspacing="0"
+                                                            align="center"
+                                                            style="text-align: center; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"
+                                                            class="fullCenter">
+                                                            <tr>
+                                                                <td width="100%" height="45"></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                                class="full" bgcolor="#ffffff" object="drag-module-small"
+                                                style="background-color: rgb(255, 255, 255);">
+                                                <tr>
+                                                    <td width="352" valign="middle" align="center">
+
+                                                        <table width="265" border="0" cellpadding="0" cellspacing="0"
+                                                            align="center" class="mobile">
+                                                            <tr>
+                                                                <td width="265" bgcolor="#fdba30" class="pad15"
+                                                                    style="background-color: rgb(253, 186, 48);">
+
+                                                                    <table width="240" border="0" cellpadding="0"
+                                                                        cellspacing="0" align="center" class="full">
+                                                                        <tr>
+                                                                            <td width="100%" height="30"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td valign="middle" width="100%"
+                                                                                style="text-align: center; font-family: Helvetica, Arial, sans-serif; font-size: 30px; color: rgb(63, 67, 69); line-height: 34px;"
+                                                                                class="fullCenter">
+                                                                                <!--[if !mso]><!--><span
+                                                                                    style="font-family: 'proxima_nova_rgregular', Helvetica; font-weight: normal;">
+                                                                                    <!--<![endif]-->Te respondió por la
+                                                                                    pregunta al servicio
+                                                                                    <p> {{ $data['title'] }}</p>
+                                                                                    <!--[if !mso]><!-->
+                                                                                </span>
+                                                                                <!--<![endif]-->
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                                class="full" bgcolor="#ffffff" object="drag-module-small"
+                                                style="background-color: rgb(255, 255, 255);">
+                                                <tr>
+                                                    <td width="352" valign="middle" align="center">
+
+                                                        <table width="265" border="0" cellpadding="0" cellspacing="0"
+                                                            align="center" class="mobile">
+                                                            <tr>
+                                                                <td width="265" bgcolor="#fdba30" class="pad15"
+                                                                    style="background-color: rgb(253, 186, 48);">
+
+                                                                    <table width="240" border="0" cellpadding="0"
+                                                                        cellspacing="0" align="center" class="full">
+                                                                        <tr>
+                                                                            <td width="100%" height="30"></td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                                class="full" bgcolor="#ffffff" object="drag-module-small"
+                                                style="background-color: rgb(255, 255, 255);">
+                                                <tr>
+                                                    <td width="352" valign="middle" align="center">
+
+                                                        <table width="265" border="0" cellpadding="0" cellspacing="0"
+                                                            align="center" class="mobile">
+                                                            <tr>
+                                                                <td width="265" bgcolor="#fdba30" class="pad15"
+                                                                    align="center"
+                                                                    style="background-color: rgb(253, 186, 48);">
+
+                                                                    <table width="240" border="0" cellpadding="0"
+                                                                        cellspacing="0" align="center" class="full">
+
+                                                                        <tr>
+                                                                            <td valign="middle" align="center"
+                                                                                width="100%"
+                                                                                style="text-align: center; font-family: Helvetica, Arial, sans-serif; font-size: 14px; color: rgb(63, 67, 69); line-height: 24px;"
+                                                                                class="fullCenter">
+                                                                                <!--[if !mso]><!--><span
+                                                                                    style="font-family: 'proxima_nova_rgregular', Helvetica; font-weight: normal;">
+                                                                                    <!--<![endif]-->{{ $data['messageResponse'] }}
+                                                                                    <!--[if !mso]><!-->
+                                                                                </span>
+                                                                                <!--<![endif]-->
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                                class="full" bgcolor="#ffffff" object="drag-module-small"
+                                                style="background-color: rgb(255, 255, 255);">
+                                                <tr>
+                                                    <td width="352" valign="middle" align="center">
+
+                                                        <table width="265" border="0" cellpadding="0" cellspacing="0"
+                                                            align="center" class="mobile">
+                                                            <tr>
+                                                                <td width="265" bgcolor="#fdba30" class="pad15"
+                                                                    style="background-color: rgb(253, 186, 48);">
+
+                                                                    <table width="240" border="0" cellpadding="0"
+                                                                        cellspacing="0" align="center" class="full">
+                                                                        <tr>
+                                                                            <td width="100%" height="40"></td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+
+                                            <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                                class="full" bgcolor="#ffffff" object="drag-module-small"
+                                                style="background-color: rgb(255, 255, 255);">
+                                                <tr>
+                                                    <td width="352" valign="middle" align="center">
+
+                                                        <table width="265" border="0" cellpadding="0" cellspacing="0"
+                                                            align="center" class="mobile">
+                                                            <tr>
+                                                                <td width="265" bgcolor="#fdba30" class="pad15"
+                                                                    align="center"
+                                                                    style="background-color: rgb(253, 186, 48);">
+
+                                                                    <table width="240" border="0" cellpadding="0"
+                                                                        cellspacing="0" align="center" class="full">
+                                                                        <tr>
+                                                                            <td width="100%" height="15"></td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                                class="full" bgcolor="#ffffff" object="drag-module-small"
+                                                style="background-color: rgb(255, 255, 255);">
+                                                <tr>
+                                                    <td width="352" valign="middle" align="center">
+
+                                                        <table width="265" border="0" cellpadding="0" cellspacing="0"
+                                                            align="center" class="mobile">
+                                                            <tr>
+                                                                <td width="265" bgcolor="#fdba30" align="center"
+                                                                    class="pad15"
+                                                                    style="background-color: rgb(253, 186, 48);">
+
+                                                                    <table width="240" border="0" cellpadding="0"
+                                                                        cellspacing="0" align="center" class="full">
+
+                                                                        <!----------------- Button Center ----------------->
+                                                                        <tr>
+                                                                            <td>
+                                                                                <table width="100%" border="0"
+                                                                                    cellpadding="0" cellspacing="0"
+                                                                                    align="center">
+                                                                                    <tr>
+                                                                                        <td align="center" height="40"
+                                                                                            bgcolor="#3f4345"
+                                                                                            style="border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; padding-left: 22px; padding-right: 22px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; color: rgb(255, 255, 255); background-color: rgb(63, 67, 69);">
+                                                                                            <!--[if !mso]><!--><span
+                                                                                                style="font-family: 'proxima_nova_rgregular', Helvetica; font-weight: normal;">
+                                                                                                <!--<![endif]-->
+                                                                                                <a href="https://avisosmendoza.com.ar"
+                                                                                                    style="color: rgb(255, 255, 255); font-size: 16px; text-decoration: none; line-height: 34px; width: 100%;">Ir
+                                                                                                    a Avisos Mendoza</a>
+                                                                                                <!--[if !mso]><!-->
+                                                                                            </span>
+                                                                                            <!--<![endif]-->
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                                class="full" bgcolor="#ffffff" object="drag-module-small"
+                                                style="background-color: rgb(255, 255, 255);">
+                                                <tr>
+                                                    <td width="352" valign="middle" align="center">
+
+                                                        <table width="265" border="0" cellpadding="0" cellspacing="0"
+                                                            align="center" class="mobile">
+                                                            <tr>
+                                                                <td width="265" bgcolor="#fdba30" class="pad15"
+                                                                    style="background-color: rgb(253, 186, 48);">
+
+                                                                    <table width="240" border="0" cellpadding="0"
+                                                                        cellspacing="0" align="center" class="full">
+
+                                                                        <tr>
+                                                                            <td width="100%" height="40"></td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                                class="full" bgcolor="#ffffff" object="drag-module-small"
+                                                style="background-color: rgb(255, 255, 255);">
+                                                <tr>
+                                                    <td width="352" valign="middle" align="center">
+
+                                                        <table width="265" border="0" cellpadding="0" cellspacing="0"
+                                                            align="center" class="mobile">
+                                                            <tr>
+                                                                <td width="265" bgcolor="#fdba30"
+                                                                    style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; background-color: rgb(253, 186, 48);"
+                                                                    class="pad15">
+
+                                                                    <table width="240" border="0" cellpadding="0"
+                                                                        cellspacing="0" align="center" class="full">
+
+                                                                        <tr>
+                                                                            <td width="100%" height="40"></td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                                class="full" bgcolor="#ffffff"
+                                                style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; background-color: rgb(255, 255, 255);"
+                                                object="drag-module-small">
+                                                <tr>
+                                                    <td width="352" valign="middle" align="center">
+
+                                                        <table width="265" border="0" cellpadding="0" cellspacing="0"
+                                                            align="center" class="mobile">
+                                                            <tr>
+                                                                <td width="265" height="50"></td>
+                                                            </tr>
+                                                        </table>
+
+                                                    </td>
+                                                </tr>
+                                            </table><!-- End Top -->
                                         </div>
-                                        <!--<![endif]-->
-                                    </div>
-                                </div>
-                                <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-                                <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <div class="sortable_inner ui-sortable">
+                                <!-- Space -->
+                                <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                    class="full" object="drag-module-small">
+                                    <tr>
+                                        <td width="352" height="30"></td>
+                                    </tr>
+                                </table><!-- End Space -->
+                                <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                    class="mobile" object="drag-module-small">
+                                    <tr>
+                                        <td width="352" valign="middle" align="center">
+
+                                            <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                                style="text-align: center; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"
+                                                class="fullCenter">
+                                                <tr>
+                                                    <td width="352"
+                                                        style="text-align: center; font-family: Helvetica, Arial, sans-serif; font-size: 14px; color: rgb(63, 67, 69); line-height: 24px;"
+                                                        class="fullCenter">
+                                                        <!--[if !mso]><!--><span
+                                                            style="font-family: 'proxima_nova_rgregular', Helvetica;">
+                                                            <!--<![endif]-->
+                                                            <!--subscribe--><a href="#"
+                                                                style="text-decoration: none; color: rgb(63, 67, 69);">Unsubscribe</a>
+                                                            <!--unsub-->
+                                                            <!--[if !mso]><!-->
+                                                        </span>
+                                                        <!--<![endif]-->
+                                                        <span>
+                                                            <!--[if !mso]><!--><span
+                                                                style="font-family: 'proxima_nova_rgregular', Helvetica;">
+                                                                <!--<![endif]-->now
+                                                                <!--[if !mso]><!-->
+                                                            </span>
+                                                            <!--<![endif]-->
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!-- Space -->
+                                <table width="352" border="0" cellpadding="0" cellspacing="0" align="center"
+                                    class="full" object="drag-module-small">
+                                    <tr>
+                                        <td width="352" height="50"></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="352" height="1" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+                                    </tr>
+                                </table><!-- End Space -->
                             </div>
-                        </div>
-                    </div>
-                    <div style="background-color:transparent;">
-                        <div class="block-grid"
-                            style="min-width: 320px; max-width: 500px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: transparent;">
-                            <div
-                                style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
-                                <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:500px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
-                                <!--[if (mso)|(IE)]><td align="center" width="500" style="background-color:transparent;width:500px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
-                                <div class="col num12"
-                                    style="min-width: 320px; max-width: 500px; display: table-cell; vertical-align: top; width: 500px;">
-                                    <div class="col_cont" style="width:100% !important;">
-                                        <!--[if (!mso)&(!IE)]><!-->
-                                        <div
-                                            style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
-                                            <!--<![endif]-->
-                                            <!--[if (!mso)&(!IE)]><!-->
-                                        </div>
-                                        <!--<![endif]-->
-                                    </div>
-                                </div>
-                                <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-                                <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
-                            </div>
-                        </div>
-                    </div>
-                    <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <!--[if (IE)]></div><![endif]-->
+
+                        </td>
+                    </tr>
+                </table>
+
+                </div>
+            </td>
+        </tr>
+    </table><!-- End Notification 3 -->
+
+    </div>
 </body>
 
 </html>
+<style>
+    body {
+        background: none !important;
+    }
+</style>

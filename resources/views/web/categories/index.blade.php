@@ -33,7 +33,7 @@
                                         class="image-wrapper background-image">
                                     @else
                                     <img alt="{{ $service->title }}" src="{{ asset('styleWeb/assets/sin_imagen.jpg') }}"
-                                        class="image-wrapper background-image">
+                                        class="image-wrapper background-image"> 
                                     @endif
                                 </div>
                                 <h4 class="location">
