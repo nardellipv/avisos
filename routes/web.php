@@ -7,6 +7,8 @@ Route::get('/clear', function() {
     \Artisan::call('cache:clear');
     \Artisan::call('route:clear');
     \Artisan::call('config:cache');
+    \Artisan::call('config:clear');
+    \Artisan::call('view:cache');
     \Artisan::call('view:clear');
     return 'FINISHED';
 });
