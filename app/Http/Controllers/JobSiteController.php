@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\highlightServiceMail;
 use App\Mail\MessageNotReadMail;
 use App\Mail\RegisterUserMail;
 use App\Mail\ResumeClientMail;
@@ -98,6 +99,41 @@ class JobSiteController extends Controller
             ->orderBy('created_at', 'DESC')
             ->get();
 
-        Mail::to('info@avisosmendoza.com.ar')->send(new RegisterUserMail($users));        
+        Mail::to('info@avisosmendoza.com.ar')->send(new RegisterUserMail($users));
+    }
+
+    public function highlightService()
+    {
+        $users = User::get();
+
+        $servicesPromotion = Service::where('publish', 'Destacado')
+            ->where('sendPromotion', '0')
+            ->where('status', 'Activo')
+            ->take(2)
+            ->get();
+
+        if (!$servicesPromotion->isEmpty()) {
+            $services = $servicesPromotion;
+        } else {
+            $services = Service::where('sendPromotion', '0')
+                ->where('status', 'Activo')
+                ->take(2)
+                ->get();
+        }
+
+        foreach ($services as $service) {
+            $service->sendPromotion = 1;
+            $service->save();
+        }
+
+        if (!$services->isEmpty()) {
+            foreach ($users as $user) {
+                Mail::send('emails.jobSite.highlightServiceMail', ['services' => $services, 'user' => $user], function ($msj) use ($services, $user) {
+                    $msj->from('no-responder@avisosmendoza.com.ar', 'Avisos Mendoza');
+                    $msj->subject('Destacados del Mes');
+                    $msj->to($user->email, $user->name);
+                });
+            }
+        }
     }
 }

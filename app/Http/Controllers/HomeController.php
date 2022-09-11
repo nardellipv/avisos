@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        SEOMeta::setTitle('Avisos Clasificados Mendoza ' . date('Y'));
+        SEOMeta::setTitle('Avisos Clasificados Mendoza Gratis ' . date('Y'));
         SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
 
         SEOMeta::addKeyword([

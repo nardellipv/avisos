@@ -367,8 +367,7 @@
                                                                     class="fullCenter">
                                                                     <!--[if !mso]><!--><span
                                                                         style="font-family: 'proxima_novathin', Helvetica; font-weight: normal;">
-                                                                        <!--<![endif]-->Hola, {{ $service->user['name']
-                                                                        }}!
+                                                                        <!--<![endif]-->Hola, {{ $service->user->name }}!
                                                                         <!--[if !mso]><!-->
                                                                     </span>
                                                                     <!--<![endif]-->
@@ -496,7 +495,7 @@
                                                                                         servicios que desees</strong>
                                                                                 </li>
                                                                                 <li style="text-align: left;"><strong>Se
-                                                                                        promocionan por 60
+                                                                                        promocionan por {{ $days }}
                                                                                         d&iacute;as</strong></li>
                                                                                 <li style="text-align: left;">
                                                                                     <strong>Tus servicios se destacan en
