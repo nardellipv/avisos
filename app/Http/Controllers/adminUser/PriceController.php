@@ -42,8 +42,10 @@ class PriceController extends Controller
             'pay' => 'N',
         ]);
 
+        $days = Storage::disk('public')->get('daySponsor.txt');
+
         // mail al cliente
-        Mail::to($service->user->email)->send(new PaymentMail($service));
+        Mail::to($service->user->email)->send(new PaymentMail($service, $days));
 
         //   mail a mi
         Mail::to('info@avisosmendoza.com.ar')->send(new NewSponsorInformationMail($service));

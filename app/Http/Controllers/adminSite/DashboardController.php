@@ -92,9 +92,9 @@ class DashboardController extends Controller
         }
 
         // listado de regiones
-        foreach ($regions as $region) {
+        /* foreach ($regions as $region) {
             $sitemap->add("https://avisosmendoza.com.ar/listado/localidad/" . $region->slug);
-        }
+        } */
 
         $sitemap->store('xml', 'sitemap', base_path('../public_html'));
         // $sitemap->store('xml', 'sitemap');

@@ -12,14 +12,16 @@ class PaymentMail extends Mailable
     use Queueable, SerializesModels;
 
     public $service;
+    public $days;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($service)
+    public function __construct($service, $days)
     {
         $this->service = $service;
+        $this->days = $days;
     }
 
     /**

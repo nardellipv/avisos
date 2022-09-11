@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Route;
+use Artesaos\SEOTools\Facades\SEOMeta;
 
 class LoginController extends Controller
 {
@@ -33,9 +34,17 @@ class LoginController extends Controller
 
   public function showLoginForm()
   {
+    SEOMeta::setTitle('Avisos Clasificados Mendoza Gratis ' . date('Y'));
+    SEOMeta::setDescription('Ingresa al sitio para poder publicar tus avisos en un instante y totalmente gratis');
+
+    SEOMeta::addKeyword([
+      'Mendoza Trabajo', 'Mendoza Clasificados', 'Clasificados Los Andes', 'Clasificados diario uno',
+      'avisos clasificados de mendoza', 'Clasificados Mendoza alquileres'
+    ]);
+
     if (!session()->has('url.intended')) {
-        session(['url.intended' => url()->previous()]);
-        return redirect('/dashboard');
+      session(['url.intended' => url()->previous()]);
+      return redirect('/dashboard');
     }
     return view('auth.login');
   }

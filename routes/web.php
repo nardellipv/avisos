@@ -51,6 +51,9 @@ Route::get('/complete-profile', 'JobSiteController@completeProfile')->name('jobS
 Route::get('/message-not-read', 'JobSiteController@messageNotRead')->name('jobService.messageNotRead');
 Route::get('/resume-client', 'JobSiteController@resumeClient')->name('jobService.resumeClient');
 Route::get('/register-user', 'JobSiteController@registerUser')->name('jobService.registerUser');
+Route::get('/highlight-service', 'JobSiteController@highlightService')->name('jobService.highlightService');
+Route::get('/admin/generar-sitemap-auto', 'adminSite\DashboardController@sitemap')->name('adminDashboard.sitemap');
+
 
 //admin client
 Route::middleware(['auth'])->group(function () {

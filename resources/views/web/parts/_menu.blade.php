@@ -27,13 +27,15 @@
                             </li>
                             @else
                             <li class="nav-item active has-child">
-                                <a class="nav-link" href="#">{{ userConnect()->name }}</a>
+                                <a class="nav-link" href="#">Hola, {{ userConnect()->name }}</a>
                                 <ul class="child">
                                     <li class="nav-item"><a href="{{ route('dashboard.index') }}" class="nav-link"> Mis
                                             Datos
                                         </a></li>
-                                    <li class="nav-item"><a href="{{ route('dashboard.personalData', ['id'=>userConnect(),'name'=>userConnect()->name]) }}" class="nav-link">
-                                        Datos Personales
+                                    <li class="nav-item"><a
+                                            href="{{ route('dashboard.personalData', ['id'=>userConnect(),'name'=>userConnect()->name]) }}"
+                                            class="nav-link">
+                                            Datos Personales
                                         </a>
                                     </li>
                                     <li class="nav-item"><a href="{{ route('favorite.list') }}" class="nav-link">
@@ -41,28 +43,29 @@
                                             Favoritos ({{ $countFavorite }})
                                         </a>
                                     </li>
+                                    @if (userConnect()->type == 'Anunciante')
+                                    <li class="nav-item"><a href="{{ route('service.list') }}" class="nav-link"> Mis
+                                            Servicios
+                                            ({{ $countService }})
+                                        </a></li>
+                                    <li class="nav-item"><a href="{{ route('service.pending') }}" class="nav-link">
+                                            Servicios Pendientes ({{ $countPendingService }})
+                                        </a></li>
+                                    <li class="nav-item"><a href="{{ route('message.list') }}" class="nav-link">
+                                            Mensajes ({{ $countPendingMessages }})
+                                        </a></li>
+                                    @endif
                                 </ul>
+                                @if (userConnect()->type == 'Anunciante')
+                                    <li class="nav-item">
+                                        <a href="{{ route('service.create') }}"
+                                            class="btn btn-primary text-caps btn-rounded btn-framed">Subir un
+                                            servicio</a>
+                                    </li>
+                                @endif
                             </li>
-
-                            @if (userConnect()->type == 'Anunciante')
-                            <li class="nav-item">
-                                <a href="{{ route('service.create') }}"
-                                    class="btn btn-primary text-caps btn-rounded btn-framed">Subir un
-                                    servicio</a>
-                            </li>
-                            <li class="nav-item"><a href="{{ route('service.list') }}" class="nav-link"> Mis
-                                    Servicios
-                                    ({{ $countService }})
-                                </a></li>
-                            <li class="nav-item"><a href="{{ route('service.pending') }}" class="nav-link">
-                                    Servicios Pendientes ({{ $countPendingService }})
-                                </a></li>
-                            <li class="nav-item"><a href="{{ route('message.list') }}" class="nav-link">
-                                    Mensajes ({{ $countPendingMessages }})
-                                </a></li>
                             @endif
                         </ul>
-                        @endif
                     </div>
                 </nav>
             </div>
