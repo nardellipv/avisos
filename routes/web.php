@@ -46,6 +46,7 @@ Route::post('/contacto/servicio-enviar', 'EmailController@contactServiceMail')->
 
 //Job Site
 Route::get('/service-end-date', 'JobSiteController@serviceEndDate')->name('jobService.endDate');
+Route::get('/miss-you', 'JobSiteController@missYou')->name('jobService.missYou');
 Route::get('/service-change-status', 'JobSiteController@serviceChangeStatus')->name('jobService.changeStatus');
 Route::get('/complete-profile', 'JobSiteController@completeProfile')->name('jobService.completeProfile');
 Route::get('/message-not-read', 'JobSiteController@messageNotRead')->name('jobService.messageNotRead');

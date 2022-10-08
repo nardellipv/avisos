@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\statusServiceMail;
+use App\User;
 use Illuminate\Support\Facades\Storage;
 use Jambasangsang\Flash\Facades\LaravelFlash;
 
@@ -33,7 +34,6 @@ class ServiceController extends Controller
             ->where('status', 'Activo')
             ->first();
 
-
         if ($service == NULL) {
             return redirect()->action('ServiceController@desactiveService');
         }
@@ -45,7 +45,7 @@ class ServiceController extends Controller
         SEOMeta::addMeta('Servicio Creado', $service->created_at->toW3CString(), 'property');
         SEOMeta::addMeta('Categoría', $service->category->name, 'property');
         SEOMeta::addKeyword([
-            'Mendoza Trabajo', 'Mendoza Clasificados', 'Clasificados Los Andes', 'Clasificados diario uno', 
+            'Mendoza Trabajo', 'Mendoza Clasificados', 'Clasificados Los Andes', 'Clasificados diario uno',
             'avisos clasificados de mendoza', 'Clasificados Mendoza alquileres'
         ]);
 
@@ -151,12 +151,12 @@ class ServiceController extends Controller
     public function desactiveService()
     {
         $services = Service::with(['region', 'category', 'user'])
-        ->withCount('Comment')
-        ->where('status', 'Activo')
-        ->where('end_date', '>=', now())            
-        ->orderBy('publish', 'DESC')
-        ->orderBy('created_at', 'DESC')
-        ->paginate(10);
+            ->withCount('Comment')
+            ->where('status', 'Activo')
+            ->where('end_date', '>=', now())
+            ->orderBy('publish', 'DESC')
+            ->orderBy('created_at', 'DESC')
+            ->paginate(10);
 
         return view('web.services.desactiveSevice', compact('services'));
     }

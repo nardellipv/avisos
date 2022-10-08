@@ -33,8 +33,8 @@ class HomeController extends Controller
             ->withCount('Comment')
             ->where('status', 'Activo')
             ->where('end_date', '>=', now())
-            ->orderBy('created_at', 'DESC')
-            ->take(6)
+            ->orderBy('updated_at', 'DESC')
+            ->take(10)
             ->get();
 
 
