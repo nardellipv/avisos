@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\highlightServiceMail;
 use App\Mail\MessageNotReadMail;
+use App\Mail\MissYouMail;
 use App\Mail\RegisterUserMail;
 use App\Mail\ResumeClientMail;
 use App\Message;
@@ -134,6 +135,16 @@ class JobSiteController extends Controller
                     $msj->to($user->email, $user->name);
                 });
             }
+        }
+    }
+
+    public function missYou()
+    {
+        $users = User::where('lastLogin', '<=', Date::parse('-30days'))
+            ->get();
+
+        foreach ($users as $user) {
+            Mail::to('info@avisosmendoza.com.ar')->send(new MissYouMail($user));
         }
     }
 }

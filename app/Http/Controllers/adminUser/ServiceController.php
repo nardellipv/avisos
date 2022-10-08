@@ -103,6 +103,7 @@ class ServiceController extends Controller
 
     public function storeService(CreateServiceRequest $request)
     {
+
         $user = User::where('id', userConnect()->id)
             ->first();
 
@@ -129,7 +130,7 @@ class ServiceController extends Controller
 
         $path = 'users/' . $user->id;
         $pathSub = 'users/' . $user->id . '/service';
-
+        
         if (!is_dir($path)) {
             mkdir('users/' . $user->id);
         }
