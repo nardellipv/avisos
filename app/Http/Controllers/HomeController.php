@@ -37,6 +37,11 @@ class HomeController extends Controller
             ->take(10)
             ->get();
 
+        $serviceVisit = Service::orderBy('visit', 'DESC')
+            ->first();
+
+        $serviceLike = Service::orderBy('like', 'DESC')
+            ->first();
 
         $servicesPublish = Service::with(['region', 'category', 'user'])
             ->withCount('Comment')
@@ -56,6 +61,6 @@ class HomeController extends Controller
             Cache::forever('regionsCache', $locations);
         }
 
-        return view('web.index', compact('services', 'locations', 'servicesPublish'));
+        return view('web.index', compact('services', 'locations', 'servicesPublish','serviceVisit','serviceLike'));
     }
 }

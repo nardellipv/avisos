@@ -2,6 +2,7 @@
 
 @section('content')
     @include('web.parts._browserCategories')
+    @include('web.parts._outstanding')
     @include('web.parts._soponsor')
     {{--  @include('web.parts._location')  --}}
     @include('web.parts._lastServices')
