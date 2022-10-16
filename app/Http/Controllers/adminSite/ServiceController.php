@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Jambasangsang\Flash\Facades\LaravelFlash;
+use App\Subcategory;
+use App\Image as AppImage;
 
 class ServiceController extends Controller
 {
@@ -100,6 +102,35 @@ class ServiceController extends Controller
         }
 
         LaravelFlash::withInfo('Servicios Reactivados');
+        return back();
+    }
+
+    public function serviceEdit($id)
+    {
+        $service = Service::find($id);
+
+        $images = AppImage::where('service_id', $service->id)
+            ->get();
+
+        $subCategory = Subcategory::where('id', $service->subcategory_id)
+            ->first();
+
+        return view('admin.services.editService', compact('service', 'images','subCategory'));
+    }
+
+    public function serviceUpdate(Request $request, $id)
+    {
+        $service = Service::find($id);
+
+        $service->title = $request['title'];
+        $service->phone = $request['phone'];
+        $service->description = $request['description'];
+        $service->publish = $request['publish'];
+        $service->visit = $request['visit'];
+        $service->like = $request['like'];
+        $service->save();
+
+        LaravelFlash::withInfo('Servicio Editado');
         return back();
     }
 

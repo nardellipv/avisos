@@ -31,7 +31,7 @@
                                 <tbody>
                                     @foreach ($services as $service)
                                     <tr>
-                                        <td>{{ $service->title }}</td>
+                                        <td><a href="{{ route('adminService.edit', $service) }}">{{ $service->title }}</a></td>
                                         <td>{{ Str::limit($service->description, 50) }}</td>
                                         <td>{{ $service->user->email }}</td>
                                         <td>{{ $service->status }}</td>
@@ -55,7 +55,7 @@
                                                 <a href="{{ route('adminService.delete', $service) }}"
                                                     class="btn btn-icon btn-sm btn-success"><i
                                                         class="fas fa-trash"></i></a>
-                                            </div>
+                                            </div>                                            
                                         </td>
                                     </tr>
                                     @endforeach
