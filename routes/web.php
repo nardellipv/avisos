@@ -107,6 +107,8 @@ Route::middleware(['auth','AdminSite'])->group(function () {
     Route::post('/admin/activar-servicio-destacado/{id}', 'adminSite\ServiceController@serviceSponsorActive')->name('adminService.sponsorActive');
     Route::get('/admin/desactivar-servicio/{id}', 'adminSite\ServiceController@serviceDesactive')->name('adminService.desactive');
     Route::get('/admin/borrar-servicio/{id}', 'adminSite\ServiceController@serviceDelete')->name('adminService.delete');
+    Route::get('/admin/editar-servicio/{id}', 'adminSite\ServiceController@serviceEdit')->name('adminService.edit');
+    Route::post('/admin/update-servicio/{id}', 'adminSite\ServiceController@serviceUpdate')->name('adminService.update');
     Route::get('/admin/reactivar-servicios', 'adminSite\ServiceController@serviceReactivate')->name('adminService.reactivate');
 
     Route::get('/admin/generar-sitemap', 'adminSite\DashboardController@sitemap')->name('adminDashboard.sitemap');
