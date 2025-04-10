@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\adminUser;
+namespace App\Http\Controllers\AdminUser;
 
 use App\Favorite;
 use App\Http\Controllers\Controller;

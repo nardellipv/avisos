@@ -6,15 +6,15 @@
                 @foreach ($categories as $category)
                 <li>
                     <i class="category-icon">
-                        <img src="{{ asset('styleWeb/assets/imgCat/' . $category->slug . '.png') }}" alt="{{ $category->slug }}">
+                        <img src="{{ asset('styleWeb/assets/imgCat/' . $category->slug . '.png') }}" alt="{{ $category->slug }}" title="{{ $category->slug }}">
                     </i>
-                    <h4><a href="{{ route('category.listCategory', $category->slug) }}">{{ Str::limit($category->name,
+                    <h4><a href="{{ route('category.listCategory', $category->slug) }}" rel="canonical">{{ Str::limit($category->name,
                             15) }} ({{ $category->services_count }})</a></h4>
                 </li>
                 @endforeach
                 <li>
                     <i class="category-icon">
-                        <img src="{{ asset('styleWeb/assets/imgCat/categories_all.png') }}" alt="todas categorias">
+                        <img src="{{ asset('styleWeb/assets/imgCat/categories_all.png') }}" alt="todas categorias" title="todas las categorias" rel="canonical">
                     </i>
                     <h4><a href="{{ route('category.index') }}">Listado Completo</a></h4>
                 </li>

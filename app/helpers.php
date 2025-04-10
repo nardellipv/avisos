@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Auth;
 
-function userConnect()
-{
-    return Auth::user();
+if (!function_exists('userConnect')) {
+    function userConnect()
+    {
+        return Auth::user();
+    }
 }

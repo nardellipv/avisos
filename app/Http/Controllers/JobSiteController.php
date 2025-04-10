@@ -144,7 +144,7 @@ class JobSiteController extends Controller
             ->get();
 
         foreach ($users as $user) {
-            Mail::to('info@avisosmendoza.com.ar')->send(new MissYouMail($user));
+            Mail::to($user->email)->send(new MissYouMail($user));
         }
     }
 }

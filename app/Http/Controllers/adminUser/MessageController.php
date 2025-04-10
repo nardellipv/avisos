@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\adminUser;
+namespace App\Http\Controllers\AdminUser;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ResponseMailClientRequest;

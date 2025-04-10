@@ -11,9 +11,9 @@
                     <div class="background-image">
                         @if ($comment->user->photo)
                         <img src="{{ asset('users/' . $comment->user->id . '/images/120x120-' . $comment->user->photo) }}"
-                            alt="foto perfil" class="img-responsive">
+                            alt="foto perfil" title="foto perfil" class="img-responsive">
                         @else
-                        <img src="{{ asset('styleWeb/assets/logo.png') }}" class="img-fluid" alt="Logo"
+                        <img src="{{ asset('styleWeb/assets/logo.png') }}" class="img-fluid" alt="Logo" title="foto perfil"
                             class="img-responsive">
                         @endif
                     </div>
@@ -48,8 +48,8 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="email" class="col-form-label">Email</label>
-                    <input name="email" type="email" class="form-control" id="email" value="{{ userConnect()->email }}"
+                    <label for="email_user" class="col-form-label">Email</label>
+                    <input name="email" type="email" class="form-control" id="email_user" value="{{ userConnect()->email }}"
                         readonly>
                 </div>
             </div>
@@ -75,9 +75,9 @@
             <label for="sender-email" class="control-label">Email</label>
 
             <div class="input-icon">
-                <input id="email" type="email" placeholder="Email"
+                <input id="email_login" type="email" placeholder="Email"
                     class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" name="email"
-                    required autocomplete="email">
+                    required autocomplete="email" id="email_login">
             </div>
             @error('email')
             <span class="invalid-feedback" role="alert">
@@ -86,11 +86,11 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="password" class="control-label">Password</label>
+            <label for="password" id="password_login" class="control-label">Password</label>
 
             <div class="input-icon">
                 <input type="password" class="form-control @error('password') is-invalid @enderror"
-                    placeholder="Password" id="password" name="password" required autocomplete="current-password">
+                    placeholder="Password" id="password_login" name="password" required autocomplete="current-password">
             </div>
             @error('password')
             <span class="invalid-feedback" role="alert">

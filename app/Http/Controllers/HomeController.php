@@ -16,7 +16,7 @@ class HomeController extends Controller
         SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
 
         SEOMeta::addKeyword([
-            'Mendoza Trabajo', 'Mendoza Clasificados', 'Clasificados Los Andes', 'Clasificados diario uno', 
+            'Mendoza Trabajo', 'Mendoza Clasificados', 'Clasificados Los Andes', 'Clasificados diario uno',
             'avisos clasificados de mendoza', 'Clasificados Mendoza alquileres'
         ]);
 
@@ -38,9 +38,11 @@ class HomeController extends Controller
             ->get();
 
         $serviceVisit = Service::orderBy('visit', 'DESC')
+            ->where('status', 'Activo')
             ->first();
 
         $serviceLike = Service::orderBy('like', 'DESC')
+            ->where('status', 'Activo')
             ->first();
 
         $servicesPublish = Service::with(['region', 'category', 'user'])
@@ -61,6 +63,6 @@ class HomeController extends Controller
             Cache::forever('regionsCache', $locations);
         }
 
-        return view('web.index', compact('services', 'locations', 'servicesPublish','serviceVisit','serviceLike'));
+        return view('web.index', compact('services', 'locations', 'servicesPublish', 'serviceVisit', 'serviceLike'));
     }
 }

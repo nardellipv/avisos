@@ -4,7 +4,7 @@
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
                     <a class="navbar-brand" href="{{ route('home') }}">
-                        <img src="{{ asset('styleWeb/assets/logo_chico.png') }}" alt="avisos mendoza logo">
+                        <img src="{{ asset('styleWeb/assets/logo_chico.png') }}" alt="avisos mendoza logo" title="logo avisos mendoza">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
                         aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
