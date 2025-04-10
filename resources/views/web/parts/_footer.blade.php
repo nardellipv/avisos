@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-5">
                     <a href="#" class="brand">
-                        <img src="{{ asset('styleWeb/assets/logo_chico.png') }}" alt="logo avisos mendoza">
+                        <img src="{{ asset('styleWeb/assets/logo_chico.png') }}" alt="logo avisos mendoza" title="logo avisos mendoza">
                     </a>
                     <p>
                         Avisos Mendoza es un sitio para que todo mendocino que ofrezca un servicio pueda tener mayor visibilidad dentro de la provincia 

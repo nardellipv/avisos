@@ -18,14 +18,14 @@
                         <div class="gallery-carousel owl-carousel">
                             @foreach ($images as $key=>$image)
                             <img src="{{ asset('users/' . $service->user->id . '/service/' . $image->name) }}"
-                                alt="{{ $service->category->name }}" >
+                                alt="{{ $service->category->name }}" title="{{ $service->category->name }}">
                             @endforeach
                         </div>
                         <div class="gallery-carousel-thumbs owl-carousel">
                             @foreach ($images as $key => $image)
                             <a href="#{{ $key }}" class="owl-thumb background-image">
                                 <img src="{{ asset('users/' . $service->user->id . '/service/' . $image->name) }}"
-                                    alt="{{ $service->category->name }}">
+                                    alt="{{ $service->category->name }}" title="{{ $service->category->name }}">
                             </a>
                             @endforeach
                         </div>

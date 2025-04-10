@@ -363,7 +363,7 @@
                                                                     class="fullCenter">
                                                                     <!--[if !mso]><!--><span
                                                                         style="font-family: 'proxima_novasemibold', Helvetica; font-weight: normal;">
-                                                                        <!--<![endif]-->Te contactaron desda Avisos Mendoza
+                                                                        <!--<![endif]-->Te contactaron desde Avisos Mendoza
                                                                         <!--[if !mso]><!-->
                                                                     </span>
                                                                     <!--<![endif]-->

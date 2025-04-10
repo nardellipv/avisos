@@ -80,7 +80,7 @@
 
             <div class="item">
                 <div class="wrapper">
-                    <img src="{{ asset('styleWeb/assets/img/destacado.png') }}"
+                    <img src="{{ asset('styleWeb/assets/img/destacado.png') }}" alt="destacado" title="servicio destacado"
                 class="image-wrapper background-image">
                 </div>
             </div>

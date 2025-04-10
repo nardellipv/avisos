@@ -2,13 +2,13 @@
     <section class="block">
         <div class="container">
             <section>
-                <h2>¿Ofreces algún tipo de aviso clasificado en Mendoza?</h2>
+                <h2>¿Buscas una manera efectiva de promocionar tus servicios o productos en línea en Mendoza?</h2>
                 <blockquote class="blockquote">
-                    <p class="mb-0">Registrate totalmente Gratis y empeza a conectarte con personas que buscan lo que
-                        vos haces y amplia tu
-                        red de clientes en Mendoza.</p>
+
+                    <p class="mb-0"> ¡Nuestro sitio web de avisos clasificados puede ser la solución perfecta para ti!</p>
+                    <p class="mb-0">Conéctate con clientes en Mendoza: Regístrate gratis en nuestro sitio web de avisos clasificados.</p>
                     <p class="mb-0">Publicá totalmente gratis tu trabajo para que más mendocionos conozcan tus servicios. Buscas
-                         trabajo o personal capacitado, publicarlo de forma gratuita y en unos simples pasos. 
+                         trabajo o personal capacitado, publicarlo de forma gratuita y en unos simples pasos.
                     </p>
                 </blockquote>
             </section>
