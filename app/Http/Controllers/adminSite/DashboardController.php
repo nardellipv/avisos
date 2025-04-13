@@ -3,42 +3,33 @@
 namespace App\Http\Controllers\adminSite;
 
 use App\Http\Controllers\Controller;
+use App\Category;
+use App\Subcategory;
 use App\Region;
 use App\Service;
 use App\TempSponsor;
 use App\User;
-use File;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url as SitemapUrl;
+
 
 class DashboardController extends Controller
 {
     public function dashboard()
     {
-        $userClientCount = User::where('type', 'Cliente')
-            ->count();
-
-        $userAnunCount = User::where('type', 'Anunciante')
-            ->count();
-
-        $serviceActiveCount = Service::where('status', 'Activo')
-            ->count();
-
-        $servicePausedCount = Service::where('status', 'Pausado')
-            ->count();
-
-        $users = User::with(['region'])
-            ->get();
-
-        $servicePending = Service::where('status', 'PENDIENTE')
-            ->get();
-
+        $userClientCount = User::where('type', 'Cliente')->count();
+        $userAnunCount = User::where('type', 'Anunciante')->count();
+        $serviceActiveCount = Service::where('status', 'Activo')->count();
+        $servicePausedCount = Service::where('status', 'Pausado')->count();
+        $users = User::with(['region'])->get();
+        $servicePending = Service::where('status', 'PENDIENTE')->get();
         $serviceSponsorPending = TempSponsor::with(['service'])
             ->where('pay', 'N')
             ->get();
-
         $publicDays = Storage::disk('public')->get('dayPublic.txt');
         $sponsorDays = Storage::disk('public')->get('daySponsor.txt');
 
@@ -57,13 +48,11 @@ class DashboardController extends Controller
 
     public function incrementService()
     {
-        $services = Service::get();
+        $services = Service::all();
 
         foreach ($services as $service) {
-            $visitRand = $service->visit + rand('20', '50');
-            $votePositve = $service->like + rand('6', '15');
-            $service->visit = $visitRand;
-            $service->like = $votePositve;
+            $service->visit += rand(20, 50);
+            $service->like += rand(6, 15);
             $service->save();
         }
 
@@ -72,32 +61,56 @@ class DashboardController extends Controller
 
     public function sitemap()
     {
-        /* $files = storage_path('public');
-        dd($files); */
-        // eliminamos el archivo
-        /* $siteMap = 'https://guiaceliaca.com.ar/sitemap.xml';
-        // dd($siteMap);
-        unlink($siteMap); */
-        $sitemap = App::make("sitemap");
+        $sitemap = Sitemap::create();
 
-        $sitemap->add(URL::to('/'), \Carbon\Carbon::now(), '1.0', 'daily');
-        $sitemap->add(URL::to('https://avisosmendoza.com.ar/listado'), \Carbon\Carbon::now(), '0.50', 'daily');
+        // Página principal
+        $sitemap->add(
+            SitemapUrl::create('/')
+                ->setLastModificationDate(Carbon::now())
+                ->setPriority(1.0)
+                ->setChangeFrequency(SitemapUrl::CHANGE_FREQUENCY_DAILY)
+        );
 
-        $services = Service::where('status', 'Activo')->orderBy('created_at', 'desc')->get();
-        $regions = Region::get();
+        // Listado principal
+        $sitemap->add(
+            SitemapUrl::create('/listado')
+                ->setLastModificationDate(Carbon::now())
+                ->setPriority(0.8)
+                ->setChangeFrequency(SitemapUrl::CHANGE_FREQUENCY_DAILY)
+        );
 
-        // listado de servicios
-        foreach ($services as $service) {
-            $sitemap->add("https://avisosmendoza.com.ar/servicio/" . $service->slug . '/referencia/' . $service->ref, $service->created_at);
+        // Categorías y subcategorías
+        foreach (Category::all() as $category) {
+            $sitemap->add(
+                SitemapUrl::create('/listado/' . $category->slug)
+                    ->setLastModificationDate(Carbon::now())
+                    ->setPriority(0.7)
+                    ->setChangeFrequency(SitemapUrl::CHANGE_FREQUENCY_WEEKLY)
+            );
+
+            foreach (Subcategory::where('category_id', $category->id)->get() as $sub) {
+                $sitemap->add(
+                    SitemapUrl::create("/listado/{$category->slug}/subcategoria/{$sub->id}")
+                        ->setLastModificationDate(Carbon::now())
+                        ->setPriority(0.6)
+                        ->setChangeFrequency(SitemapUrl::CHANGE_FREQUENCY_WEEKLY)
+                );
+            }
         }
 
-        // listado de regiones
-        /* foreach ($regions as $region) {
-            $sitemap->add("https://avisosmendoza.com.ar/listado/localidad/" . $region->slug);
-        } */
+        // Servicios activos
+        foreach (Service::where('status', 'Activo')->get() as $service) {
+            $sitemap->add(
+                SitemapUrl::create("/servicio/{$service->slug}/referencia/{$service->ref}")
+                    ->setLastModificationDate($service->updated_at ?? $service->created_at)
+                    ->setPriority(0.9)
+                    ->setChangeFrequency(SitemapUrl::CHANGE_FREQUENCY_DAILY)
+            );
+        }
 
-        $sitemap->store('xml', 'sitemap', base_path('../public_html'));
-        // $sitemap->store('xml', 'sitemap');
+        // Guardar sitemap en public/sitemap.xml
+        $sitemap->writeToFile(public_path('sitemap.xml'));
+
         return back();
     }
 
