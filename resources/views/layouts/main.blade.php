@@ -22,7 +22,6 @@
     {{-- @include('external.pixel') --}}
     {{-- @include('external.hotjar') --}}
     @include('external.ads')
-
 </head>
 
 <body>

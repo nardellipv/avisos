@@ -34,41 +34,50 @@ class ServiceController extends Controller
             ->where('status', 'Activo')
             ->first();
 
-        if ($service == NULL) {
+        if (!$service) {
             return redirect()->action('ServiceController@desactiveService');
         }
 
-        // SEO
-        SEOMeta::setTitle($service->title);
-        SEOMeta::setDescription(Str::limit($service->description, 150));
-        SEOMeta::setCanonical('https://avisosmendoza.com.ar/listado');
-        SEOMeta::addMeta('Servicio Creado', $service->created_at->toW3CString(), 'property');
-        SEOMeta::addMeta('Categoría', $service->category->name, 'property');
+        $title = "{$service->title} | {$service->category->name} en {$service->region->name} - Avisos Mendoza";
+        $description = Str::limit(strip_tags($service->description), 160);
+
+        // SEO META
+        SEOMeta::setTitle($title);
+        SEOMeta::setDescription($description);
+        SEOMeta::setCanonical(route('service', [$service->slug, $service->ref]));
+        SEOMeta::addMeta('article:published_time', $service->created_at->toW3CString(), 'property');
+        SEOMeta::addMeta('article:section', $service->category->name, 'property');
+        SEOMeta::addMeta('robots', 'index, follow');
+
         SEOMeta::addKeyword([
-            'Mendoza Trabajo', 'Mendoza Clasificados', 'Clasificados Los Andes', 'Clasificados diario uno',
-            'avisos clasificados de mendoza', 'Clasificados Mendoza alquileres'
+            $service->title,
+            "{$service->category->name} Mendoza",
+            "servicios en {$service->region->name}",
+            'avisos clasificados Mendoza',
+            'publicar servicio Mendoza',
+            'trabajos independientes'
         ]);
 
-        OpenGraph::setUrl('htts://avisosmendoza.com.ar/servicio/' . $service->slug . '/referencia/' . $service->ref);
-        OpenGraph::addProperty('type', 'website');
-        OpenGraph::setTitle($service->title);
+        // OG
+        OpenGraph::setUrl(route('service', [$service->slug, $service->ref]));
+        OpenGraph::setType('article');
+        OpenGraph::setTitle($title);
         OpenGraph::setSiteName('Avisos Mendoza');
-        OpenGraph::setDescription(Str::limit($service->description, 150));
-        OpenGraph::addImage('https://avisosmendoza.com.ar/users/' . $service->user_id . '/service/' . $service->photo, ['height' => 300, 'width' => 300]);
+        OpenGraph::setDescription($description);
 
-
-        $images = Image::where('service_id', $service->id)
-            ->get();
-
-        //cookie si ya lo visito
-        $visit = Cookie::queue('service' . $service->id, '1');
-
-        if (Cookie::get('service' . $service->id) != 1) {
-            Service::where('id', $service->id)->increment('visit');
+        if ($service->photo) {
+            OpenGraph::addImage(asset('users/' . $service->user_id . '/service/' . $service->photo), ['height' => 300, 'width' => 300]);
         }
 
-        $feedbackCount = Comment::where('service_id', $service->id)
-            ->count();
+        $images = Image::where('service_id', $service->id)->get();
+
+        // Cookie + visitas
+        if (!Cookie::get('service' . $service->id)) {
+            Cookie::queue('service' . $service->id, '1', 60 * 24); // 1 día
+            $service->increment('visit');
+        }
+
+        $feedbackCount = Comment::where('service_id', $service->id)->count();
 
         $comments = Comment::with(['user'])
             ->where('comments.service_id', $service->id)
@@ -83,6 +92,7 @@ class ServiceController extends Controller
 
         return view('web.services.service', compact('service', 'feedbackCount', 'comments', 'images', 'services'));
     }
+
 
     public function vote($id)
     {

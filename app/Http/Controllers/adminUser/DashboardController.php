@@ -18,24 +18,28 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        SEOMeta::setTitle('Avisos Mendoza | Dashboard');
-        SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
+        $user = User::where('id', userConnect()->id)->first();
 
-        OpenGraph::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
-        OpenGraph::setTitle('Avisos Mendoza');
+        SEOMeta::setTitle("Panel de {$user->name} | Administrá tus Avisos en Mendoza");
+        SEOMeta::setDescription("Accedé a tu panel de usuario para gestionar tus servicios publicados, ver estadísticas y responder a clientes.");
+        SEOMeta::setCanonical(route('adminDashboard.index'));
+        SEOMeta::addMeta('robots', 'noindex, nofollow'); // Si querés evitar indexación
+        SEOMeta::addKeyword([
+            'panel de usuario',
+            'avisos mendoza',
+            'gestionar servicios',
+            'mis publicaciones',
+            'oficios en mendoza'
+        ]);
 
-        $user = User::where('id', userConnect()->id)
-            ->first();
+        OpenGraph::setTitle("Panel de Usuario | Avisos Mendoza");
+        OpenGraph::setDescription("Ingresá a tu panel y empezá a recibir más consultas desde Avisos Mendoza.");
+        OpenGraph::setUrl(route('adminDashboard.index'));
+        OpenGraph::setSiteName('Avisos Mendoza');
 
-        $countVisit = Service::where('user_id', $user->id)
-            ->sum('visit');
-
-        $countService = Service::where('user_id', $user->id)
-            ->count();
-
-        $countFavorite = Favorite::where('user_id', $user->id)
-            ->count();
-
+        $countVisit = Service::where('user_id', $user->id)->sum('visit');
+        $countService = Service::where('user_id', $user->id)->count();
+        $countFavorite = Favorite::where('user_id', $user->id)->count();
         $countServiceSponsor = Service::where('user_id', userConnect()->id)
             ->where('status', 'Activo')
             ->where('publish', 'Destacado')
@@ -45,18 +49,16 @@ class DashboardController extends Controller
             ->orderBy('created_at', 'DESC')
             ->get();
 
-
         if (!Cookie::get('lastLogin')) {
-            $lastLogin = User::find($user->id);
-            $lastLogin->lastLogin = now();
-            $lastLogin->save();
-            Cookie::queue('lastLogin', 'ultimoIngreso', '10');
+            $user->lastLogin = now();
+            $user->save();
+            Cookie::queue('lastLogin', 'ultimoIngreso', 10);
         }
 
-        Cookie::queue('login', 'ingreso', '2628000');
+        Cookie::queue('login', 'ingreso', 2628000);
 
         return view('web.adminUser.dashboard.indexUser', compact(
-            'user',            
+            'user',
             'countVisit',
             'countFavorite',
             'countService',
@@ -64,6 +66,7 @@ class DashboardController extends Controller
             'notificationList'
         ));
     }
+
 
     public function personalData($id, $name)
     {
@@ -75,7 +78,7 @@ class DashboardController extends Controller
 
         $regions = Region::all();
 
-        return view('web.adminUser.profile.editProfile', compact('user','regions'));
+        return view('web.adminUser.profile.editProfile', compact('user', 'regions'));
     }
 
     public function changeType($id)

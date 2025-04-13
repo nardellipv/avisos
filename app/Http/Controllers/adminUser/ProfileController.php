@@ -49,7 +49,7 @@ class ProfileController extends Controller
         $user->save();
 
         LaravelFlash::withInfo('Perfil modificado correctamente');
-        return redirect()->action('adminUser\DashboardController@index');
+        return redirect()->route('dashboard.index');
     }
 
     public function updatePassword(Request $request)

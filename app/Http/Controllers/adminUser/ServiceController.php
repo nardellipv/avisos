@@ -22,37 +22,45 @@ use Artesaos\SEOTools\Facades\OpenGraph;
 use Illuminate\Support\Facades\Storage;
 use Jambasangsang\Flash\Facades\LaravelFlash;
 
-
 class ServiceController extends Controller
 {
-
     public $publicDays;
     public $sponsorDays;
 
     public function __construct()
     {
-        $this->publicDays = Storage::disk('public')->get('dayPublic.txt');
-        $this->sponsorDays = Storage::disk('public')->get('daySponsor.txt');
+        $this->publicDays = (int) trim(Storage::disk('public')->get('dayPublic.txt'));
+        $this->sponsorDays = (int) trim(Storage::disk('public')->get('daySponsor.txt'));
     }
 
     public function listServices()
     {
-        SEOMeta::setTitle('Avisos Mendoza | Servicios');
-        SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
+        SEOMeta::setTitle('Mis Servicios Publicados | Avisos Mendoza');
+        SEOMeta::setDescription('Administrá tus servicios publicados en Avisos Mendoza. Modificá, destacá o republicá tus avisos para llegar a más clientes.');
+        SEOMeta::setCanonical(route('service.list'));
+        SEOMeta::addMeta('robots', 'noindex, nofollow');
 
-        OpenGraph::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
-        OpenGraph::setTitle('Avisos Mendoza');
+        SEOMeta::addKeyword([
+            'mis servicios avisos mendoza',
+            'gestionar publicaciones',
+            'republicar servicio',
+            'destacar servicio',
+            'editar servicios publicados'
+        ]);
+
+        OpenGraph::setTitle('Gestión de Servicios | Avisos Mendoza');
+        OpenGraph::setDescription('Panel para gestionar tus servicios publicados en Avisos Mendoza.');
+        OpenGraph::setUrl(route('service.list'));
+        OpenGraph::setSiteName('Avisos Mendoza');
 
         $services = Service::with(['category', 'region', 'user'])
             ->where('user_id', userConnect()->id)
-            ->where('status', '!=', 'Desactivo')
-            ->where('status', '!=', 'Pendiente')
+            ->whereNotIn('status', ['Desactivo', 'Pendiente'])
             ->get();
 
         if ($services->isEmpty()) {
-            $categories = Category::all();
             LaravelFlash::withInfo('Crea tu primer servicio');
-            return redirect()->action('adminUser\ServiceController@createService');
+            return redirect()->route('service.create');
         }
 
         return view('web.adminUser.serviceAnun.listService', compact('services'));
@@ -60,58 +68,73 @@ class ServiceController extends Controller
 
     public function pendingService()
     {
+        SEOMeta::setTitle('Servicios Pendientes de Aprobación | Avisos Mendoza');
+        SEOMeta::setDescription('Estos son tus servicios que están pendientes de revisión o activación. Una vez aprobados estarán visibles en el sitio.');
+        SEOMeta::setCanonical(route('service.pending'));
+        SEOMeta::addMeta('robots', 'noindex, nofollow');
+
+        OpenGraph::setTitle('Servicios Pendientes | Avisos Mendoza');
+        OpenGraph::setDescription('Tus servicios en espera de aprobación. Revisalos o editá si lo necesitás.');
+        OpenGraph::setUrl(route('service.pending'));
+        OpenGraph::setSiteName('Avisos Mendoza');
+
         $services = Service::with(['category', 'region', 'user'])
             ->where('user_id', userConnect()->id)
             ->where('status', 'Pendiente')
             ->get();
 
         if ($services->isEmpty()) {
-            $categories = Category::all();
             LaravelFlash::withInfo('Crea tu primer servicio');
-            return redirect()->action('adminUser\ServiceController@createService');
+            return redirect()->route('service.create');
         }
 
         return view('web.adminUser.serviceAnun.pendingService', compact('services'));
     }
 
+
     public function createService()
     {
-        SEOMeta::setTitle('Avisos Mendoza | Crear Servicio');
+        SEOMeta::setTitle('Publicá tu Servicio Gratis | Avisos Mendoza');
+        SEOMeta::setDescription('Subí tu aviso en pocos pasos. Completá los datos de tu servicio y empezá a recibir consultas de nuevos clientes en Mendoza.');
+        SEOMeta::setCanonical(route('service.create'));
+        SEOMeta::addMeta('robots', 'noindex, nofollow');
+
+        OpenGraph::setTitle('Crear Nuevo Servicio | Avisos Mendoza');
+        OpenGraph::setDescription('Publicá tu aviso de manera gratuita en Avisos Mendoza.');
+        OpenGraph::setUrl(route('service.create'));
+        OpenGraph::setSiteName('Avisos Mendoza');
 
         $categories = Category::all();
-
         return view('web.adminUser.serviceAnun.createService', compact('categories'));
     }
 
     public function createServiceCategoySelect()
     {
-
-        $selectCategory = request()->input(['id']);
-
+        $selectCategory = request()->input('id');
+        $category = Category::find($selectCategory);
         $categories = Category::all();
+        $subCategories = Subcategory::where('category_id', $selectCategory)->get();
 
-        $category = Category::where('id', $selectCategory)
-            ->first();
+        if ($category) {
+            SEOMeta::setTitle("Publicá un servicio de {$category->name} | Avisos Mendoza");
+            SEOMeta::setDescription("Completá los detalles del servicio de {$category->name} que querés publicar en Avisos Mendoza.");
+            SEOMeta::setCanonical(route('service.createCategoySelect') . '?id=' . $category->id);
+            SEOMeta::addMeta('robots', 'noindex, nofollow');
 
-        SEOMeta::setTitle('Avisos Mendoza | ' . $category->name);
-
-        $subCategories = Subcategory::where('category_id', $selectCategory)
-            ->get();
+            OpenGraph::setTitle("Crear aviso de {$category->name} | Avisos Mendoza");
+            OpenGraph::setDescription("Subí un servicio de {$category->name} en Mendoza y conseguí más clientes.");
+            OpenGraph::setUrl(route('service.createCategoySelect') . '?id=' . $category->id);
+            OpenGraph::setSiteName('Avisos Mendoza');
+        }
 
         return view('web.adminUser.serviceAnun.createService', compact('categories', 'subCategories', 'category'));
     }
 
+
     public function storeService(CreateServiceRequest $request)
     {
-
-        $user = User::where('id', userConnect()->id)
-            ->first();
-
-        if ($request->phoneWsp) {
-            $phoneWsp = 'Y';
-        } else {
-            $phoneWsp = 'N';
-        }
+        $user = User::where('id', userConnect()->id)->first();
+        $phoneWsp = $request->phoneWsp ? 'Y' : 'N';
 
         $service = Service::create([
             'title' => $request['title'],
@@ -119,7 +142,7 @@ class ServiceController extends Controller
             'status' => 'Pendiente',
             'phone' => $request['phone'],
             'phoneWsp' => $phoneWsp,
-            'end_date' => \Carbon\Carbon::parse(now()->addDay($this->publicDays)),
+            'end_date' => now()->addDays($this->publicDays),
             'user_id' => $user->id,
             'category_id' => $request['category_id'],
             'subcategory_id' => $request['subcategory_id'],
@@ -129,157 +152,98 @@ class ServiceController extends Controller
         ]);
 
         $path = 'users/' . $user->id;
-        $pathSub = 'users/' . $user->id . '/service';
-        
-        if (!is_dir($path)) {
-            mkdir('users/' . $user->id);
-        }
-        if (!is_dir($pathSub)) {
-            mkdir('users/' . $user->id . '/service');
-        }
+        $pathSub = $path . '/service';
+
+        if (!is_dir($path)) mkdir($path);
+        if (!is_dir($pathSub)) mkdir($pathSub);
 
         if ($request->photo) {
-            $countPhoto = count($request->photo);
+            $maxPhoto = count($request->photo) > 2 ? array_slice($request->photo, 0, 3) : $request->photo;
+            foreach ($maxPhoto as $photos) {
+                $image = $photos;
+                $img = Image::make($image->getRealPath());
 
-            if ($countPhoto > 2) {
-                $maxPhoto = array_slice($request['photo'], 0, 3);
-            } else {
-                $maxPhoto = $request['photo'];
-            }
+                if ($img->width() > 700) $img->resize(700, null);
+                if ($img->height() > 400) $img->resize(null, 400);
 
-            if ($maxPhoto) {
-                foreach ($maxPhoto as $photos) {
+                $img->save($pathSub . '/' . $image->getClientOriginalName());
 
-                    $image = $photos;
+                $service->photo = $image->getClientOriginalName();
+                $service->save();
 
-                    $img = Image::make($image->getRealPath());
-
-
-                    if ($img->width() > 700) {
-                        $img->resize(700, null);
-                    }
-
-                    if ($img->height() > 400) {
-                        $img->resize(null, 400);
-                    }
-
-
-                    $img->save($pathSub . '/' . $image->getClientOriginalName());
-
-                    $photoName = $image->getClientOriginalName();
-
-                    $service = Service::where('id', $service->id)
-                        ->first();
-                    $service->photo = $image->getClientOriginalName();
-                    $service->save();
-
-                    $image = AppImage::create([
-                        'name' => $photoName,
-                        'service_id' => $service->id,
-                    ]);
-                }
+                AppImage::create([
+                    'name' => $image->getClientOriginalName(),
+                    'service_id' => $service->id,
+                ]);
             }
         }
 
         Mail::to('mikanthost@gmail.com')->send(new PublishServiceMail($service));
-
         LaravelFlash::withInfo('Servicio agregado correctamente');
-        return redirect()->action('adminUser\DashboardController@index');
+        return redirect()->route('dashboard.index');
     }
 
     public function editService($id)
     {
         $service = Service::find($id);
-
         $this->authorize('ownerService', $service);
+        $images = AppImage::where('service_id', $service->id)->get();
+        $subCategory = Subcategory::find($service->subcategory_id);
 
-        $images = AppImage::where('service_id', $service->id)
-            ->get();
+        SEOMeta::setTitle('Editar Servicio: ' . $service->title);
+        SEOMeta::setDescription('Modificá los datos de tu publicación para mantenerla actualizada en Avisos Mendoza.');
 
-        $subCategory = Subcategory::where('id', $service->subcategory_id)
-            ->first();
 
         return view('web.adminUser.serviceAnun.editService', compact('service', 'subCategory', 'images'));
     }
 
     public function updateService(UpdateServiceRequest $request, $id)
     {
-        if ($request->phoneWsp) {
-            $phoneWsp = 'Y';
-        } else {
-            $phoneWsp = 'N';
-        }
-
-        $user = User::where('id', userConnect()->id)
-            ->first();
-
+        $user = User::where('id', userConnect()->id)->first();
         $service = Service::find($id);
-        $service->title = $request['title'];
-        $service->description = $request['description'];
-        $service->status = 'Pendiente';
-        $service->phone = $request['phone'];
-        $service->phoneWsp = $phoneWsp;
-        $service->slug = Str::slug($request['title']);
+        $this->authorize('ownerService', $service);
 
+        $phoneWsp = $request->phoneWsp ? 'Y' : 'N';
+
+        $service->fill([
+            'title' => $request['title'],
+            'description' => $request['description'],
+            'status' => 'Pendiente',
+            'phone' => $request['phone'],
+            'phoneWsp' => $phoneWsp,
+            'slug' => Str::slug($request['title']),
+        ]);
 
         $path = 'users/' . $user->id;
-        $pathSub = 'users/' . $user->id . '/service';
+        $pathSub = $path . '/service';
 
-        if (!is_dir($path)) {
-            mkdir('users/' . $user->id);
-        }
-        if (!is_dir($pathSub)) {
-            mkdir('users/' . $user->id . '/service');
-        }
+        if (!is_dir($path)) mkdir($path);
+        if (!is_dir($pathSub)) mkdir($pathSub);
 
         if ($request->photo) {
-            $countPhoto = count($request->photo);
+            $maxPhoto = count($request->photo) > 2 ? array_slice($request->photo, 0, 3) : $request->photo;
+            foreach ($maxPhoto as $photos) {
+                $image = $photos;
+                $img = Image::make($image->getRealPath());
 
-            if ($countPhoto > 2) {
-                $maxPhoto = array_slice($request['photo'], 0, 3);
-            } else {
-                $maxPhoto = $request['photo'];
-            }
+                if ($img->width() > 700) $img->resize(700, null);
+                if ($img->height() > 400) $img->resize(null, 400);
 
-            if ($maxPhoto) {
-                foreach ($maxPhoto as $photos) {
+                $img->save($pathSub . '/' . $image->getClientOriginalName());
 
-                    $image = $photos;
+                $service->photo = $image->getClientOriginalName();
+                $service->save();
 
-                    $img = Image::make($image->getRealPath());
-
-
-                    if ($img->width() > 700) {
-                        $img->resize(700, null);
-                    }
-
-                    if ($img->height() > 400) {
-                        $img->resize(null, 400);
-                    }
-
-
-                    $img->save($pathSub . '/' . $image->getClientOriginalName());
-
-                    $photoName = $image->getClientOriginalName();
-
-                    $service = Service::where('id', $service->id)
-                        ->first();
-                    $service->photo = $image->getClientOriginalName();
-                    $service->save();
-
-                    $image = AppImage::create([
-                        'name' => $photoName,
-                        'service_id' => $service->id,
-                    ]);
-                }
+                AppImage::create([
+                    'name' => $image->getClientOriginalName(),
+                    'service_id' => $service->id,
+                ]);
             }
         }
 
         $service->save();
-
         Mail::to('mikanthost@gmail.com')->send(new EditServiceMail($service));
-
-        LaravelFlash::withSuccess("Servicio actualizado ssss correctamente");
+        LaravelFlash::withSuccess("Servicio actualizado correctamente");
         return back();
     }
 
@@ -288,7 +252,6 @@ class ServiceController extends Controller
         $image = AppImage::find($id);
         File::delete('users/' . userConnect()->id . '/service/' . $image->name);
         $image->delete();
-
         LaravelFlash::withInfo('Imágen eliminada correctamente');
         return back();
     }
@@ -296,11 +259,8 @@ class ServiceController extends Controller
     public function deleteService($id)
     {
         $service = Service::find($id);
-
         $this->authorize('ownerService', $service);
-
         $service->delete();
-
         LaravelFlash::withInfo('Servicio eliminado correctamente');
         return back();
     }
@@ -308,15 +268,11 @@ class ServiceController extends Controller
     public function republishService($id)
     {
         $service = Service::find($id);
-
         $this->authorize('ownerService', $service);
-
-        $service->end_date = \Carbon\Carbon::parse(now()->addDay($this->publicDays));
+        $service->end_date = now()->addDays($this->publicDays);
         $service->save();
-
         Mail::to($service->user->email)->send(new RepublishServiceMail($service));
-
-        LaravelFlash::withInfo('Servicio actuzalido correctamente');
+        LaravelFlash::withInfo('Servicio actualizado correctamente');
         return back();
     }
 }
