@@ -13,16 +13,28 @@ class FavoriteController extends Controller
 
     public function listFavorite()
     {
-        SEOMeta::setTitle('Avisos Mendoza | Favoritos');
-        SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
-
-        OpenGraph::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
-        OpenGraph::setTitle('Avisos Mendoza');
-
+        SEOMeta::setTitle('Mis Servicios Favoritos | Avisos Mendoza');
+        SEOMeta::setDescription('Revisá y administrá tus servicios favoritos guardados en Avisos Mendoza. Volvé a contactarte con los profesionales que más te interesaron.');
+        SEOMeta::setCanonical(route('favorite.list'));
+        SEOMeta::addMeta('robots', 'noindex, nofollow');
+    
+        SEOMeta::addKeyword([
+            'servicios guardados',
+            'favoritos avisos mendoza',
+            'mis avisos guardados',
+            'avisos mendoza usuario',
+            'contactar servicios mendocinos'
+        ]);
+    
+        OpenGraph::setTitle('Mis Favoritos | Servicios Guardados en Avisos Mendoza');
+        OpenGraph::setDescription('Volvé a ver los oficios que guardaste como favoritos en Avisos Mendoza. Retomá el contacto con profesionales de Mendoza.');
+        OpenGraph::setUrl(route('favorite.list'));
+        OpenGraph::setSiteName('Avisos Mendoza');
+    
         $favorites = Favorite::with(['service', 'service.region', 'service.user', 'service.category'])
             ->where('user_id', userConnect()->id)
             ->get();
-
+    
         return view('web.adminUser.favorite.listFavorite', compact('favorites'));
     }
 

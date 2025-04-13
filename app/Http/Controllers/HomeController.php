@@ -6,28 +6,39 @@ use App\Region;
 use App\Service;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\TwitterCard;
 use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        SEOMeta::setTitle('Avisos Clasificados Mendoza Gratis ' . date('Y'));
-        SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
-
+        SEOMeta::setTitle('Avisos Mendoza | Publicá Gratis tu Servicio en Mendoza ' . date('Y'));
+        SEOMeta::setDescription('¿Ofrecés oficios o servicios en Mendoza? Subí tu aviso gratis y conseguí más clientes. Electricistas, plomeros, técnicos, limpieza y más rubros disponibles.');
         SEOMeta::addKeyword([
-            'Mendoza Trabajo', 'Mendoza Clasificados', 'Clasificados Los Andes', 'Clasificados diario uno',
-            'avisos clasificados de mendoza', 'Clasificados Mendoza alquileres'
+            'avisos clasificados Mendoza',
+            'publicar servicio gratis Mendoza',
+            'servicios Mendoza',
+            'trabajos independientes Mendoza',
+            'plomero Mendoza',
+            'electricista Mendoza',
+            'avisos gratis ' . date('Y'),
+            'avisos online Mendoza'
         ]);
+        SEOMeta::setCanonical(route('home'));
+        SEOMeta::addMeta('robots', 'index, follow');
 
-        OpenGraph::setDescription('Llegá a más mendocinos publicando tu servicio totalmente gratis');
-        OpenGraph::setTitle('Avisos Mendoza');
-        OpenGraph::setUrl('https://avisosmendoza.com.ar');
+        OpenGraph::setTitle('Avisos Mendoza | Publicá Gratis tu Servicio y Conseguí Clientes');
+        OpenGraph::setDescription('Promocioná tus servicios GRATIS en Mendoza. Llega a miles de personas que buscan oficios como el tuyo. Avisos fáciles, rápidos y efectivos.');
+        OpenGraph::setUrl(route('home'));
         OpenGraph::setSiteName('Avisos Mendoza');
-        OpenGraph::addImage(['url' => 'https://avisosmendoza.com.ar/styleWeb/assets/logoFace.png']);
+        OpenGraph::addImage(asset('styleWeb/assets/logo.png'));
         OpenGraph::addProperty('locale', 'es_AR');
-        // OpenGraph::addImage(['url' => 'https://avisosmendoza.com.ar/styleWeb/assets/logo.png', 'size' => 300]);
-        OpenGraph::addProperty('type', 'articles');
+        OpenGraph::addProperty('type', 'website');
+
+        TwitterCard::setTitle('Publicá tu Servicio Gratis en Mendoza | Avisos Mendoza');
+        TwitterCard::setDescription('Subí tu aviso gratis y conseguí más clientes. Ideal para oficios como plomería, electricidad, albañilería, limpieza y más.');
+        TwitterCard::setImage(asset('styleWeb/assets/logo.png'));
 
         $services = Service::with(['region', 'category', 'user'])
             ->withCount('Comment')
@@ -37,12 +48,12 @@ class HomeController extends Controller
             ->take(10)
             ->get();
 
-        $serviceVisit = Service::orderBy('visit', 'DESC')
-            ->where('status', 'Activo')
+        $serviceVisit = Service::where('status', 'Activo')
+            ->orderBy('visit', 'DESC')
             ->first();
 
-        $serviceLike = Service::orderBy('like', 'DESC')
-            ->where('status', 'Activo')
+        $serviceLike = Service::where('status', 'Activo')
+            ->orderBy('like', 'DESC')
             ->first();
 
         $servicesPublish = Service::with(['region', 'category', 'user'])
@@ -54,14 +65,9 @@ class HomeController extends Controller
             ->take(6)
             ->get();
 
-        //cacheo location forever
-        if (Cache::has('regionsCache')) {
-            $locations = Cache::get('regionsCache');
-        } else {
-            $locations = Region::get();
-
-            Cache::forever('regionsCache', $locations);
-        }
+        $locations = Cache::rememberForever('regionsCache', function () {
+            return Region::get();
+        });
 
         return view('web.index', compact('services', 'locations', 'servicesPublish', 'serviceVisit', 'serviceLike'));
     }

@@ -16,11 +16,23 @@ class MessageController extends Controller
 {
     public function listMessage()
     {
-        SEOMeta::setTitle('Avisos Mendoza | Mensajes');
-        SEOMeta::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
+        SEOMeta::setTitle('Mis Mensajes | Avisos Mendoza');
+        SEOMeta::setDescription('Gestioná tus mensajes recibidos y respondé consultas sobre tus servicios publicados en Avisos Mendoza.');
+        SEOMeta::setCanonical(route('message.list'));
+        SEOMeta::addMeta('robots', 'noindex, nofollow');
 
-        OpenGraph::setDescription('Llegá a más mendocinos publicando tu servicio en Avisos Mendoza totalmente gratis y en un instante.');
-        OpenGraph::setTitle('Avisos Mendoza');
+        SEOMeta::addKeyword([
+            'mis mensajes',
+            'mensajes avisos mendoza',
+            'consultas de clientes',
+            'inbox usuario avisos',
+            'responder mensajes servicios'
+        ]);
+
+        OpenGraph::setTitle('Mis Mensajes | Panel Usuario - Avisos Mendoza');
+        OpenGraph::setDescription('Revisá tus mensajes y respondé consultas de personas interesadas en tus avisos.');
+        OpenGraph::setUrl(route('message.list'));
+        OpenGraph::setSiteName('Avisos Mendoza');
 
         $messagesNoRead = Message::where('user_id', userConnect()->id)
             ->where('read', 'N')
@@ -30,7 +42,7 @@ class MessageController extends Controller
             ->where('read', 'y')
             ->get();
 
-        return view('web.adminUser.message.listMessage', compact('messagesNoRead','messagesRead'));
+        return view('web.adminUser.message.listMessage', compact('messagesNoRead', 'messagesRead'));
     }
 
     public function responseMessage(ResponseMailClientRequest $request, $id)
