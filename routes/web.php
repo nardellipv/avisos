@@ -15,6 +15,9 @@ Route::get('/clear', function () {
 
 Auth::routes();
 
+Route::get('login/google', [App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('login/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
+
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/listado', [App\Http\Controllers\CategoryController::class, 'index'])->name('category.index');

@@ -35,5 +35,10 @@ return [
             'key'   => 'xsmtpsib-05fd09922e5bc01d5a9bfb70b4a4f9eb82f43b63cbc5952a331af373d69caa68-W5qrUvyQPLpI7JKt'
         ]
     ],
-
+    
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT_URI'),
+    ],
 ];

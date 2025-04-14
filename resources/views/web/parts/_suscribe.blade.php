@@ -2,18 +2,15 @@
     <section class="block">
         <div class="container">
             <section>
-                <h2>¿Buscas una manera efectiva de promocionar tus servicios o productos en línea en Mendoza?</h2>
+                <h2>¿Querés promocionar tus servicios o productos en Mendoza de forma efectiva?</h2>
                 <blockquote class="blockquote">
-
-                    <p class="mb-0"> ¡Nuestro sitio web de avisos clasificados puede ser la solución perfecta para ti!</p>
-                    <p class="mb-0">Conéctate con clientes en Mendoza: Regístrate gratis en nuestro sitio web de avisos clasificados.</p>
-                    <p class="mb-0">Publicá totalmente gratis tu trabajo para que más mendocionos conozcan tus servicios. Buscas
-                         trabajo o personal capacitado, publicarlo de forma gratuita y en unos simples pasos.
-                    </p>
+                    <p class="mb-0">En Avisos Mendoza podés publicar tus servicios o productos de manera gratuita y llegar a miles de personas que buscan lo que ofrecés.</p>
+                    <p class="mb-0">Conectate con potenciales clientes en toda la provincia: registrate gratis y comenzá a ofrecer tus servicios hoy mismo.</p>
+                    <p class="mb-0">Ya sea que estés buscando trabajo o quieras contratar personal capacitado, podés publicar tu aviso en simples pasos y sin costo.</p>
                 </blockquote>
             </section>
-            <div class="text-center">
-                <a href="{{ route('register') }}" class="btn btn-warning btn-rounded text-center">Registrarme</a>
+            <div class="text-center mt-3">
+                <a href="{{ route('register') }}" class="btn btn-warning btn-rounded text-center">Crear mi cuenta gratis</a>
             </div>
         </div>
     </section>
