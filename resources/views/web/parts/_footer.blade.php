@@ -2,50 +2,42 @@
     <div class="wrapper">
         <div class="container">
             <div class="row">
+                <!-- Branding y descripción -->
                 <div class="col-md-5">
-                    <a href="#" class="brand">
-                        <img src="{{ asset('styleWeb/assets/logo_chico.png') }}" alt="logo avisos mendoza" title="logo avisos mendoza">
+                    <a href="{{ route('home') }}" class="brand">
+                        <img src="{{ asset('styleWeb/assets/logo_chico.png') }}" alt="Avisos Mendoza - Publicá tu servicio gratis" title="Avisos Mendoza - Publicá tu servicio gratis">
                     </a>
                     <p>
-                        Avisos Mendoza es un sitio para que todo mendocino que ofrezca un servicio pueda tener mayor visibilidad dentro de la provincia 
-                        y totalmente gratis.
+                        <strong>Avisos Mendoza</strong> es una plataforma de clasificados gratuita donde cualquier mendocino puede publicar sus servicios u oficios y aumentar su visibilidad en toda la provincia. Ideal para profesionales, emprendedores y empresas locales.
                     </p>
                 </div>
+
+                <!-- Navegación -->
                 <div class="col-md-3">
                     <h2>Navegación</h2>
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <nav>
                                 <ul class="list-unstyled">
-                                    <li>
-                                        <a href="{{ route('home') }}">Inicio</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('terms') }}">Términos y Condiciones</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('policy') }}">Politicas de Privacidad</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('contact') }}">Contacto</a>
-                                    </li>
+                                    <li><a href="{{ route('home') }}">Inicio</a></li>
+                                    <li><a href="{{ route('terms') }}">Términos y Condiciones</a></li>
+                                    <li><a href="{{ route('policy') }}">Política de Privacidad</a></li>
+                                    <li><a href="{{ route('contact') }}">Contacto</a></li>
                                 </ul>
                             </nav>
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <nav>
-                                <ul class="list-unstyled">                                    
-                                    <li>
-                                        <a href="{{ route('login') }}">Ingresar</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('register') }}">Registrarse</a>
-                                    </li>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ route('login') }}">Ingresar</a></li>
+                                    <li><a href="{{ route('register') }}">Registrarse</a></li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
                 </div>
+
+                <!-- Contacto -->
                 <div class="col-md-4">
                     <h2>Contacto</h2>
                     <address>
@@ -54,16 +46,20 @@
                             Argentina
                         </figure>
                         <br>
-                        <strong>Email:</strong> <a href="#">info@avisosmendoza.com.ar</a>
-                        <br>
-                        <br>
-                        <br>
-                        <a href="{{ route('contact') }}" class="btn btn-primary text-caps btn-framed">Contactenos</a>
+                        <strong>Email:</strong> <a href="mailto:info@avisosmendoza.com.ar">info@avisosmendoza.com.ar</a>
+                        <br><br>
+                        <a href="{{ route('contact') }}" class="btn btn-primary text-caps btn-framed">Escribinos un mensaje</a>
                     </address>
                 </div>
             </div>
-            &copy; {{ date('Y') }} <a href="https://mikant.com.ar" target="_blank">MikAnt</a>
+
+            <!-- Copyright -->
+            <div class="text-center mt-4">
+                &copy; {{ date('Y') }} <a href="https://mikant.com.ar" target="_blank" rel="noopener">MikAnt</a>
+            </div>
         </div>
+
+        <!-- Fondo -->
         <div class="background">
             <div class="background" data-background-color="#fff"></div>
         </div>
