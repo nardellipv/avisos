@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-
+use Carbon\Carbon;
 
 class LoginController extends Controller
 {
@@ -52,7 +52,7 @@ class LoginController extends Controller
         try {
             $googleUser = Socialite::driver('google')->user();
 
-            $user = \App\User::firstOrCreate(
+            $user = User::firstOrCreate(
                 ['email' => $googleUser->getEmail()],
                 [
                     'name' => $googleUser->getName(),
@@ -61,15 +61,22 @@ class LoginController extends Controller
                     'type' => 'Cliente',
                     'region_id' => 1, // región por defecto ("Sin especificar")
                     'photo' => $googleUser->getAvatar(), // foto de Google
+                    'lastLogin' => Carbon::now()->toDateString(),
                 ]
             );
+
+            if (! $user->wasRecentlyCreated && empty($user->photo)) {
+                $user->update([
+                    'photo' => $googleUser->getAvatar(),
+                ]);
+            }
 
             Auth::login($user);
 
             // Si es nuevo o tiene datos incompletos, redirigir a completar perfil
-            if ($user->wasRecentlyCreated || $user->lastname === '-' || $user->region_id == 1) {
-                return redirect()->route('dashboard.personalData', [$user->id, \Str::slug($user->name)]);
-            }
+            // if ($user->wasRecentlyCreated || $user->lastname === '-' || $user->region_id == 1) {
+            //     return redirect()->route('dashboard.personalData', [$user->id, \Str::slug($user->name)]);
+            // }
 
             return redirect()->route('dashboard.index');
         } catch (\Exception $e) {

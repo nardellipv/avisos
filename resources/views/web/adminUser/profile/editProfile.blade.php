@@ -4,6 +4,7 @@
 <section class="content">
     <section class="block">
         <div class="container">
+            @include('web.alerts.error')
             <form action="{{ route('profile.updateProfile', $user) }}" class="form-horizontal" method="POST"
                 enctype="multipart/form-data">
                 @csrf

@@ -7,11 +7,17 @@ Route::get('/clear', function () {
     \Artisan::call('cache:clear');
     \Artisan::call('route:clear');
     \Artisan::call('config:cache');
-    \Artisan::call('config:clear');
     \Artisan::call('view:cache');
     \Artisan::call('view:clear');
-    return 'FINISHED';
+
+    $logPath = storage_path('logs/laravel.log');
+    if (file_exists($logPath)) {
+        file_put_contents($logPath, '');
+    }
+
+    return 'FINISHED + LOG LIMPIADO';
 });
+
 
 Auth::routes();
 
@@ -28,7 +34,6 @@ Route::get('/listado/voto/{id}', [App\Http\Controllers\ServiceController::class,
 
 Route::get('/servicio/{slug}/referencia/{ref}', [App\Http\Controllers\ServiceController::class, 'service'])->name('service');
 Route::get('/servicio/desactivo', [App\Http\Controllers\ServiceController::class, 'desactiveService'])->name('service.desactive');
-
 
 // aprobar
 Route::get('/activar-servicio-mail/{id}/{ref}', [App\Http\Controllers\ServiceController::class, 'serviceActiveEmail'])->name('adminService.activeByEmail');
