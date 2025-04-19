@@ -14,3 +14,4 @@ yarn-error.log
 .vscode/sftp.json
 bootstrap/cache/services.php
 config/services.php
+bootstrap/cache/
