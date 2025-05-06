@@ -64,6 +64,8 @@ Route::get('/resume-client', [App\Http\Controllers\JobSiteController::class, 're
 Route::get('/register-user', [App\Http\Controllers\JobSiteController::class, 'registerUser'])->name('jobService.registerUser');
 Route::get('/highlight-service', [App\Http\Controllers\JobSiteController::class, 'highlightService'])->name('jobService.highlightService');
 Route::get('/admin/generar-sitemap-auto', [App\Http\Controllers\AdminSite\DashboardController::class, 'sitemap'])->name('adminDashboard.sitemap');
+Route::get('/publicar-ig', [App\Http\Controllers\JobSiteController::class, 'publishIG'])->name('publish.instagram');
+
 
 //admin client
 Route::middleware(['auth'])->group(function () {
