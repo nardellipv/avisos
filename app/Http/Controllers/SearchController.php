@@ -53,7 +53,7 @@ class SearchController extends Controller
 
         SEOMeta::setTitle("Servicios en {$region->name} | Oficios en Mendoza - Avisos Clasificados");
         SEOMeta::setDescription("Explorá todos los servicios disponibles en {$region->name}, Mendoza. Encontrá plomeros, electricistas, técnicos, y más cerca tuyo.");
-        SEOMeta::setCanonical(route('list.location', $region->slug));
+        SEOMeta::setCanonical($region->slug);
         SEOMeta::addMeta('robots', 'index, follow');
 
         SEOMeta::addKeyword([

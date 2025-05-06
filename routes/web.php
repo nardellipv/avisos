@@ -117,6 +117,7 @@ Route::middleware(['auth', 'AdminSite'])->group(function () {
     Route::get('/admin/editar-servicio/{id}', [App\Http\Controllers\AdminSite\ServiceController::class, 'serviceEdit'])->name('adminService.edit');
     Route::post('/admin/update-servicio/{id}', [App\Http\Controllers\AdminSite\ServiceController::class, 'serviceUpdate'])->name('adminService.update');
     Route::get('/admin/reactivar-servicios', [App\Http\Controllers\AdminSite\ServiceController::class, 'serviceReactivate'])->name('adminService.reactivate');
+    Route::post('/admin/generar-publicacion', [App\Http\Controllers\AdminSite\DashboardController::class, 'publicationMake'])->name('publication.make');
 
     Route::get('/admin/generar-sitemap', [App\Http\Controllers\AdminSite\DashboardController::class, 'sitemap'])->name('adminDashboard.sitemap');
     Route::get('/admin/incrementar-visitas', [App\Http\Controllers\AdminSite\DashboardController::class, 'incrementService'])->name('adminDashboard.incrementService');
