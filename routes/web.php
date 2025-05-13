@@ -33,6 +33,7 @@ Route::get('/listado/{slug}/subcategoria/{id}', [App\Http\Controllers\CategoryCo
 Route::get('/listado/voto/{id}', [App\Http\Controllers\ServiceController::class, 'vote'])->name('service.vote');
 
 Route::get('/servicio/{slug}/referencia/{ref}', [App\Http\Controllers\ServiceController::class, 'service'])->name('service');
+Route::get('/service/{service:slug}/{ref}/phone', [App\Http\Controllers\ServiceController::class, 'getPhone'])->name('service.getPhone');
 Route::get('/servicio/desactivo', [App\Http\Controllers\ServiceController::class, 'desactiveService'])->name('service.desactive');
 
 // aprobar

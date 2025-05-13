@@ -138,7 +138,7 @@ class ServiceController extends Controller
             ->first();
 
         $service->status = 'Activo';
-        $service->end_date = now()->addDays($this->publicDays);
+        $service->end_date = now()->addDays((int)$this->publicDays);
         $service->save();
 
         Mail::to($service->user->email)->send(new statusServiceMail($service));
@@ -170,4 +170,17 @@ class ServiceController extends Controller
 
         return view('web.services.desactiveSevice', compact('services'));
     }
+
+    public function getPhone(Service $service, $ref)
+    {
+        if ($service->ref !== $ref || $service->status !== 'Activo') {
+            return response()->json(['error' => 'Servicio no encontrado o inactivo.'], 404);
+        }
+
+        return response()->json([
+            'phone' => $service->phone,
+            'phoneWsp' => (bool) $service->phoneWsp 
+        ]);
+    }
+
 }

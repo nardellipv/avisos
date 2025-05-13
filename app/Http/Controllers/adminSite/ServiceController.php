@@ -50,7 +50,7 @@ class ServiceController extends Controller
         } else {
             $service = Service::find($id);
             $service->status = 'Activo';
-            $service->end_date = now()->addDays($this->publicDays);
+            $service->end_date = now()->addDays((int)$this->publicDays);
             $service->save();
 
             Mail::to($service->user->email)->send(new statusServiceMail($service));
@@ -95,7 +95,7 @@ class ServiceController extends Controller
 
         foreach ($pausedServices as $pausedService) {
             $pausedService->status = 'Activo';
-            $pausedService->end_date = now()->addDays($this->publicDays);
+            $pausedService->end_date = now()->addDays((int)$this->publicDays);
             $pausedService->save();
 
             Mail::to($pausedService->user->email)->send(new RepublishServiceMail($pausedService));

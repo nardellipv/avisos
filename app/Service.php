@@ -7,9 +7,41 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     protected $fillable = [
-        'title', 'description', 'status', 'phone', 'phoneWsp',
-        'currency', 'visit', 'like', 'photo', 'end_date', 'user_id', 'category_id', 'subcategory_id', 'region_id', 'ref', 'slug'
+        'title',
+        'description',
+        'status',
+        'phone',
+        'phoneWsp',
+        'visit',
+        'like',
+        'photo', 
+        'end_date',
+        'user_id',
+        'category_id',
+        'subcategory_id',
+        'region_id',
+        'ref',
+        'slug',
+        'social_facebook',
+        'social_instagram',
+        'social_website',
+        'years_of_experience',
+        'structured_availability_hours',
+        'payment_methods',
+        'estimate_cost',
+        'attends_emergencies',
     ];
+
+    protected $casts = [
+        'structured_availability_hours' => 'json',
+        'payment_methods' => 'json',
+        'attends_emergencies' => 'boolean',
+        'phoneWsp' => 'boolean', // Si phoneWsp es ENUM('Y','N') y quieres tratarlo como boolean
+        'end_date' => 'date',    // Castear fechas es buena práctica
+        // 'years_of_experience' => 'integer', // Ya es int en DB, cast opcional
+        'estimate_cost' => 'string',
+    ];
+
 
     public function User()
     {

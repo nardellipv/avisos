@@ -17,12 +17,12 @@
     @flashStyle
 
     {!! htmlScriptTagJsApi() !!}
-    @include('external.analytics')
-    @include('external.shareit')
-    @include('external.pixel')
-    @include('external.facebookapp')
+    {{-- @include('external.analytics') --}}
+    {{-- @include('external.shareit') --}}
+    {{-- @include('external.pixel') --}}
+    {{-- @include('external.facebookapp') --}}
     {{-- @include('external.hotjar') --}}
-    @include('external.ads')
+    {{-- @include('external.ads') --}}
 
 </head>
 

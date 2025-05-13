@@ -134,7 +134,31 @@ class ServiceController extends Controller
     public function storeService(CreateServiceRequest $request)
     {
         $user = User::where('id', userConnect()->id)->first();
-        $phoneWsp = $request->phoneWsp ? 'Y' : 'N';
+        $phoneWsp = $request->has('phoneWsp') ? 'Y' : 'N';
+
+        $hoursData = $request->input('hours');
+        $filteredHours = [];
+
+        if (is_array($hoursData)) {
+            foreach ($hoursData as $day => $timeSlots) {
+                $validDaySlots = [];
+
+                if (is_array($timeSlots)) {
+                    foreach ($timeSlots as $slot) {
+                        $open = $slot['open'] ?? null;
+                        $close = $slot['close'] ?? null;
+
+                        if (!empty($open) && !empty($close)) {
+                            $validDaySlots[] = ['open' => $open, 'close' => $close];
+                        }
+                    }
+                }
+
+                if (!empty($validDaySlots)) {
+                    $filteredHours[$day] = $validDaySlots;
+                }
+            }
+        }
 
         $service = Service::create([
             'title' => $request['title'],
@@ -149,32 +173,47 @@ class ServiceController extends Controller
             'region_id' => $user->region_id,
             'ref' => Str::random(20),
             'slug' => Str::slug($request['title']),
+            'social_facebook' => $request['social_facebook'] ?? null,
+            'social_instagram' => $request['social_instagram'] ?? null,
+            'social_website' => $request['social_website'] ?? null,
+            'years_of_experience' => $request['years_of_experience'] ?? null,
+            'payment_methods' => $request['payment_methods'] ?? null,
+            'estimate_cost' => $request['estimate_cost'] ?? null,
+            'structured_availability_hours' => $filteredHours,
+            'attends_emergencies' => $request->has('available_24_7'),
         ]);
 
         $path = 'users/' . $user->id;
         $pathSub = $path . '/service';
 
-        if (!is_dir($path)) mkdir($path);
-        if (!is_dir($pathSub)) mkdir($pathSub);
+        if (!is_dir($path)) mkdir($path, 0755, true);
+        if (!is_dir($pathSub)) mkdir($pathSub, 0755, true);
 
-        if ($request->photo) {
-            $maxPhoto = count($request->photo) > 2 ? array_slice($request->photo, 0, 3) : $request->photo;
-            foreach ($maxPhoto as $photos) {
-                $image = $photos;
-                $img = Image::make($image->getRealPath());
+        if ($request->hasFile('photo')) {
+            $uploadedPhotos = is_array($request->file('photo')) ? $request->file('photo') : [$request->file('photo')];
+            $maxPhotoCount = 3;
 
-                if ($img->width() > 700) $img->resize(700, null);
-                if ($img->height() > 400) $img->resize(null, 400);
+            foreach (array_slice($uploadedPhotos, 0, $maxPhotoCount) as $index => $photoFile) {
+                if ($photoFile && $photoFile->isValid()) {
+                    $imageName = time() . '_' . $index . '_' . Str::random(8) . '.' . $photoFile->getClientOriginalExtension();
+                    $destinationPath = public_path($pathSub);
 
-                $img->save($pathSub . '/' . $image->getClientOriginalName());
+                    $img = Image::make($photoFile->getRealPath());
+                    $img->resize(700, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                    $img->save($destinationPath . '/' . $imageName);
 
-                $service->photo = $image->getClientOriginalName();
-                $service->save();
+                    if ($index === 0) {
+                        $service->photo = $imageName;
+                        $service->save();
+                    }
 
-                AppImage::create([
-                    'name' => $image->getClientOriginalName(),
-                    'service_id' => $service->id,
-                ]);
+                    AppImage::create([
+                        'name' => $imageName,
+                        'service_id' => $service->id,
+                    ]);
+                }
             }
         }
 
@@ -203,7 +242,31 @@ class ServiceController extends Controller
         $service = Service::find($id);
         $this->authorize('ownerService', $service);
 
-        $phoneWsp = $request->phoneWsp ? 'Y' : 'N';
+        $phoneWsp = $request->has('phoneWsp') ? 'Y' : 'N';
+
+        $hoursData = $request->input('hours');
+        $filteredHours = [];
+
+        if (is_array($hoursData)) {
+            foreach ($hoursData as $day => $timeSlots) {
+                $validDaySlots = [];
+
+                if (is_array($timeSlots)) {
+                    foreach ($timeSlots as $slot) {
+                        $open = $slot['open'] ?? null;
+                        $close = $slot['close'] ?? null;
+
+                        if (!empty($open) && !empty($close)) {
+                            $validDaySlots[] = ['open' => $open, 'close' => $close];
+                        }
+                    }
+                }
+
+                if (!empty($validDaySlots)) {
+                    $filteredHours[$day] = $validDaySlots;
+                }
+            }
+        }
 
         $service->fill([
             'title' => $request['title'],
@@ -212,36 +275,52 @@ class ServiceController extends Controller
             'phone' => $request['phone'],
             'phoneWsp' => $phoneWsp,
             'slug' => Str::slug($request['title']),
+            'social_facebook' => $request['social_facebook'] ?? null,
+            'social_instagram' => $request['social_instagram'] ?? null,
+            'social_website' => $request['social_website'] ?? null,
+            'years_of_experience' => $request['years_of_experience'] ?? null,
+            'payment_methods' => $request['payment_methods'] ?? null,
+            'estimate_cost' => $request['estimate_cost'] ?? null,
+            'structured_availability_hours' => $filteredHours,
+            'attends_emergencies' => $request->has('available_24_7'),
         ]);
+
+        $service->save();
 
         $path = 'users/' . $user->id;
         $pathSub = $path . '/service';
 
-        if (!is_dir($path)) mkdir($path);
-        if (!is_dir($pathSub)) mkdir($pathSub);
+        if (!is_dir($path)) mkdir($path, 0755, true);
+        if (!is_dir($pathSub)) mkdir($pathSub, 0755, true);
 
-        if ($request->photo) {
-            $maxPhoto = count($request->photo) > 2 ? array_slice($request->photo, 0, 3) : $request->photo;
-            foreach ($maxPhoto as $photos) {
-                $image = $photos;
-                $img = Image::make($image->getRealPath());
+        if ($request->hasFile('photo')) {
+            $uploadedPhotos = is_array($request->file('photo')) ? $request->file('photo') : [$request->file('photo')];
+            $maxPhotoCount = 3;
 
-                if ($img->width() > 700) $img->resize(700, null);
-                if ($img->height() > 400) $img->resize(null, 400);
+            foreach (array_slice($uploadedPhotos, 0, $maxPhotoCount) as $index => $photoFile) {
+                if ($photoFile && $photoFile->isValid()) {
+                    $imageName = time() . '_' . $index . '_' . Str::random(8) . '.' . $photoFile->getClientOriginalExtension();
+                    $destinationPath = public_path($pathSub);
 
-                $img->save($pathSub . '/' . $image->getClientOriginalName());
+                    $img = Image::make($photoFile->getRealPath());
+                    $img->resize(700, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                    $img->save($destinationPath . '/' . $imageName);
 
-                $service->photo = $image->getClientOriginalName();
-                $service->save();
+                    if ($index === 0) {
+                        $service->photo = $imageName;
+                        $service->save();
+                    }
 
-                AppImage::create([
-                    'name' => $image->getClientOriginalName(),
-                    'service_id' => $service->id,
-                ]);
+                    AppImage::create([
+                        'name' => $imageName,
+                        'service_id' => $service->id,
+                    ]);
+                }
             }
         }
 
-        $service->save();
         Mail::to('mikanthost@gmail.com')->send(new EditServiceMail($service));
         LaravelFlash::withSuccess("Servicio actualizado correctamente");
         return back();
@@ -269,7 +348,7 @@ class ServiceController extends Controller
     {
         $service = Service::find($id);
         $this->authorize('ownerService', $service);
-        $service->end_date = now()->addDays($this->publicDays);
+        $service->end_date = now()->addDays((int)$this->publicDays);
         $service->save();
         Mail::to($service->user->email)->send(new RepublishServiceMail($service));
         LaravelFlash::withInfo('Servicio actualizado correctamente');
