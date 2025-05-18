@@ -180,7 +180,7 @@
                         <hr>
                         <section>
                             <h2>Comparti el servicio</h2>
-                            <div class="sharethis-inline-share-buttons" style="margin: 5% 0% 5% 0%;"></div>
+                            <div class="sharethis-inli-share-buttons" style="margin: 5% 0% 5% 0%;"></div>
                         </section>
                         <hr>
                         <section>
